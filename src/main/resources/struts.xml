@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.ui.theme" value="simple" />
+	<constant name="struts.action.extension" value="do,ado,bdo" />
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<constant name="struts.i18n.reload" value="true" />
+	<constant name="struts.locale=zh_CN" value="zh_CN" />
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true"/>
+	 <constant name="struts.multipart.maxSize" value="52428800" />
+    
+    <package name="base" namespace="/" extends="struts-default">
+    	<interceptors>
+    		<interceptor-stack name="tokenStack">
+    			<interceptor-ref name="token">
+    				<param name="includeMethods">saveXX</param>
+    			</interceptor-ref>
+    			<interceptor-ref name="defaultStack"></interceptor-ref>
+    		</interceptor-stack>
+    	</interceptors>
+    	<default-interceptor-ref name="tokenStack"></default-interceptor-ref>
+		<global-results>
+			<result name="wait">/pages/global/wait.jsp</result>
+			<result name="error">/pages/global/error.jsp</result>
+			<result name="info">/pages/global/info.jsp</result>
+			<result name="invalid.token">/pages/global/repeatSubmit.jsp</result>
+		</global-results>
+	</package>
+	<include file="struts_qdpzgl.xml"></include>
+	<include file="struts-access.xml"></include>
+	<include file="struts-accessExterior.xml"></include>
+	<include file="struts-ywlltj-kxjjcl.xml"></include>
+	<include file="struts_qdjrmxcx.xml"></include>
+</struts>
