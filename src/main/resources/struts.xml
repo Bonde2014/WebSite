@@ -3,25 +3,31 @@
     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
+	<!-- 是否使用struts的开发模式。开发模式会有更多的调试信息。默认值为false(生产环境下使用),开发阶段最好打开 -->
 	<constant name="struts.devMode" value="false" />
 	<constant name="struts.ui.theme" value="simple" />
-	<constant name="struts.action.extension" value="do,ado,bdo" />
+	<!-- 指定被struts2处理的请求后缀类型。多个用逗号隔开 -->
+	<constant name="struts.action.extension" value="do,action" />
 	<constant name="struts.i18n.encoding" value="UTF-8" />
 	<constant name="struts.i18n.reload" value="true" />
+	<!-- 当struts.xml改动后，是否重新加载。默认值为false(生产环境下使用),开发阶段最好打开  --> 
+    <constant name="struts.configuration.xml.reload" value="true"/> 
 	<constant name="struts.locale=zh_CN" value="zh_CN" />
-	<constant name="struts.ognl.allowStaticMethodAccess" value="true"/>
-	 <constant name="struts.multipart.maxSize" value="52428800" />
-    
-    <package name="base" namespace="/" extends="struts-default">
-    	<interceptors>
-    		<interceptor-stack name="tokenStack">
-    			<interceptor-ref name="token">
-    				<param name="includeMethods">saveXX</param>
-    			</interceptor-ref>
-    			<interceptor-ref name="defaultStack"></interceptor-ref>
-    		</interceptor-stack>
-    	</interceptors>
-    	<default-interceptor-ref name="tokenStack"></default-interceptor-ref>
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true" />
+	<constant name="struts.multipart.maxSize" value="52428800" />
+	<!-- 指定由spring负责action对象的创建 -->
+	<constant name="struts.objectFactory" value="spring" />
+
+	<package name="base" namespace="/" extends="struts-default">
+		<interceptors>
+			<interceptor-stack name="tokenStack">
+				<interceptor-ref name="token">
+					<param name="includeMethods">saveXX</param>
+				</interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="tokenStack"></default-interceptor-ref>
 		<global-results>
 			<result name="wait">/pages/global/wait.jsp</result>
 			<result name="error">/pages/global/error.jsp</result>
@@ -29,9 +35,4 @@
 			<result name="invalid.token">/pages/global/repeatSubmit.jsp</result>
 		</global-results>
 	</package>
-	<include file="struts_qdpzgl.xml"></include>
-	<include file="struts-access.xml"></include>
-	<include file="struts-accessExterior.xml"></include>
-	<include file="struts-ywlltj-kxjjcl.xml"></include>
-	<include file="struts_qdjrmxcx.xml"></include>
 </struts>
