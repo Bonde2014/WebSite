@@ -8,7 +8,6 @@ public class LoginAction extends ProjectBaseAction {
     private static final long serialVersionUID = 5748465179322729840L;
     
     public String login(){
-    	String s="";
         return SUCCESS;
     }
 
