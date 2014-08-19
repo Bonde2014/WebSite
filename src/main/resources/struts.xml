@@ -35,4 +35,6 @@
 			<result name="invalid.token">/pages/global/repeatSubmit.jsp</result>
 		</global-results>
 	</package>
+	
+	<include file="struts-login.xml"></include>
 </struts>
