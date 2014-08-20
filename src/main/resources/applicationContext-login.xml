@@ -8,5 +8,10 @@
             http://www.springframework.org/schema/beans 
             http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
     <bean id="loginAction" class="cn.com.bonde.b2b.website.action.LoginAction" scope="request">
+    	<property name="userDAO" ref="userDao"></property>
     </bean>
+    
+    <bean id="userDao" class="cn.com.bonde.b2b.website.dao.impl.UserDAOImpl">
+  	<property name="sessionFactory" ref="sessionFactory"></property>
+  </bean>
 </beans>
