@@ -33,6 +33,7 @@ public class ProjectBaseAction extends ActionSupport {
      * @return
      */
     public HttpServletResponse getResponse() {
+    	
         return ServletActionContext.getResponse();
     }
 
