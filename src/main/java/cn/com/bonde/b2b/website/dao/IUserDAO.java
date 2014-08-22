@@ -1,6 +1,6 @@
 package cn.com.bonde.b2b.website.dao;
 
-import cn.com.bonde.b2b.website.vo.User;
+import cn.com.bonde.b2b.website.entity.User;
 
 public interface IUserDAO {
 

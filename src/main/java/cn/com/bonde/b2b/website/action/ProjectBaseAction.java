@@ -8,6 +8,9 @@ import java.net.URLDecoder;
 import java.util.Map;
 import java.util.UUID;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -19,11 +22,14 @@ import cn.com.bonde.b2b.website.util.DataSwitch;
 import com.opensymphony.xwork2.ActionSupport;
 
 
+@Entity
 public class ProjectBaseAction extends ActionSupport {
 
     /**
      * serialVersionUID
      */
+    @Id
+    @GeneratedValue
     private static final long serialVersionUID = 4281801356502607766L;
 
 

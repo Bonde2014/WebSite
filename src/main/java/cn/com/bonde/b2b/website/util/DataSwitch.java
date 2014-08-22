@@ -29,6 +29,7 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.Vector;
 
+import javax.persistence.Entity;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.time.DateUtils;
 import org.apache.log4j.Logger;
@@ -42,6 +43,7 @@ import org.json.JSONObject;
  * @author 李雪飞 2010-04-15
  * 
  */
+@Entity
 public class DataSwitch
 {
 

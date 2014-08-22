@@ -2,12 +2,21 @@ package cn.com.bonde.b2b.website.dao.impl;
 
 import java.util.List;
 
-import org.springframework.orm.hibernate3.HibernateTemplate;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate4.HibernateTemplate;
+import org.springframework.stereotype.Repository;
 
 import cn.com.bonde.b2b.website.dao.IUserDAO;
-import cn.com.bonde.b2b.website.vo.User;
+import cn.com.bonde.b2b.website.entity.User;
 
+@Repository
 public class UserDAOImpl extends HibernateTemplate implements IUserDAO {
+    
+    @Autowired
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        super.setSessionFactory(sessionFactory);
+    }
 
     @Override
     public User findUserByNameAndPass(String username, String password) {
@@ -24,8 +33,7 @@ public class UserDAOImpl extends HibernateTemplate implements IUserDAO {
         User user = new User();
         user.setUsername(username);
         user.setPassword(password);
-        save(user);
-        
+        this.save(user);
     }
 
 }

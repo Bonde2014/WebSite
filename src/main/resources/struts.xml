@@ -22,7 +22,7 @@
 		<interceptors>
 			<interceptor-stack name="tokenStack">
 				<interceptor-ref name="token">
-					<param name="includeMethods">saveXX</param>
+					<param name="includeMethods">save*,update*</param>
 				</interceptor-ref>
 				<interceptor-ref name="defaultStack"></interceptor-ref>
 			</interceptor-stack>
@@ -35,6 +35,4 @@
 			<result name="invalid.token">/pages/global/repeatSubmit.jsp</result>
 		</global-results>
 	</package>
-	
-	<include file="struts-login.xml"></include>
 </struts>
