@@ -19,7 +19,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-   <form action="login/login.do" method="post">
+   <form action="login.do" method="post">
     <table>
         <caption>用户登录</caption>
         <tr>

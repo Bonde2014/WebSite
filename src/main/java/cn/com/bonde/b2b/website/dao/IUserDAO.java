@@ -18,9 +18,8 @@ public interface IUserDAO {
      * 
     * @Title: saveUser 
     * @Description:
-    * @param username
-    * @param password void
+    * @param user void
      */
-    public void saveUser(String username, String password);
+    public void saveUser(User user);
 
 }

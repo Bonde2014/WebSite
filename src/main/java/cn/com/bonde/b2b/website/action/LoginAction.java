@@ -7,17 +7,17 @@ import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import cn.com.bonde.b2b.website.dao.IUserDAO;
 import cn.com.bonde.b2b.website.entity.User;
+import cn.com.bonde.b2b.website.service.IUserService;
 
 @Controller
 @Scope("prototype")
 @ParentPackage(value = "base")
-@Namespace(value="/login")
-@Results({@Result(name = "success", location = "pages/login.jsp")})
+@Results({@Result(name = "success", location = "login.jsp")})
 public class LoginAction extends ProjectBaseAction {
 
     /**
@@ -25,13 +25,13 @@ public class LoginAction extends ProjectBaseAction {
      */
     private static final long serialVersionUID = 5748465179322729840L;
 
-    @Resource(name = "userDAOImpl")
-    private IUserDAO userDAO;
+    @Autowired
+    private IUserService userService;
 
     @Action(value = "login")
     public String login() {
-        //User user = userDAO.findUserByNameAndPass(getParameter("username"), getParameter("password"));
-        userDAO.saveUser(getParameter("username"), getParameter("password"));
+        User user = new User(getParameter("username"), getParameter("password"));
+        userService.save(user);
         return SUCCESS;
     }
 
