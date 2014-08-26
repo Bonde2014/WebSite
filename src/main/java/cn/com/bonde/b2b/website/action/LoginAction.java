@@ -27,6 +27,8 @@ public class LoginAction extends ProjectBaseAction {
 
     @Action(value = "login")
     public String login() {
+        
+        
         User user = new User(getParameter("username"), getParameter("password"));
         userService.save(user);
         return SUCCESS;
