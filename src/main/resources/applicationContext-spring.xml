@@ -42,7 +42,7 @@
 	-->
 	<tx:annotation-driven transaction-manager="transactionManager" />
 	<!-- 让Spring通过自动扫描来查询和管理Bean -->
-	<context:component-scan base-package="cn.com.bonde.b2b" />
+	<context:component-scan base-package="cn.com.bonde.b2b.website" />
 	<!-- 事务切割点 -->
 	<!-- 把通知切到service层中 -->
 	<aop:config>

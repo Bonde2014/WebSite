@@ -9,7 +9,7 @@ import cn.com.bonde.b2b.website.dao.IUserDAO;
 import cn.com.bonde.b2b.website.entity.User;
 import cn.com.bonde.b2b.website.service.IUserService;
 
-@Service
+@Service(value="userService")
 public class UserService implements IUserService {
 
     @Autowired
@@ -19,8 +19,8 @@ public class UserService implements IUserService {
         this.userDao = userDao;
     }
 
-    public List<User> query(){
-        return null;
+    public List<User> query() throws Exception{
+        return userDao.query();
     }
 
     public void save(User user){

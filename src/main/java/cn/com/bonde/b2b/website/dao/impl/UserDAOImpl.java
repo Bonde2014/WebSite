@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import cn.com.bonde.b2b.website.dao.IUserDAO;
 import cn.com.bonde.b2b.website.entity.User;
 
-@Repository
+@Repository("userDao")
 public class UserDAOImpl extends HibernateTemplate implements IUserDAO {
     
     @Autowired
@@ -27,6 +27,11 @@ public class UserDAOImpl extends HibernateTemplate implements IUserDAO {
         } else
             return null;
     }
+    
+    public List<User> query() throws Exception
+	{
+		return (List<User>) find("from User");
+	}
 
     @Override
     public void saveUser(User user) {

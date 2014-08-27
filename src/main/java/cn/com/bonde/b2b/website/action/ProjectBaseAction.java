@@ -22,7 +22,6 @@ import cn.com.bonde.b2b.website.util.DataSwitch;
 import com.opensymphony.xwork2.ActionSupport;
 
 
-@Entity
 public class ProjectBaseAction extends ActionSupport {
 
     /**
