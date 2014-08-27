@@ -16,7 +16,8 @@ public class User implements java.io.Serializable {
 
     // Fields
 
-    private String id;
+	private static final long serialVersionUID = 1L;
+	private String id;
     private String username;
     private String password;
 
