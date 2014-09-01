@@ -21,6 +21,7 @@ public class UserDAOImpl extends HibernateTemplate implements IUserDAO {
     @Override
     public User findUserByNameAndPass(String username, String password) {
     	//测试commit
+    	//测试push
         List userList = find("from User ur where ur.username=? and ur.password=?", new String[] { username,
                 password });
         if (userList != null && userList.size() >= 1) {
