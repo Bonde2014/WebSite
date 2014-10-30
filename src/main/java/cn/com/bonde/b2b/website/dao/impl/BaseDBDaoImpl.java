@@ -27,12 +27,13 @@ import org.hibernate.persister.entity.SingleTableEntityPersister;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import cn.com.bonde.b2b.website.dao.IBaseDBDao;
 import cn.com.bonde.b2b.website.util.DataSwitch;
 import cn.com.bonde.b2b.website.util.MyException;
 import cn.com.bonde.b2b.website.util.Pager;
 
 @Transactional
-public class BaseDBDaoImpl
+public class BaseDBDaoImpl implements IBaseDBDao
 {
 	public BaseDBDaoImpl()
 	{
@@ -1270,7 +1271,7 @@ public class BaseDBDaoImpl
 		try
 		{
 			final Query query = this.getSession().createQuery(hql);
-			if (paramMap.length!=0)
+			if (paramMap.length != 0)
 			{
 				Map<String, Object> paramMaps = paramMap[0];
 				if (paramMaps != null && paramMaps.size() > 0)
