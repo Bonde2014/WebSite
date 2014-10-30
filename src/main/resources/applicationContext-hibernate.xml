@@ -42,5 +42,41 @@
 		</property>
 		<!-- 配置自动扫描包下的实体，也可使用annotatedClasses属性进行单个实体配置 -->
 		<property name="packagesToScan" value="cn.com.bonde.b2b.website.entity"></property>
-	</bean>
+		<property name="annotatedClasses">
+			<list>
+				<value>cn.com.bonde.b2b.website.entity.XsFjbj</value>
+				<value>cn.com.bonde.b2b.website.entity.DmSpfl2</value>
+				<value>cn.com.bonde.b2b.website.entity.QxKhxx</value>
+				<value>cn.com.bonde.b2b.website.entity.XsFjbjLs</value>
+				<value>cn.com.bonde.b2b.website.entity.QxJsGns</value>
+				<value>cn.com.bonde.b2b.website.entity.CgCgqk</value>
+				<value>cn.com.bonde.b2b.website.entity.QxCzyGzfp</value>
+				<value>
+					cn.com.bonde.b2b.website.entity.CgCgqkSpmx
+				</value>
+				<value>cn.com.bonde.b2b.website.entity.QxCzy</value>
+				<value>
+					cn.com.bonde.b2b.website.entity.CgPtGhxxxz
+				</value>
+				<value>cn.com.bonde.b2b.website.entity.DmQxJs</value>
+				<value>cn.com.bonde.b2b.website.entity.SpGgcsBjb</value>
+				<value>cn.com.bonde.b2b.website.entity.XsDdqk</value>
+				<value>cn.com.bonde.b2b.website.entity.SpSpxx</value>
+				<value>cn.com.bonde.b2b.website.entity.CgGhsSpmx</value>
+				<value>
+					cn.com.bonde.b2b.website.entity.XsDdqkZfmx
+				</value>
+				<value>
+					cn.com.bonde.b2b.website.entity.XsDdqkShxx
+				</value>
+				<value>cn.com.bonde.b2b.website.entity.DmQxGns</value>
+				<value>cn.com.bonde.b2b.website.entity.QxDlxx</value>
+				<value>cn.com.bonde.b2b.website.entity.QxQdsXsry</value>
+				<value>
+					cn.com.bonde.b2b.website.entity.XsDdqkSpmx
+				</value>
+				<value>cn.com.bonde.b2b.website.entity.SpSpxq</value>
+				<value>cn.com.bonde.b2b.website.entity.Userinfo</value>
+				<value>cn.com.bonde.b2b.website.entity.DmSpfl</value></list>
+		</property></bean>
 </beans>

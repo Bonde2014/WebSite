@@ -6,25 +6,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cn.com.bonde.b2b.website.dao.IUserDAO;
-import cn.com.bonde.b2b.website.entity.User;
+import cn.com.bonde.b2b.website.entity.Userinfo;
 import cn.com.bonde.b2b.website.service.IUserService;
 
-@Service(value="userService")
+@Service(value="UserinfoService")
 public class UserService implements IUserService {
 
     @Autowired
-    private IUserDAO userDao;
+    private IUserDAO UserDao;
 
-    public void setUserDao(IUserDAO userDao) {
-        this.userDao = userDao;
+    public void setUserinfoDao(IUserDAO UserDao) {
+        this.UserDao = UserDao;
     }
 
-    public List<User> query() throws Exception{
-        return userDao.query();
+    public List<Userinfo> query() throws Exception{
+        return UserDao.query();
     }
 
-    public void save(User user){
-        userDao.saveUser(user);
+    public void save(Userinfo Userinfo)throws Exception{
+        UserDao.saveUser(Userinfo);
     }
 
 }

@@ -12,7 +12,7 @@ import org.apache.struts2.convention.annotation.Results;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import cn.com.bonde.b2b.website.entity.User;
+import cn.com.bonde.b2b.website.entity.Userinfo;
 import cn.com.bonde.b2b.website.service.IUserService;
 
 @Controller
@@ -31,7 +31,7 @@ public class LoginAction extends ProjectBaseAction {
 
     @Resource(name="userService")
     private IUserService userService;
-    private List<User> list=null;
+    private List<Userinfo> list=null;
     /**
 	 * @param userService the userService to set
 	 */
@@ -43,7 +43,7 @@ public class LoginAction extends ProjectBaseAction {
 	/**
 	 * @return the list
 	 */
-	public List<User> getList()
+	public List<Userinfo> getList()
 	{
 		return list;
 	}
@@ -51,14 +51,14 @@ public class LoginAction extends ProjectBaseAction {
 	/**
 	 * @param list the list to set
 	 */
-	public void setList(List<User> list)
+	public void setList(List<Userinfo> list)
 	{
 		this.list = list;
 	}
 
 	@Action(value = "login")
     public String login() throws Exception {
-        User user = new User(getParameter("username"), getParameter("password"));
+		Userinfo user = new Userinfo(getParameter("username"), getParameter("password"));
         userService.save(user);
         list=userService.query();
         return SUCCESS;

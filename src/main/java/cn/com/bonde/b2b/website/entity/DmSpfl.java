@@ -1,10 +1,9 @@
 package cn.com.bonde.b2b.website.entity;
 
-import static javax.persistence.GenerationType.IDENTITY;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -18,7 +17,7 @@ public class DmSpfl implements java.io.Serializable
 
 	// Fields
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1461965188817873018L;
 	private Long spflDm;
 	private String spflMc;
 	private Long sjSpflDm;

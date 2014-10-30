@@ -2,19 +2,10 @@ package cn.com.bonde.b2b.website.dao;
 
 import java.util.List;
 
-import cn.com.bonde.b2b.website.entity.User;
+import cn.com.bonde.b2b.website.entity.Userinfo;
 
 public interface IUserDAO {
 
-    /**
-     * 
-     * @Title: findUserByNameAndPass
-     * @Description:
-     * @param username
-     * @param password
-     * @return User
-     */
-    public User findUserByNameAndPass(String username, String password);
     
     /**
      * 
@@ -22,7 +13,7 @@ public interface IUserDAO {
     * @Description:
     * @param user void
      */
-    public void saveUser(User user);
-    public List<User> query() throws Exception;
+    public void saveUser(Userinfo user)throws Exception;
+    public List<Userinfo> query() throws Exception;
 
 }

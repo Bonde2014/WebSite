@@ -2,42 +2,27 @@ package cn.com.bonde.b2b.website.dao.impl;
 
 import java.util.List;
 
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
 import cn.com.bonde.b2b.website.dao.IUserDAO;
-import cn.com.bonde.b2b.website.entity.User;
+import cn.com.bonde.b2b.website.entity.Userinfo;
 
 @Repository("userDao")
-public class UserDAOImpl extends HibernateTemplate implements IUserDAO {
+public class UserDAOImpl extends BaseDBDaoImpl implements IUserDAO {
     
-    @Autowired
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        super.setSessionFactory(sessionFactory);
-    }
+//    @Autowired
+//    public void setSessionFactory(SessionFactory sessionFactory) {
+//        super.setSessionFactory(sessionFactory);
+//    }
 
-    @Override
-    public User findUserByNameAndPass(String username, String password) {
-    	//测试commit
-    	//测试push
-        List userList = find("from User ur where ur.username=? and ur.password=?", new String[] { username,
-                password });
-        if (userList != null && userList.size() >= 1) {
-            return (User) userList.get(0);
-        } else
-            return null;
-    }
-    
-    public List<User> query() throws Exception
+    @SuppressWarnings("unchecked")
+	public List<Userinfo> query() throws Exception
 	{
-		return (List<User>) find("from User");
+		return this.getEntityListByHQL("from Userinfo");
 	}
 
-    @Override
-    public void saveUser(User user) {
-        this.save(user);
+    public void saveUser(Userinfo user) throws Exception {
+        this.addEntity(user);
     }
 
 }
