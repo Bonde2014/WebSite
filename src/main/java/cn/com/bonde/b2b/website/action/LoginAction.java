@@ -21,6 +21,8 @@ import cn.com.bonde.b2b.website.service.IUserService;
 @Namespace(value="/")
 @Results({@Result(name = "success", location = "success.jsp")})
 public class LoginAction extends ProjectBaseAction {
+	
+	
 
     /**
      * serialVersionUID
