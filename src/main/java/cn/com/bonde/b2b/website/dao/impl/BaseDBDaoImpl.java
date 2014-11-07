@@ -28,6 +28,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import cn.com.bonde.b2b.website.dao.IBaseDBDao;
+import cn.com.bonde.b2b.website.entity.findEntity.BaseFindEntity;
 import cn.com.bonde.b2b.website.util.DataSwitch;
 import cn.com.bonde.b2b.website.util.MyException;
 import cn.com.bonde.b2b.website.util.Pager;
@@ -957,8 +958,9 @@ public class BaseDBDaoImpl implements IBaseDBDao
 	 * @return
 	 * @throws MyException
 	 */
-	public Pager getListBySQLQuery(String sql, Map<String, Object> parasMaps, Pager pager, String... totalCountSql) throws Exception
+	public Pager getListBySQLQuery(String sql, Map<String, Object> parasMaps, BaseFindEntity findEntity, String... totalCountSql) throws Exception
 	{
+		Pager pager=new Pager();
 		try
 		{
 			SQLQuery query = this.getSession().createSQLQuery(sql);
@@ -975,12 +977,14 @@ public class BaseDBDaoImpl implements IBaseDBDao
 					}
 				}
 			}
-			query.setMaxResults(pager.getPageSize());
-			int page = pager.getPageNo();
-
-			query.setFirstResult(page);
+			query.setMaxResults(findEntity.getRows());
+			query.setFirstResult((findEntity.getPage()-1)*findEntity.getRows());
+			
+			System.out.println(query.getFirstResult()+","+query.getMaxResults());;
 			List resultList = query.list();
 			Integer totalCount = getTotalCountBySQLQuery(sql, parasMaps, totalCountSql);
+			pager.setPageSize(findEntity.getRows());
+			pager.setPageNo(findEntity.getPage());
 			pager.setRows(resultList);
 			pager.setTotal(totalCount);
 		}
@@ -1007,7 +1011,7 @@ public class BaseDBDaoImpl implements IBaseDBDao
 		{
 			if (totalCountSql == null || totalCountSql.equals("") || totalCountSql.length == 0)
 			{
-				sql = "select count(*) from (" + sql + ")";
+				sql = "select count(*) from (" + sql + ")  T";
 			}
 			else
 			{

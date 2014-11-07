@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
+import cn.com.bonde.b2b.website.entity.findEntity.BaseFindEntity;
 import cn.com.bonde.b2b.website.util.MyException;
 import cn.com.bonde.b2b.website.util.Pager;
 
@@ -264,7 +265,7 @@ public interface IBaseDBDao
 	 * @return
 	 * @throws MyException
 	 */
-	public Pager getListBySQLQuery(String sql, Map<String, Object> parasMaps, Pager pager, String... totalCountSql) throws Exception;
+	public Pager getListBySQLQuery(String sql, Map<String, Object> parasMaps, BaseFindEntity findEntity, String... totalCountSql) throws Exception;
 
 	/**
 	 * @function 根据查询条件查询记录数的个数
