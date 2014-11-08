@@ -2,8 +2,6 @@ package cn.com.bonde.b2b.website.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -17,7 +15,7 @@ public class QxDlxx implements java.io.Serializable
 
 	// Fields
 	private static final long serialVersionUID = 1461965188817873018L;
-	private Long dlm;
+	private String dlm;
 	private String dlkl;
 	private String yxbz;
 	private String dllx;
@@ -30,25 +28,16 @@ public class QxDlxx implements java.io.Serializable
 	{
 	}
 
-	/** full constructor */
-	public QxDlxx(String dlkl, String yxbz, String dllx, String xgsj)
-	{
-		this.dlkl = dlkl;
-		this.yxbz = yxbz;
-		this.dllx = dllx;
-		this.xgsj = xgsj;
-	}
 
 	// Property accessors
 	@Id
-	@GeneratedValue(strategy = IDENTITY)
-	@Column(name = "dlm", unique = true, nullable = false)
-	public Long getDlm()
+	@Column(name = "dlm", unique = true, nullable = false,length = 20)
+	public String getDlm()
 	{
 		return this.dlm;
 	}
 
-	public void setDlm(Long dlm)
+	public void setDlm(String dlm)
 	{
 		this.dlm = dlm;
 	}

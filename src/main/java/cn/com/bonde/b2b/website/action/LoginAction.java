@@ -1,7 +1,5 @@
 package cn.com.bonde.b2b.website.action;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.apache.struts2.convention.annotation.Action;
@@ -12,14 +10,16 @@ import org.apache.struts2.convention.annotation.Results;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import cn.com.bonde.b2b.website.entity.Userinfo;
-import cn.com.bonde.b2b.website.service.IUserService;
+import cn.com.bonde.b2b.website.entity.QxDlxx;
+import cn.com.bonde.b2b.website.service.ILoginService;
+import cn.com.bonde.b2b.website.util.MyException;
+import cn.com.bonde.b2b.website.util.WriteJsonToPage;
 
 @Controller
 @Scope("prototype")
 @ParentPackage(value = "base")
 @Namespace(value="/")
-@Results({@Result(name = "success", location = "success.jsp")})
+@Results({@Result(name = "success", location = "/pages/index.jsp")})
 public class LoginAction extends ProjectBaseAction {
 	
 	
@@ -29,40 +29,54 @@ public class LoginAction extends ProjectBaseAction {
      */
     private static final long serialVersionUID = 5748465179322729840L;
 
-    @Resource(name="userService")
-    private IUserService userService;
-    private List<Userinfo> list=null;
-    /**
-	 * @param userService the userService to set
+    @Resource(name="loginService")
+    private ILoginService loginService;
+    private QxDlxx qxDlxx;
+  
+
+
+
+	/**
+	 * @return the loginService
 	 */
-	public void setUserService(IUserService userService)
+	public ILoginService getLoginService()
 	{
-		this.userService = userService;
+		return loginService;
 	}
 
 	/**
-	 * @return the list
+	 * @param loginService the loginService to set
 	 */
-	public List<Userinfo> getList()
+	public void setLoginService(ILoginService loginService)
 	{
-		return list;
+		this.loginService = loginService;
 	}
 
 	/**
-	 * @param list the list to set
+	 * @return the qxDlxx
 	 */
-	public void setList(List<Userinfo> list)
+	public QxDlxx getQxDlxx()
 	{
-		this.list = list;
+		return qxDlxx;
 	}
 
-	@Action(value = "login")
-    public String login() throws Exception {
-		Userinfo user = new Userinfo(getParameter("username"), getParameter("password"));
-        userService.save(user);
-        list=userService.query();
-        return SUCCESS;
+	/**
+	 * @param qxDlxx the qxDlxx to set
+	 */
+	public void setQxDlxx(QxDlxx qxDlxx)
+	{
+		this.qxDlxx = qxDlxx;
+	}
+
+
+
+	@Action(value = "doLogin")
+    public void doLogin() throws Exception {
+		try{
+			String msg =loginService.doLogin(qxDlxx,this.getSession());
+			WriteJsonToPage.WriteJson(msg);
+		}catch(Exception e){
+			throw new MyException(e, this.getClass(), "");
+		}
     }
-
-
 }

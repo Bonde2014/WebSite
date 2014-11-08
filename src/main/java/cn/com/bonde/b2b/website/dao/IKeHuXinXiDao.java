@@ -10,7 +10,7 @@ import cn.com.bonde.b2b.website.util.Pager;
  * @author Administrator
  *
  */
-public interface IKeHuXinXiDao
+public interface IKeHuXinXiDao extends IBaseDBDao
 {
 	public Pager getList(KeHuXinXiFindEntity findEntity)throws Exception;
 }

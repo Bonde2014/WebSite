@@ -68,6 +68,7 @@ public class KeHuXinXiAction extends ProjectBaseAction
 		}
 		catch (Exception e)
 		{
+			WriteJsonToPage.WriteJson(e);
 			throw new MyException(e, this.getClass(), "");
 		}
 		return null;

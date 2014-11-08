@@ -82,20 +82,5 @@ public class MyException extends Exception {
 		logger.error(clazz.getName() + msgString);
 	}
 
-	/**
-	 * 自定义错误类的构造函数，展示给用户
-	 * 
-	 * @param msgString
-	 *            展示给页面用的错误信息
-	 * @param isClose
-	 *            错误页面是否有关闭按钮， True 显示，Flase 不显示
-	 * @param isReturn
-	 *            错误页面是否有返回按钮， True 显示，Flase 不显示
-	 */
-	public MyException(String msgString, boolean isClose, boolean isReturn) {
-		HttpSession session = ServletActionContext.getRequest().getSession();
-		session.setAttribute("errString", msgString);
-		session.setAttribute("isClose", isClose);
-		session.setAttribute("isReturn", isReturn);
-	}
+	
 }
