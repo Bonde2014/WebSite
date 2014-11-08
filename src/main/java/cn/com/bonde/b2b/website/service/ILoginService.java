@@ -14,4 +14,5 @@ import cn.com.bonde.b2b.website.entity.QxDlxx;
 public  interface ILoginService
 {
 	public String doLogin(QxDlxx qxDlxx,HttpSession session)throws Exception;
+	public boolean update(QxDlxx qxDlxx)throws Exception;
 }

@@ -18,23 +18,19 @@ import cn.com.bonde.b2b.website.util.WriteJsonToPage;
 @Controller
 @Scope("prototype")
 @ParentPackage(value = "base")
-@Namespace(value="/")
-@Results({@Result(name = "success", location = "/pages/index.jsp")})
-public class LoginAction extends ProjectBaseAction {
-	
-	
+@Namespace(value = "/")
+@Results({ @Result(name = "success", location = "/pages/index.jsp") })
+public class LoginAction extends ProjectBaseAction
+{
 
-    /**
-     * serialVersionUID
-     */
-    private static final long serialVersionUID = 5748465179322729840L;
+	/**
+	 * serialVersionUID
+	 */
+	private static final long serialVersionUID = 5748465179322729840L;
 
-    @Resource(name="loginService")
-    private ILoginService loginService;
-    private QxDlxx qxDlxx;
-  
-
-
+	@Resource(name = "loginService")
+	private ILoginService loginService;
+	private QxDlxx qxDlxx;
 
 	/**
 	 * @return the loginService
@@ -45,7 +41,8 @@ public class LoginAction extends ProjectBaseAction {
 	}
 
 	/**
-	 * @param loginService the loginService to set
+	 * @param loginService
+	 *            the loginService to set
 	 */
 	public void setLoginService(ILoginService loginService)
 	{
@@ -61,22 +58,38 @@ public class LoginAction extends ProjectBaseAction {
 	}
 
 	/**
-	 * @param qxDlxx the qxDlxx to set
+	 * @param qxDlxx
+	 *            the qxDlxx to set
 	 */
 	public void setQxDlxx(QxDlxx qxDlxx)
 	{
 		this.qxDlxx = qxDlxx;
 	}
 
-
-
 	@Action(value = "doLogin")
-    public void doLogin() throws Exception {
-		try{
-			String msg =loginService.doLogin(qxDlxx,this.getSession());
+	public void doLogin() throws Exception
+	{
+		try
+		{
+			String msg = loginService.doLogin(qxDlxx, this.getSession());
 			WriteJsonToPage.WriteJson(msg);
-		}catch(Exception e){
+		}
+		catch (Exception e)
+		{
 			throw new MyException(e, this.getClass(), "");
 		}
-    }
+	}
+
+	public String update() throws Exception
+	{
+		try
+		{
+			loginService.update(qxDlxx);
+			return "";
+		}
+		catch (Exception e)
+		{
+			throw new MyException(e, this.getClass(), "");
+		}
+	}
 }

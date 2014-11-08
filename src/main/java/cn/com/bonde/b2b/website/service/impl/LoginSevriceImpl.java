@@ -72,4 +72,18 @@ public class LoginSevriceImpl implements ILoginService
 		
 	}
 
+
+	/**
+	 * @创建人：应洪峰
+	 * @创建时间：2014年11月8日
+	 * @功能说明：
+	 * @return
+	 * @throws MyException
+	 */
+	@Override
+	public boolean update(QxDlxx qxDlxx) throws Exception
+	{
+		return loginDao.updateEntiy(qxDlxx);
+	}
+
 }
