@@ -6,8 +6,6 @@
 <html>
 <%
 	String root = request.getContextPath();
-    QxDlxx qxDlxx = (QxDlxx)session.getAttribute("session_login");
-    Boolean isLogin =qxDlxx==null?false:true;
 %>
 <script type="text/javascript">
  var root = "<%=root%>"; //js中存放当前页面的root路径方便调用
@@ -27,17 +25,20 @@
 <body>
 	 <div class="hd_global_top_bar">
         <div class="mainbox">
+        	 <s:if test="#session.session_login!=null">
+        	 	<span class="top_bar_wrap"><a href="<%=root%>/doLogout.do" >注销</a></span>
+        	 </s:if>
             <span class="top_bar_wrap">客服热线：0571-56839396</span>
             <span class="top_bar_wrap "><a href="javascript:void(0)" >购物车</a></span>
             <span class="top_bar_wrap"><a href="javascript:void(0)" >用户中心</a></span>
             <span class="top_bar_wrap"><a href="<%=root%>/pages/index.jsp">首页</a></span>
-            <s:if test="isLogin">
+            <s:if test="#session.session_login!=null">
+            	<span class="top_bar_wrap" style="border-left:0"><%=((QxDlxx)session.getAttribute("session_login")).getDlm() %> 您好，欢迎来到克莱姆！</span>
+            </s:if>
+            <s:else>
             	<span class="top_bar_wrap" style="border-left:0">您好，欢迎来到克莱姆！
             		<a href="<%=root%>/pages/login.jsp">登陆</a>
             	</span>
-            </s:if>
-            <s:else>
-            	<span class="top_bar_wrap" style="border-left:0"><%=qxDlxx.getDlm() %> 您好，欢迎来到克莱姆！</span>
             </s:else>
         </div>
     </div>
