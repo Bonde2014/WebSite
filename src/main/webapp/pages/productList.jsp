@@ -101,9 +101,8 @@ ul.pic_list li {
     <div class="mainbox">
         <div class="adbox">
             <ul class="pic_list">
-                <li style="display:block"><a href="#" title=""><img alt="1" src="../images/temp1.png" /></a></li>
-
-                <li><a href="#" title=""><img alt="2" src="../images/temp2.png" /></a></li>
+                <li style="display:block"><a href="#" title=""><img alt="1" src="<%=root %>/images/temp1.png" /></a></li>
+                <li><a href="#" title=""><img alt="2" src="<%=root %>/images/temp2.png" /></a></li>
                 <li><a href="#" title=""><img alt="2" src="../images/temp3.png" /></a></li>
 
             </ul>
@@ -118,12 +117,6 @@ ul.pic_list li {
 
  
     <div class="prolistmenu mainbox">
-        <ul>
-            <li><a href="#" class="current">笔记本</a></li>
-            <li><a href="#">台机</a></li>
-            <li><a href="#">苹果系列</a></li>
-            <li><a href="#">一体机</a></li>
-        </ul>
     </div>
 
     <div class="mainbox prolist-box clearfix">

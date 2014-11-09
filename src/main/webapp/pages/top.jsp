@@ -8,17 +8,21 @@
 			if(keyword){
 				searchWord = keyword;
 			}else{
-				searchWord = $.trim($('#searchWord').val());
+				searchWord = $.trim($('#word').val());
 			}
-			window.location=root+'/pages/productList.jsp';
+			$('#searchWord').val(searchWord);
+			$('#searchForm').submit();
 		}
 	</script>
 </head>
 <body>
+	<form action="doSearch.do" id="searchForm" method="post">
+		<input type="hidden" name="searchWord" id="searchWord"/>
+	</form>
     <div class="logotop mainbox">
         <div class="search">
             <div class="searchinput">
-                <input type="text" id="searchWord" size="200"/>
+                <input type="text" id="word" size="200"/>
                 <div class="searchbtn" onclick="search()">搜索</div>
             </div>
             <div class="checkout">去购物车结算 <span class="righticon"></span></div>

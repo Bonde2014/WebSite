@@ -26,7 +26,7 @@ function doLogin() {
 	}
 	
 	$("#login_msg").html("登录中，请稍后...");
-	$.ajax( {
+	$.ajax({
 		async : false,
 		cache : false,
 		type : 'POST',
