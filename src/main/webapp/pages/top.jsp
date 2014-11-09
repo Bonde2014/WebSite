@@ -8,21 +8,22 @@
 			if(keyword){
 				searchWord = keyword;
 			}else{
-				searchWord = $.trim($('#word').val());
+				searchWord = $.trim($('#searchWord').val());
 			}
-			$('#searchWord').val(searchWord);
+			$('#keyword').val(searchWord);
 			$('#searchForm').submit();
 		}
 	</script>
 </head>
 <body>
 	<form action="doSearch.do" id="searchForm" method="post">
-		<input type="hidden" name="searchWord" id="searchWord"/>
+		<input type="hidden" name="searchFindEntity.keyword" id="keyword"/>
+		<input type="hidden" name="searchFindEntity.page" value="1"/>
 	</form>
     <div class="logotop mainbox">
         <div class="search">
             <div class="searchinput">
-                <input type="text" id="word" size="200"/>
+                <input type="text" id="searchWord" size="200"/>
                 <div class="searchbtn" onclick="search()">搜索</div>
             </div>
             <div class="checkout">去购物车结算 <span class="righticon"></span></div>

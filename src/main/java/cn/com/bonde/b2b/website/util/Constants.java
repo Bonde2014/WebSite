@@ -18,4 +18,9 @@ public class Constants {
 	 * 数据库字段排序-升序
 	 */
 	public static final String ORDER_BY_ASC = "asc";
+	
+	/**
+	 * 每页记录数
+	 */
+	public static final int PAGE_SIZE = 30;
 }

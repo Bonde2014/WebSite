@@ -352,4 +352,6 @@ public interface IBaseDBDao
 	 */
 	public <T> List<T> getEntityListByHQL(final String hql, Map<String, Object>... paramMap) throws Exception;
 
+	
+	public Pager getListByHQL(String hql, Map<String, Object> parasMaps, BaseFindEntity findEntity, String... totalCountSql) throws Exception;
 }

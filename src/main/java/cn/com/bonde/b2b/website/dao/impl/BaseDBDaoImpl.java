@@ -143,7 +143,8 @@ public class BaseDBDaoImpl implements IBaseDBDao
 	 * @return
 	 * @throws Exception
 	 */
-	@SuppressWarnings("unchecked")
+	@Override
+    @SuppressWarnings("unchecked")
 	public <T> T getEntityByPrimaryId(Class<T> typeClass, Serializable primaryId) throws Exception
 	{
 		T returnClass = null;
@@ -170,7 +171,8 @@ public class BaseDBDaoImpl implements IBaseDBDao
 	 * 
 	 */
 
-	public void evictEntity(Object entity) throws Exception
+	@Override
+    public void evictEntity(Object entity) throws Exception
 	{
 		try
 		{
@@ -194,7 +196,8 @@ public class BaseDBDaoImpl implements IBaseDBDao
 	 * 
 	 */
 
-	public boolean addEntity(Object entity) throws Exception
+	@Override
+    public boolean addEntity(Object entity) throws Exception
 	{
 		boolean result = false;
 		try
@@ -223,7 +226,8 @@ public class BaseDBDaoImpl implements IBaseDBDao
 	 * @param entity
 	 * @return
 	 */
-	public boolean updateEntiy(Object entity) throws Exception
+	@Override
+    public boolean updateEntiy(Object entity) throws Exception
 	{
 		boolean result = false;
 		try
@@ -248,7 +252,8 @@ public class BaseDBDaoImpl implements IBaseDBDao
 	 * @param entity
 	 * @return
 	 */
-	public boolean updateMergeEntiy(Object entity) throws Exception
+	@Override
+    public boolean updateMergeEntiy(Object entity) throws Exception
 	{
 		boolean result = false;
 		try
@@ -281,7 +286,8 @@ public class BaseDBDaoImpl implements IBaseDBDao
 	 * @return
 	 * @throws Exception
 	 */
-	public <T> boolean updateAllBySql(Class<T> typeClass, String primaryKeyValues, String fieldName, Object fieldValue) throws Exception
+	@Override
+    public <T> boolean updateAllBySql(Class<T> typeClass, String primaryKeyValues, String fieldName, Object fieldValue) throws Exception
 	{
 		boolean result = false;
 		String keys = "";
@@ -320,7 +326,8 @@ public class BaseDBDaoImpl implements IBaseDBDao
 	 * @return
 	 * @throws Exception
 	 */
-	public boolean updateBySql(String sql, Map<String, Object> parasMaps) throws Exception
+	@Override
+    public boolean updateBySql(String sql, Map<String, Object> parasMaps) throws Exception
 	{
 		boolean result = false;
 		try
@@ -363,7 +370,8 @@ public class BaseDBDaoImpl implements IBaseDBDao
 	 * @return
 	 * @throws Exception
 	 */
-	public <T> boolean updateBySql(Class<T> typeClass, Map<String, Object> updateMaps, Map<String, Object> parasMaps) throws Exception
+	@Override
+    public <T> boolean updateBySql(Class<T> typeClass, Map<String, Object> updateMaps, Map<String, Object> parasMaps) throws Exception
 	{
 		boolean result = false;
 		try
@@ -418,7 +426,8 @@ public class BaseDBDaoImpl implements IBaseDBDao
 	 * @return
 	 * @throws Exception
 	 */
-	@SuppressWarnings("unused")
+	@Override
+    @SuppressWarnings("unused")
 	public boolean updateEntiyFieldBySql(Object entity) throws Exception
 	{
 		Boolean result = false;
@@ -532,7 +541,8 @@ public class BaseDBDaoImpl implements IBaseDBDao
 
 	}
 
-	public <T> boolean deleteByPrimaryId(Class<T> typeClass, Serializable id) throws Exception
+	@Override
+    public <T> boolean deleteByPrimaryId(Class<T> typeClass, Serializable id) throws Exception
 	{
 		boolean result = false;
 		try
@@ -561,7 +571,8 @@ public class BaseDBDaoImpl implements IBaseDBDao
 	 * @return
 	 * @throws Exception
 	 */
-	public <T> boolean deleteByPrimaryIds(Class<T> typeClass, String primaryKeyValues) throws Exception
+	@Override
+    public <T> boolean deleteByPrimaryIds(Class<T> typeClass, String primaryKeyValues) throws Exception
 	{
 		Boolean result = false;
 		try
@@ -603,7 +614,8 @@ public class BaseDBDaoImpl implements IBaseDBDao
 	 * @return
 	 * @throws Exception
 	 */
-	public <T> boolean deleteByField(Class<T> typeClass, String fieldName, Object fieldValue) throws Exception
+	@Override
+    public <T> boolean deleteByField(Class<T> typeClass, String fieldName, Object fieldValue) throws Exception
 	{
 		Boolean result = false;
 		try
@@ -642,7 +654,8 @@ public class BaseDBDaoImpl implements IBaseDBDao
 	 * @return
 	 * @throws MyException
 	 */
-	public <T> int deleteByFiled(Class<T> typeClass, String fieldName, Object fieldValue) throws Exception
+	@Override
+    public <T> int deleteByFiled(Class<T> typeClass, String fieldName, Object fieldValue) throws Exception
 	{
 		int flag = 0;
 		try
@@ -684,7 +697,8 @@ public class BaseDBDaoImpl implements IBaseDBDao
 	 * @return
 	 * @throws Exception
 	 */
-	public <T> boolean deleteAllByField(Class<T> typeClass, String fieldName, Object fieldValues) throws Exception
+	@Override
+    public <T> boolean deleteAllByField(Class<T> typeClass, String fieldName, Object fieldValues) throws Exception
 	{
 		Boolean result = false;
 		try
@@ -743,7 +757,8 @@ public class BaseDBDaoImpl implements IBaseDBDao
 	 * @return
 	 * @throws Exception
 	 */
-	public boolean deleteBySql(String sql, Map<String, Object> parasMaps) throws Exception
+	@Override
+    public boolean deleteBySql(String sql, Map<String, Object> parasMaps) throws Exception
 	{
 		boolean result = false;
 		try
@@ -791,7 +806,8 @@ public class BaseDBDaoImpl implements IBaseDBDao
 	 * @return
 	 * @throws Exception
 	 */
-	@SuppressWarnings("unchecked")
+	@Override
+    @SuppressWarnings("unchecked")
 	public <T> List<T> getEntitiesListByProperty(Class<T> typeClass, String propertyName, Object propertyValue, String... orderBy) throws Exception
 	{
 		try
@@ -850,7 +866,8 @@ public class BaseDBDaoImpl implements IBaseDBDao
 	 * @return
 	 * @throws Exception
 	 */
-	@SuppressWarnings("unchecked")
+	@Override
+    @SuppressWarnings("unchecked")
 	public <T> List<T> getEntitiesListByProperties(Class<T> typeClass, Map<String, Object> propertyMap, String... orderBy) throws Exception
 	{
 		try
@@ -929,7 +946,8 @@ public class BaseDBDaoImpl implements IBaseDBDao
 	 * @return
 	 * @throws Exception
 	 */
-	@SuppressWarnings("unchecked")
+	@Override
+    @SuppressWarnings("unchecked")
 	public <T> List<T> getEntityByPrimaryIds(Class<T> typeClass, String ids) throws Exception
 	{
 		try
@@ -958,7 +976,8 @@ public class BaseDBDaoImpl implements IBaseDBDao
 	 * @return
 	 * @throws MyException
 	 */
-	public Pager getListBySQLQuery(String sql, Map<String, Object> parasMaps, BaseFindEntity findEntity, String... totalCountSql) throws Exception
+	@Override
+    public Pager getListBySQLQuery(String sql, Map<String, Object> parasMaps, BaseFindEntity findEntity, String... totalCountSql) throws Exception
 	{
 		Pager pager=new Pager();
 		try
@@ -980,7 +999,6 @@ public class BaseDBDaoImpl implements IBaseDBDao
 			query.setMaxResults(findEntity.getRows());
 			query.setFirstResult((findEntity.getPage()-1)*findEntity.getRows());
 			
-			System.out.println(query.getFirstResult()+","+query.getMaxResults());;
 			List resultList = query.list();
 			Integer totalCount = getTotalCountBySQLQuery(sql, parasMaps, totalCountSql);
 			pager.setPageSize(findEntity.getRows());
@@ -1005,7 +1023,8 @@ public class BaseDBDaoImpl implements IBaseDBDao
 	 * @return 数据库中满足查询条件的数据的条数
 	 * @throws Exception
 	 */
-	public Integer getTotalCountBySQLQuery(String sql, Map<String, Object> map, String... totalCountSql) throws Exception
+	@Override
+    public Integer getTotalCountBySQLQuery(String sql, Map<String, Object> map, String... totalCountSql) throws Exception
 	{
 		try
 		{
@@ -1051,7 +1070,8 @@ public class BaseDBDaoImpl implements IBaseDBDao
 	 * @return List<Map<String, Object>>
 	 * @throws Exception
 	 */
-	@SuppressWarnings("unchecked")
+	@Override
+    @SuppressWarnings("unchecked")
 	public List<Map<String, Object>> getMapListBySql(String sql, Map<String, Object> parasMaps) throws Exception
 	{
 		try
@@ -1088,7 +1108,8 @@ public class BaseDBDaoImpl implements IBaseDBDao
 	 * @return
 	 * @throws Exception
 	 */
-	public Object getObjectValue(String sql) throws Exception
+	@Override
+    public Object getObjectValue(String sql) throws Exception
 	{
 		try
 		{
@@ -1112,7 +1133,8 @@ public class BaseDBDaoImpl implements IBaseDBDao
 	 * @return
 	 * @throws Exception
 	 */
-	public Object getObjectValue(String sql, Map<String, Object> parasMaps) throws Exception
+	@Override
+    public Object getObjectValue(String sql, Map<String, Object> parasMaps) throws Exception
 	{
 		try
 		{
@@ -1146,7 +1168,8 @@ public class BaseDBDaoImpl implements IBaseDBDao
 	 * @return 存在返TRUE
 	 * @throws Exception
 	 */
-	public <T> boolean isExist(Class<T> typeClass, String fieldName, Object fieldValue) throws Exception
+	@Override
+    public <T> boolean isExist(Class<T> typeClass, String fieldName, Object fieldValue) throws Exception
 	{
 		boolean isExist = false;
 		String valueClassName = fieldValue.getClass().getName();
@@ -1191,7 +1214,8 @@ public class BaseDBDaoImpl implements IBaseDBDao
 	 * @return 大于零 true
 	 * @throws Exception
 	 */
-	public <T> boolean isExist(Class<T> typeClass, Map<String, Object> fieldMap) throws Exception
+	@Override
+    public <T> boolean isExist(Class<T> typeClass, Map<String, Object> fieldMap) throws Exception
 	{
 		boolean isExist = false;
 
@@ -1269,7 +1293,8 @@ public class BaseDBDaoImpl implements IBaseDBDao
 	 * @return
 	 * @throws MyException
 	 */
-	@SuppressWarnings("unchecked")
+	@Override
+    @SuppressWarnings("unchecked")
 	public <T> List<T> getEntityListByHQL(final String hql, Map<String, Object>... paramMap) throws Exception
 	{
 		try
@@ -1291,5 +1316,54 @@ public class BaseDBDaoImpl implements IBaseDBDao
 			throw e;
 		}
 	}
+	
+	/**
+     * @创建人：司徒
+     * @创建时间：2011-6-23
+     * @功能说明：根据查询条件获得分页记录
+     * @param sql
+     * @param parasMaps
+     * @param Pager
+     * @param totalCountSql
+     * @return
+     * @throws MyException
+     */
+    @Override
+    public Pager getListByHQL(String hql, Map<String, Object> parasMaps, BaseFindEntity findEntity, String... totalCountSql) throws Exception
+    {
+        Pager pager=new Pager();
+        try
+        {
+            final Query query = this.getSession().createQuery(hql);
+            query.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
+            if (parasMaps != null)
+            {
+                Iterator<String> keySet = parasMaps.keySet().iterator();
+                while (keySet.hasNext())
+                {
+                    String key = keySet.next();
+                    if (hql.contains(":" + key))
+                    {
+                        query.setParameter(key, parasMaps.get(key));
+                    }
+                }
+            }
+            query.setMaxResults(findEntity.getRows());
+            query.setFirstResult((findEntity.getPage()-1)*findEntity.getRows());
+            
+            List resultList = query.list();
+            Integer totalCount = getTotalCountBySQLQuery(hql, parasMaps, totalCountSql);
+            pager.setPageSize(findEntity.getRows());
+            pager.setPageNo(findEntity.getPage());
+            pager.setRows(resultList);
+            pager.setTotal(totalCount);
+        }
+        catch (Exception e)
+        {
+            new MyException(e, BaseDBDaoImpl.class, "查询逻辑失败 ,方法： getListBySQLQuery");
+            throw e;
+        }
+        return pager;
+    }
 
 }
