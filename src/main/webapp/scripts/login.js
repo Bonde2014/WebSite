@@ -42,7 +42,7 @@ function doLogin() {
 		success : function(data) { // 请求成功后处理函数。
 			if (data == "true") {
 				$("#login_msg").html("登录成功");
-				window.location = root+"/pages/index.html";
+				window.location = root+"/pages/index.jsp";
 			} else {//后台异常处理
 				$("#login_msg").html(data);
 			}
