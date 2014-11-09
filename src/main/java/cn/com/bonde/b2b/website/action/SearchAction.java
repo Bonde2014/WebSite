@@ -35,6 +35,9 @@ public class SearchAction extends ProjectBaseAction {
     
     @Action(value="doSearch")
     public String doSearch(){
+        if(searchFindEntity.getPage()==0){
+            searchFindEntity.setPage(1);
+        }
         try {
             pager = searchService.searchByKeyword(searchFindEntity);
         } catch (Exception e) {

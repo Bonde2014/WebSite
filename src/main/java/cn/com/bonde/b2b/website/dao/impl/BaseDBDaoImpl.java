@@ -1335,7 +1335,6 @@ public class BaseDBDaoImpl implements IBaseDBDao
         try
         {
             final Query query = this.getSession().createQuery(hql);
-            query.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
             if (parasMaps != null)
             {
                 Iterator<String> keySet = parasMaps.keySet().iterator();
