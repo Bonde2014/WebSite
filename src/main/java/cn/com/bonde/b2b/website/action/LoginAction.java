@@ -19,7 +19,7 @@ import cn.com.bonde.b2b.website.util.WriteJsonToPage;
 @Scope("prototype")
 @ParentPackage(value = "base")
 @Namespace(value = "/")
-@Results({ @Result(name = "success", location = "/pages/index.jsp") })
+@Results({ @Result(name = "success", location = "/pages/login.jsp") })
 public class LoginAction extends ProjectBaseAction
 {
 
