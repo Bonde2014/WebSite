@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="<%=root%>/scripts/catalogtree.js"></script>
 <title>克莱姆购物平台</title>
 <style>
 ul.pic_list {
@@ -47,6 +48,8 @@ ul.pic_list li {
 	$(function() {
 		$(".adbox").turnPic();
 	})
+	//刷新商品分类导航区域
+	requestCatalogTree("10"); //首页的大类代码默认是"10"--全部
 </script>
 </head>
 <body>
@@ -54,7 +57,7 @@ ul.pic_list li {
 		<div class="mainbox">
 			<div class="bigmenu">
 				<h1>全部商品分类</h1>
-				<ul>
+				<ul id="catalogtree">
 					<li>
 						<h2>手机通讯</h2> <span><a href="#ddd">手机</a></span> <span><a
 							href="#ddd">手机配件</a></span>
