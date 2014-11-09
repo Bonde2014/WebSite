@@ -1,7 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page import="cn.com.bonde.b2b.website.entity.QxDlxx" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <%
@@ -33,7 +32,7 @@
             <span class="top_bar_wrap"><a href="javascript:void(0)" >用户中心</a></span>
             <span class="top_bar_wrap"><a href="<%=root%>/pages/index.jsp">首页</a></span>
             <s:if test="#session.session_login!=null">
-            	<span class="top_bar_wrap" style="border-left:0"><%=((QxDlxx)session.getAttribute("session_login")).getDlm() %> 您好，欢迎来到克莱姆！</span>
+            	<span class="top_bar_wrap" style="border-left:0"><s:property value="#session.session_login.dlm"/> 您好，欢迎来到克莱姆！</span>
             </s:if>
             <s:else>
             	<span class="top_bar_wrap" style="border-left:0">您好，欢迎来到克莱姆！

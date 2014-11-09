@@ -72,8 +72,8 @@
                 </ul>
             </div>
             <ul class="topmenu">
-                <li>首页</li>
-                <li>产品展示</li>
+            	<li>今日报价</li>
+                <li onclick="pageLink('/pages/index.jsp')">首页</li>
                 <li>特价专区</li>
                 <li>自助装机</li>
             </ul>
