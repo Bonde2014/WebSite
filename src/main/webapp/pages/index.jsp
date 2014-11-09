@@ -10,7 +10,6 @@
     ul.pic_list li{float:left;width:100%;height:300px;position:absolute;top:0px;left:0px}
     .title_nav{float:left;width:100%;height:52px;position:absolute;bottom:-10px;left:0px}
     .title_nav a{float:left;display:inline-block;width:79px;margin-right:1px;background:#444;padding:5px 15px;text-align:center;color:#fff;text-decoration:none;}
-    .title_nav a.select{background:#09C url(<%=root%>/images/sanj.gif) no-repeat center 47px}
     </style>
 </head>
 <body>
