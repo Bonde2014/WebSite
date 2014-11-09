@@ -6,8 +6,7 @@
 	String root = request.getContextPath();
 %>
 <script type="text/javascript">
- var root = "<%=root%>
-	"; //js中存放当前页面的root路径方便调用
+ var root = "<%=root%>"; //js中存放当前页面的root路径方便调用
 </script>
 <script type="text/javascript"
 	src="<%=root%>/scripts/jquery-1.9.0.min.js"></script>
