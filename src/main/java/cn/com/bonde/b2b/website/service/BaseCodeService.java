@@ -1,8 +1,6 @@
 package cn.com.bonde.b2b.website.service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -13,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import cn.com.bonde.b2b.website.dao.IBaseCodeDao;
 import cn.com.bonde.b2b.website.entity.DmSpfl;
+import cn.com.bonde.b2b.website.entity.DmSpfl2;
 
 @Service
 public class BaseCodeService implements ApplicationListener<ContextRefreshedEvent> {
@@ -22,23 +21,37 @@ public class BaseCodeService implements ApplicationListener<ContextRefreshedEven
     @Resource
     private IBaseCodeDao              baseCodeDao;
 
-    private static Map<String, List<? extends Object>> baseCodeMap;
+    private static List<DmSpfl> spflList;
+    
+    private static List<DmSpfl2> spfl2List;
+    
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         if (event.getApplicationContext().getParent() == null) {// root application context 没有parent，他就是老大.
-            baseCodeMap = new HashMap<String, List<? extends Object>>();
             try {
-                baseCodeMap.put("DM_SPFL", baseCodeDao.getEntitiesListByProperties(DmSpfl.class, null));
-                baseCodeMap.put("DM_SPFL2", baseCodeDao.getEntitiesListByProperties(DmSpfl.class, null));
+                spflList = baseCodeDao.getEntitiesListByProperties(DmSpfl.class, null);
+                spfl2List = baseCodeDao.getEntitiesListByProperties(DmSpfl2.class, null);
             } catch (Exception e) {
                 log.error("init BaseCodeService error!",e);
             }
         }
     }
     
-    public static List getBaseCodeList(String baseCodeName){
-        return baseCodeMap.get(baseCodeName);
+    /**
+     * 商品分类
+     * @return
+     */
+    public static List<DmSpfl> getSpflList(){
+        return spflList;
+    }
+    
+    /**
+     * 品牌分类
+     * @return
+     */
+    public static List<DmSpfl2> getPpflList(){
+        return spfl2List;
     }
     
     /**
