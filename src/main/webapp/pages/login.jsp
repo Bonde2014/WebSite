@@ -1,40 +1,37 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@include file="/pages/base.jsp"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-  <head>
-    <base href="<%=basePath%>">
-    
-    <title>My JSP 'login.jsp' starting page</title>
-    
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-  </head>
-  
-  <body>
-   <form action="login.do" method="post">
-    <table>
-        <caption>用户登录</caption>
-        <tr>
-            <td>用户名：</td>
-            <td><input type="text" name="username"/></td>
-        </tr>
-        <tr>
-            <td>密码：</td>
-            <td><input type="text" name="password"/></td>
-        </tr>
-        <tr>
-            <td><input value="提交" type="submit"/></td>
-            <td><input value="重置" type="reset"/></td>
-        </tr>
-    </table>
-    </form>
-  </body>
+<head>
+<meta http-equiv="pragma" content="no-cache">
+<script type="text/javascript" src="<%=root%>/scripts/login.js"></script>
+<title>购物平台登录界面</title>
+</head>
+<body>
+	<div id="login" style="padding: 5px; width: 400px; height: 220px;">
+		<table onkeydown="if(event.keyCode==13){doLogin();}" id="loginTable">
+			<tr>
+				<td align="right"><b style="font: 12px">用户名：</b></td>
+				<td><input type="text" class="easyui-validatebox" id="dlm"
+					style="width:200px;" maxlength="20" required="true"></input></td>
+			</tr>
+			<tr>
+				<td align="right"><b style="font: 12px">密码：</b></td>
+				<td><input type="password" class="easyui-validatebox" id="dlkl"
+					style="width:200px;" maxlength="20" required="true"></input></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td id="login_msg" style="color: red;font: 12px">&nbsp;</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center"><a href="#"
+					class="easyui-linkbutton" icon="icon-ok" onclick="doLogin();">确定</a>
+					<a href="#" class="easyui-linkbutton" icon="icon-redo"
+					onclick="doReset();">重置</a></td>
+			</tr>
+		</table>
+	</div>
+
+</body>
 </html>
