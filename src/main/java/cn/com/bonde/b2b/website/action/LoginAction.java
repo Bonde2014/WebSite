@@ -92,4 +92,10 @@ public class LoginAction extends ProjectBaseAction
 			throw new MyException(e, this.getClass(), "");
 		}
 	}
+	
+	@Action(value="doLogout")
+    public String doLogout() throws Exception{
+        getSession().invalidate();
+        return SUCCESS;
+    }
 }
