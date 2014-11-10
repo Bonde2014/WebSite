@@ -45,11 +45,15 @@ ul.pic_list li {
 }
 </style>
 <script type="text/javascript">
+
 	$(function() {
+	    //轮换广告图片
 		$(".adbox").turnPic();
+		//刷新商品分类导航区域
+		requestCatalogTree("10"); //首页的大类代码默认是"10"--全部
 	})
-	//刷新商品分类导航区域
-	requestCatalogTree("10"); //首页的大类代码默认是"10"--全部
+	
+	
 </script>
 </head>
 <body>
@@ -91,7 +95,6 @@ ul.pic_list li {
 						<h2>安防监控</h2> <span><a href="#ddd">监控摄像头</a></span> <span><a
 							href="#ddd">监控录像机</a></span>
 					</li>
-
 				</ul>
 			</div>
 			<ul class="topmenu">
