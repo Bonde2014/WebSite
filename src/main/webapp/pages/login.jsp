@@ -21,32 +21,87 @@
 <script type="text/javascript" src="<%=root%>/scripts/jquery-easyui-1.3.6/validate/easyui_validate.js"></script>
 <script type="text/javascript" src="<%=root%>/scripts/login.js"></script>
 <title>购物平台登录界面</title>
+<script type="text/javascript">
+$(function () {
+    $(".click1").click(function () {
+        $("#topswitch").removeClass("btn2").addClass("btn1");
+        $('#dllx').val(1);
+        $("#form1").show();
+        $("#form2").hide();
+    })
+    $(".click2").click(function () {
+        $("#topswitch").removeClass("btn1").addClass("btn2");
+        $('#dllx').val(2);
+        $("#form2").show();
+        $("#form1").hide();
+    })
+})
+</script>
 </head>
-<body>
-	<div id="login" style="padding: 5px; width: 400px; height: 220px;">
-		<table onkeydown="if(event.keyCode==13){doLogin();}" id="loginTable">
-			<tr>
-				<td align="right"><b style="font: 12px">用户名：</b></td>
-				<td><input type="text" class="easyui-validatebox" id="dlm"
-					style="width:200px;" maxlength="20" required="true"></input></td>
-			</tr>
-			<tr>
-				<td align="right"><b style="font: 12px">密码：</b></td>
-				<td><input type="password" class="easyui-validatebox" id="dlkl"
-					style="width:200px;" maxlength="20" required="true"></input></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td id="login_msg" style="color: red;font: 12px">&nbsp;</td>
-			</tr>
-			<tr>
-				<td colspan="2" align="center"><a href="#"
-					class="easyui-linkbutton" icon="icon-ok" onclick="doLogin();">确定</a>
-					<a href="#" class="easyui-linkbutton" icon="icon-redo"
-					onclick="doReset();">重置</a></td>
-			</tr>
-		</table>
-	</div>
+<body class="graybg">
+	<input id="dllx" type="hidden" value="1">
+    <div class="mainbox">
+        <div class="loginlogo">
+        </div>
+    </div>
+    <div class="logincnt">
+        <div class="topswitch btn1" id="topswitch">
+            <div class="click1"></div>
+            <div class="click2"></div>
+        </div>
+        <div class="loginbox">
+            <div class="loginform">
+                <div class="forms" id="form1">
+                    <h4>用户名</h4>
+                    <div class="inputs">
+                        <input type="text" name="name_1" id="name_1" class="easyui-validatebox" required="true" maxlength="30"/>
+                        <div class="username"></div>
+                    </div>
 
+                    <h4>密码</h4>
+                    <div class="inputs">
+                         <input type="password" name="password_1" id="password_1" class="easyui-validatebox" required="true" maxlength="30"/>
+                        <div class="password"></div>
+                    </div>
+
+                    <div class="otherinput">
+                        <input type="checkbox" value=" " /> 自动登录　　
+                        <input type="checkbox" value=" " />安全控件登录  　　  忘记密码？
+                    </div>
+
+                    <a href="javascript:void(0)" onclick="doLogin()" class="loginbtn"></a>
+
+                    
+                </div>
+                <div class="forms" id="form2" style="display:none">
+                    <h4>用户名</h4>
+                    <div class="inputs">
+                        <input type="text" name="name_2" id="name_2" class="easyui-validatebox" required="true" maxlength="30"/>
+                        <div class="username"></div>
+                    </div>
+
+                    <h4>密码</h4>
+                    <div class="inputs">
+                        <input type="password" name="password_2" id="password_2" class="easyui-validatebox" required="true" maxlength="30"/>
+                        <div class="password"></div> 
+                    </div>
+
+                    <div class="otherinput">
+                        <input type="checkbox"  value=" " /> 自动登录　　
+                        <input type="checkbox"  value=" " />安全控件登录  　　  忘记密码？
+                    </div>
+
+                    <a href="javascript:void(0)" onclick="doLogin()" class="loginbtn"></a>
+
+                </div>
+                <div id="login_msg" style="color: red;font:15px"></div>
+            </div>
+            <div class="loginbanner">
+				<img src="<%=root %>/images/temp5.png" alt="" />
+            </div>
+
+        </div>
+    </div>
+<s:include value="foot.html"></s:include>
 </body>
 </html>

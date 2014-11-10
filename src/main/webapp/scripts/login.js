@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	setDialog();
+	//setDialog();
 	//进入页面，焦点在用户名文本框上
 	$("#dlm").focusout();
 });
@@ -9,22 +9,15 @@ $(document).ready(function(){
  * @return
  */
 function doLogin() {
+	var dllx = $('#dllx').val();
 	var validateResult = true;
 	//easyui 表单验证
-	$('#loginTable input').each(function () {
-		if ($(this).attr('required') || $(this).attr('validType')) {
-			if (!$(this).validatebox('isValid')) {
-				//如果验证不通过，则返回false
-				validateResult = false;
-				return;
-		    }
-		}
-    });
-	if(validateResult==false){
-		//如果验证不通过，则不执行登录操作
+	if (!$('#name_'+dllx).validatebox('isValid')
+			||!$('#password_'+dllx).validatebox('isValid')) {
+		//如果验证不通过，则返回false
+		validateResult = false;
 		return;
-	}
-	
+    }
 	$("#login_msg").html("登录中，请稍后...");
 	$.ajax({
 		async : false,
@@ -33,15 +26,15 @@ function doLogin() {
 		//dataType : "json",
 		url : root+"/doLogin.do?"+Math.random(),// 请求的action路径
 		data : {
-			"qxDlxx.dlm" : $("#dlm").val(),
-			"qxDlxx.dlkl" : $("#dlkl").val()
+			"qxDlxx.dllx":dllx,
+			"qxDlxx.dlm" : $.trim($('#name_'+dllx).val()),
+			"qxDlxx.dlkl" : $.trim($('#password_'+dllx).val())
 		},
 		error : function() {// 请求失败处理函数
 			$.messager.alert("提示信息","登录失败","info")
 		},
 		success : function(data) { // 请求成功后处理函数。
 			if (data == "true") {
-				$("#login_msg").html("登录成功");
 				window.location = root+"/pages/index.jsp";
 			} else {//后台异常处理
 				$("#login_msg").html(data);

@@ -61,6 +61,7 @@ public class LoginSevriceImpl implements ILoginService
 		Map<String, Object> propertyMap = new HashMap<String, Object>();
 		propertyMap.put("dlm", qxDlxx.getDlm());
 		propertyMap.put("dlkl", MD5.getMd5(qxDlxx.getDlkl()));
+		propertyMap.put("dllx", qxDlxx.getDllx());
 		List<QxDlxx> list = loginDao.getEntitiesListByProperties(QxDlxx.class, propertyMap);
 		if(list==null||list.size()!=1){
 			return "账号或密码错误";

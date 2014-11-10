@@ -16,7 +16,6 @@ function requestCatalogTree(dldm){
 			alert("call error...");
 		},
 		success : function(data) {
-		   alert(data);
 		   var result = JSON.parse(data);
 		   var catlogstr="";
 		   var isOdd=true;
