@@ -94,7 +94,10 @@ $(function () {
                     <a href="javascript:void(0)" onclick="doLogin()" class="loginbtn"></a>
 
                 </div>
-                <div id="login_msg" style="color: red;font:15px"></div>
+                <br>
+                <div>
+                	<span id="login_msg" style="color:red;font-size:15px;font-weight:bold"></span>
+                </div>
             </div>
             <div class="loginbanner">
 				<img src="<%=root %>/images/temp5.png" alt="" />
