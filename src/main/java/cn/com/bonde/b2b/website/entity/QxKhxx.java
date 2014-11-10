@@ -1,10 +1,12 @@
 package cn.com.bonde.b2b.website.entity;
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 import java.sql.Timestamp;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -19,7 +21,7 @@ public class QxKhxx implements java.io.Serializable
 	// Fields
 	private static final long serialVersionUID = 1461965188817873018L;
 	private Long khDm;
-	private Long dlm;
+	private String dlm;
 	private String khlb;
 	private String khMc;
 	private String qdsJb;
@@ -38,7 +40,7 @@ public class QxKhxx implements java.io.Serializable
 	}
 
 	/** full constructor */
-	public QxKhxx(Long dlm, String khlb, String khMc, String qdsJb, String fzrXm, String lxdh, String lxdz, Long xsryDm, Long lrrDm, Timestamp lrsj)
+	public QxKhxx(String dlm, String khlb, String khMc, String qdsJb, String fzrXm, String lxdh, String lxdz, Long xsryDm, Long lrrDm, Timestamp lrsj)
 	{
 		this.dlm = dlm;
 		this.khlb = khlb;
@@ -67,12 +69,12 @@ public class QxKhxx implements java.io.Serializable
 	}
 
 	@Column(name = "dlm")
-	public Long getDlm()
+	public String getDlm()
 	{
 		return this.dlm;
 	}
 
-	public void setDlm(Long dlm)
+	public void setDlm(String dlm)
 	{
 		this.dlm = dlm;
 	}

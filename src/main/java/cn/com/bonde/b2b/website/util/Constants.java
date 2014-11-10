@@ -6,6 +6,12 @@ public class Constants {
 	 * 登录帐号信息
 	 */
 	public static final String SESSION_LOGIN = "session_login";
+	
+	/**
+     * 登录客户信息
+     */
+    public static final String SESSION_KHXX = "session_khxx";
+    
 	/**
 	 * 编码格式UTF-8
 	 */

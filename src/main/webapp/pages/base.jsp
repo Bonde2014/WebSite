@@ -32,7 +32,7 @@
             <span class="top_bar_wrap"><a href="javascript:void(0)" >用户中心</a></span>
             <span class="top_bar_wrap"><a href="<%=root%>/pages/index.jsp">首页</a></span>
             <s:if test="#session.session_login!=null">
-            	<span class="top_bar_wrap" style="border-left:0"><s:property value="#session.session_login.dlm"/> 您好，欢迎来到克莱姆！</span>
+            	<span class="top_bar_wrap" style="border-left:0"><s:property value="#session.session_khxx.khMc"/> 您好，欢迎来到克莱姆！</span>
             </s:if>
             <s:else>
             	<span class="top_bar_wrap" style="border-left:0">您好，欢迎来到克莱姆！

@@ -11,9 +11,11 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import cn.com.bonde.b2b.website.dao.ILoginDao;
 import cn.com.bonde.b2b.website.entity.QxDlxx;
+import cn.com.bonde.b2b.website.entity.QxKhxx;
 import cn.com.bonde.b2b.website.service.ILoginService;
 import cn.com.bonde.b2b.website.util.Constants;
 import cn.com.bonde.b2b.website.util.MD5;
@@ -63,11 +65,17 @@ public class LoginSevriceImpl implements ILoginService
 		propertyMap.put("dlkl", MD5.getMd5(qxDlxx.getDlkl()));
 		propertyMap.put("dllx", qxDlxx.getDllx());
 		List<QxDlxx> list = loginDao.getEntitiesListByProperties(QxDlxx.class, propertyMap);
-		if(list==null||list.size()!=1){
+		if(CollectionUtils.isEmpty(list)){
 			return "账号或密码错误";
 		}else{
-			//否则保存帐号信息到session中
-			session.setAttribute(Constants.SESSION_LOGIN, list.get(0));
+		    session.setAttribute(Constants.SESSION_LOGIN, list.get(0));
+			//保存帐号信息到session中
+		    Map<String, Object> khxxQueryMap = new HashMap<String, Object>();
+		    khxxQueryMap.put("dlm", qxDlxx.getDlm());
+		    List<QxKhxx> qxKhxxs = loginDao.getEntitiesListByProperties(QxKhxx.class, khxxQueryMap);
+		    if(!CollectionUtils.isEmpty(qxKhxxs)){
+		        session.setAttribute(Constants.SESSION_KHXX, qxKhxxs.get(0));
+		    }
 			return "true";
 		}
 		

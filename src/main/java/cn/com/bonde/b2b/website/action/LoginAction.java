@@ -98,4 +98,5 @@ public class LoginAction extends ProjectBaseAction
         getSession().invalidate();
         return SUCCESS;
     }
+	
 }
