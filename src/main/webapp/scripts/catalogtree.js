@@ -34,6 +34,7 @@ function requestCatalogTree(dldm){
 		      }
 		      catlogstr=catlogstr+listr+"</li>"
 		   }
+		   //alert(catlogstr);
 		   $('#catalogtree').html(catlogstr);  //如果没有“catlogTree”这一层，是不是就是result[0]取值
 		}
 	});
