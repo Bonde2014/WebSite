@@ -1,14 +1,14 @@
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-	
+	 
 	<filter>
 		<filter-name>sessionTimeoutFilter</filter-name>
 		<filter-class>cn.com.bonde.b2b.website.filter.SessionTimeoutFilter</filter-class>
 	</filter>
 	<filter-mapping>
 		<filter-name>sessionTimeoutFilter</filter-name>
-		<url-pattern>/*</url-pattern>
+		<url-pattern>*.do</url-pattern>
 	</filter-mapping>
 	<session-config>
 		<session-timeout>60</session-timeout>
@@ -47,6 +47,6 @@
     </filter-mapping>
 	
 	<welcome-file-list>
-		<welcome-file>/pages/login.jsp</welcome-file>
+		<welcome-file>/pages/index.jsp</welcome-file>
 	</welcome-file-list>
 </web-app>
