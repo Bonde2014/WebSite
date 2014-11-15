@@ -57,7 +57,13 @@ ul.pic_list li {
 <body>
 	<div class="topnav mainbox">
 		<div class="breadcrumb">
-			<strong><a href="<%=root%>/pages/index.jsp">首页</a>&nbsp;&gt;&nbsp;
+			<strong>
+				<a href="<%=root%>/init.do">首页</a>
+				<s:iterator value="spflList">
+					&nbsp;&gt;&nbsp;<a href="javascript:void(0)" onclick="catalogSearch(<s:property value='spflDm'/>)" >
+						<s:property value="spflMc"/>
+					</a>
+				</s:iterator>
 			</strong>
 		</div>
 	</div>
@@ -65,22 +71,23 @@ ul.pic_list li {
 	<div class="mainbox">
 		<div id="product-intro" class="product-intro">
 			<div id="name" class="name">
-				<h1>TCL KFRd-23GW/BF33-I 小1匹 壁挂式电辅型定频家用冷暖空调 白色</h1>
-				<strong><div id="sku_adwords">【狂秒1399】元！11.11提前抢，不必等待！加一元购买套装还可得精美空调罩！600亿大品牌，更值信赖！</div></strong>
+				<h1><s:property value="productMap.spmc"/></h1>
+				<div id="sku_adwords"><s:property value="productMap.tzms"/></div>
 			</div>
 			<!--name end-->
 
 			<div class="clearfix">
 				<ul class="summary">
-					<li><strong>市场价：</strong><span>929693</span></li>
-					<li class="red"><strong>平台价：</strong><span>929693</span></li>
+				    <li><strong>品牌：</strong><span><s:property value="productMap.sppp_mc"/></span></li>
+					<li><strong>市场价：</strong><span><s:property value="productMap.scjg"/></span></li>
+					<li class="red"><strong>平台价：</strong><span><s:property value="productMap['jg'+#session.session_khxx.qdsJb]" /></span></li>
 				</ul>
 				<ul class="edit">
 					<li>选择颜色：</li>
 					<li>选择版本：</li>
 					<li>选择数量：<span class="minus"></span> <input
 						type="type" name="name" value=" " /> <span class="plus"></span>
-						库存：100件</li>
+						库存：<s:property value="productMap.kssl"/></li>
 				</ul>
 			</div>
 			<div class="addin"></div>

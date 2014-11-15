@@ -11,5 +11,7 @@ public interface ISearchService {
     public Pager searchByKeyword(SearchFindEntity searchFindEntity) throws Exception;
     
     public List<Map<String, Object>> queryTodayPrice(Long topCatalog) throws Exception;
+    
+    public Map<String, Object> queryProduct(Long productId) throws Exception;
 
 }

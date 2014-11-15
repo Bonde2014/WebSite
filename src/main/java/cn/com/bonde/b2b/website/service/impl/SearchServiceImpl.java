@@ -44,5 +44,10 @@ public class SearchServiceImpl implements ISearchService {
         this.searchDao = searchDao;
     }
 
+    @Override
+    public Map<String, Object> queryProduct(Long productId) throws Exception {
+        return searchDao.queryProduct(productId);
+    }
+
 
 }

@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.CollectionUtils;
 
 import cn.com.bonde.b2b.website.dao.ISearchDao;
 import cn.com.bonde.b2b.website.entity.findEntity.SearchFindEntity;
@@ -14,9 +15,11 @@ import cn.com.bonde.b2b.website.util.Pager;
 @Repository("searchDao")
 public class SearchDaoImpl extends BaseDBDaoImpl implements ISearchDao {
     
-     static String SEARCH_SQL ="SELECT a.sp_dm,a.spmc,a.scjg,b.spxq_file,c.jg0,c.jg1,c.jg2 FROM sp_spxx a left join sp_spxq b on a.sp_dm=b.sp_dm, xs_fjbj c where  a.sp_dm=c.sp_dm";
-   
-     static String SEARCH_COUNT_SQL = "SELECT count(1) FROM sp_spxx a left join sp_spxq b on a.sp_dm=b.sp_dm, xs_fjbj c where  a.sp_dm=c.sp_dm";
+     static String SEARCH_SQL ="SELECT a.sp_dm,a.spmc,a.scjg,b.spxq_file,c.jg0,c.jg1,c.jg2 FROM sp_spxx a left join sp_spxq b on a.sp_dm=b.sp_dm left join xs_fjbj c on a.sp_dm=c.sp_dm where 1=1";
+     
+     static String SEARCH_PRODUCT_SQL ="SELECT a.sp_dm,a.spfl_dm,(select t.spfl_mc from dm_spfl t where t.spfl_dm=a.spfl_dm) spfl_mc,(select t.sppp_mc from dm_spfl2 t where t.sppp_dm=a.sppp_dm) sppp_mc, a.sppp_dm,a.scjg,a.tzms,a.spmc,b.spxq_file,b.spxq,c.jg1,c.jg2,c.jg3,c.kssl FROM sp_spxx a left join sp_spxq b on a.sp_dm = b.sp_dm left join xs_fjbj c on a.sp_dm=c.sp_dm where a.sp_dm=:productId";
+     
+     static String SEARCH_COUNT_SQL = "SELECT count(1) FROM sp_spxx a left join sp_spxq b on a.sp_dm=b.sp_dm left join xs_fjbj c on a.sp_dm=c.sp_dm where 1=1";
     
      static String TODAYPRICE_SQL = "SELECT a.sp_dm spDm,a.jg1,a.jg2,a.jg3,a.kssl,a.bjsj,b.spmc,b.scjg,(select t.spfl_mc from dm_spfl t where t.spfl_dm=b.spfl_dm) spflMc,(select t.sppp_mc from dm_spfl2 t where t.sppp_dm = b.sppp_dm) spppMc FROM xs_fjbj a,sp_spxx b where a.sp_dm=b.sp_dm and a.bjbz='1' and a.sjbz='1' and b.spfl_dm like :topCatalog";
 
@@ -56,6 +59,17 @@ public class SearchDaoImpl extends BaseDBDaoImpl implements ISearchDao {
         Map<String, Object> parasMaps = new HashMap<String, Object>();
         parasMaps.put("topCatalog", topCatalog+"%");
         return this.getMapListBySql(TODAYPRICE_SQL, parasMaps);
+    }
+
+    @Override
+    public Map<String, Object> queryProduct(Long productId) throws Exception {
+        Map<String, Object> parasMaps = new HashMap<String, Object>();
+        parasMaps.put("productId", productId);
+        List<Map<String, Object>>  resultList = this.getMapListBySql(SEARCH_PRODUCT_SQL, parasMaps);
+        if(!CollectionUtils.isEmpty(resultList)){
+            return resultList.get(0);
+        }
+        return null;
     }
 
 }

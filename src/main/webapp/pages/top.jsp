@@ -6,7 +6,7 @@
 <head>
 </head>
 <body>
-	<form action="<%=request.getContextPath()%>/doSearch.do" id="searchForm" method="post">
+	<form action="" id="searchForm" method="post">
     <div class="logotop mainbox">
         <div class="search">
             <div class="searchinput">

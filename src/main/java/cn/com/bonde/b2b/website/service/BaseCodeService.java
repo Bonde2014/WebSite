@@ -1,5 +1,6 @@
 package cn.com.bonde.b2b.website.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -15,16 +16,15 @@ import cn.com.bonde.b2b.website.entity.DmSpfl2;
 
 @Service
 public class BaseCodeService implements ApplicationListener<ContextRefreshedEvent> {
-    
-    private static final Logger log = Logger.getLogger(BaseCodeService.class);
+
+    private static final Logger  log = Logger.getLogger(BaseCodeService.class);
 
     @Resource
-    private IBaseCodeDao              baseCodeDao;
+    private IBaseCodeDao         baseCodeDao;
 
-    private static List<DmSpfl> spflList;
-    
+    private static List<DmSpfl>  spflList;
+
     private static List<DmSpfl2> spfl2List;
-    
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
@@ -33,27 +33,48 @@ public class BaseCodeService implements ApplicationListener<ContextRefreshedEven
                 spflList = baseCodeDao.getEntitiesListByProperties(DmSpfl.class, null);
                 spfl2List = baseCodeDao.getEntitiesListByProperties(DmSpfl2.class, null);
             } catch (Exception e) {
-                log.error("init BaseCodeService error!",e);
+                log.error("init BaseCodeService error!", e);
             }
         }
     }
-    
+
     /**
      * 商品分类
+     * 
      * @return
      */
-    public static List<DmSpfl> getSpflList(){
+    public static List<DmSpfl> getSpflList() {
         return spflList;
     }
-    
+
     /**
-     * 品牌分类
+     * @param spflDm 根据传入的spflDm获取所有上级,包括自己；
      * @return
      */
-    public static List<DmSpfl2> getPpflList(){
+    public static List<DmSpfl> getSpflList(Long spflDm) {
+        List<DmSpfl> list = new ArrayList<DmSpfl>();
+        Long sjSpflDm = spflDm;
+        do {
+            for (DmSpfl spfl : spflList) {
+                if (sjSpflDm.equals(spfl.getSpflDm())) {
+                    sjSpflDm = spfl.getSjSpflDm();
+                    list.add(spfl);
+                    break;
+                }
+            }
+        } while (sjSpflDm != null);
+        return list;
+    }
+
+    /**
+     * 品牌分类
+     * 
+     * @return
+     */
+    public static List<DmSpfl2> getPpflList() {
         return spfl2List;
     }
-    
+
     /**
      * @return the baseCodeDao
      */

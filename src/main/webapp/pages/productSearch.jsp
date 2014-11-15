@@ -50,8 +50,8 @@ ul.pic_list li {
 <body>
 	<div class="topnav mainbox">
 		<div class="breadcrumb">
-			<strong><a href="<%=root%>/pages/index.jsp">首页</a>
-				&nbsp;&gt;&nbsp;<a href="<%=root%>/productSearch.do">产品搜索</a></strong>
+			<strong><a href="<%=root%>/init.do">首页</a>
+				&nbsp;&gt;&nbsp;<a href="javascript:void(0)" onclick="productSearch()">产品搜索</a></strong>
 		</div>
 	</div>
 	<div class="prolistmenu mainbox"></div>

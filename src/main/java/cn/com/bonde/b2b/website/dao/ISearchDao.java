@@ -12,4 +12,6 @@ public interface ISearchDao extends IBaseDBDao {
     
     
     public List<Map<String, Object>> queryTodayPrice(Long topCatalog) throws Exception;
+    
+    public Map<String, Object> queryProduct(Long productId) throws Exception;
 }

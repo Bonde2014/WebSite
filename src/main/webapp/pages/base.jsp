@@ -30,7 +30,7 @@
             <span class="top_bar_wrap">客服热线：0571-56839396</span>
             <span class="top_bar_wrap "><a href="javascript:void(0)" >购物车</a></span>
             <span class="top_bar_wrap"><a href="javascript:void(0)" >用户中心</a></span>
-            <span class="top_bar_wrap"><a href="<%=root%>/pages/index.jsp">首页</a></span>
+            <span class="top_bar_wrap"><a href="<%=root%>/init.do">首页</a></span>
             <s:if test="#session.session_login!=null">
             	<span class="top_bar_wrap" style="border-left:0"><s:property value="#session.session_khxx.khMc"/> 您好，欢迎来到克莱姆！</span>
             </s:if>

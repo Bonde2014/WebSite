@@ -71,7 +71,7 @@ ul.pic_list li {
 <body>
 	<div class="topnav mainbox">
 		<div class="breadcrumb">
-			<strong><a href="<%=root%>/pages/index.jsp">首页</a>
+			<strong><a href="<%=root%>/init.do">首页</a>
 				&nbsp;&gt;&nbsp;<a href="<%=root%>/todayPrice.do">今日报价</a></strong>
 		</div>
 	</div>
