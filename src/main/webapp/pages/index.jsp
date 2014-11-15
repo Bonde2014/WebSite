@@ -50,7 +50,7 @@ ul.pic_list li {
 	    //轮换广告图片
 		$(".adbox").turnPic();
 		//刷新商品分类导航区域
-		requestCatalogTree("10"); //首页的大类代码默认是"10"--全部
+		requestCatalogTree(); //首页的大类代码默认是"10"--全部
 	})
 	
 	
@@ -98,7 +98,7 @@ ul.pic_list li {
 				</ul>
 			</div>
 			<ul class="topmenu">
-				<li>今日报价</li>
+				<li onclick="pageLink('/todayPrice.do')">今日报价</li>
 				<li onclick="pageLink('/pages/index.jsp')">首页</li>
 				<li>特价专区</li>
 				<li>自助装机</li>

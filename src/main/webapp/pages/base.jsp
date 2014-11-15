@@ -19,6 +19,9 @@
 <script type="text/javascript" src="<%=root%>/scripts/jquery-easyui-1.3.6/validate/easyui_validate.js"></script>
 <head>
 	<script type="text/javascript">
+		function pageLink(url){
+			window.location.href=root+url;
+		}
 	</script>
 </head>
 <body>

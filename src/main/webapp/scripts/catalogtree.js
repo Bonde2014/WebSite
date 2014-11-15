@@ -16,7 +16,10 @@ function requestCatalogTree(dldm){
 			alert("call error...");
 		},
 		success : function(data) {
-		   var result = JSON.parse(data);
+			if(!data){
+				return;
+			}
+		   var result = $.parseJSON(data);
 		   var catlogstr="";
 		   var isOdd=true;
 		   //循环大类列表
