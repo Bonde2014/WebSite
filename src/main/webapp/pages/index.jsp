@@ -103,7 +103,6 @@ ul.pic_list li {
 				<li>特价专区</li>
 				<li>自助装机</li>
 			</ul>
-
 		</div>
 	</div>
 

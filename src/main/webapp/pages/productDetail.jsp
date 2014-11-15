@@ -55,30 +55,14 @@ ul.pic_list li {
 </script>
 </head>
 <body>
-	<div class="global_menu">
-		<div class="mainbox">
-			<ul class="topmenu">
-				<li>首页</li>
-				<li>产品展示</li>
-				<li>特价专区</li>
-				<li>自助装机</li>
-			</ul>
-
-		</div>
-	</div>
-
 	<div class="topnav mainbox">
 		<div class="breadcrumb">
-			<strong><a href="http://channel.jd.com/electronic.html">家用电器</a></strong>
-			<span> &nbsp;&gt;&nbsp;<a
-				href="http://channel.jd.com/737-794.html">大 家 电</a>&nbsp;&gt;&nbsp;
-				<a href="http://list.jd.com/list.html?cat=737,794,870">空调</a>
-			</span>
+			<strong><a href="<%=root%>/pages/index.jsp">首页</a>&nbsp;&gt;&nbsp;
+			</strong>
 		</div>
 	</div>
 
 	<div class="mainbox">
-
 		<div id="product-intro" class="product-intro">
 			<div id="name" class="name">
 				<h1>TCL KFRd-23GW/BF33-I 小1匹 壁挂式电辅型定频家用冷暖空调 白色</h1>
@@ -88,16 +72,13 @@ ul.pic_list li {
 
 			<div class="clearfix">
 				<ul class="summary">
-
 					<li><strong>市场价：</strong><span>929693</span></li>
 					<li class="red"><strong>平台价：</strong><span>929693</span></li>
-
 				</ul>
-
 				<ul class="edit">
 					<li>选择颜色：</li>
 					<li>选择版本：</li>
-					<li><strong>数量：</strong><span class="minus"></span> <input
+					<li>选择数量：<span class="minus"></span> <input
 						type="type" name="name" value=" " /> <span class="plus"></span>
 						库存：100件</li>
 				</ul>
@@ -124,7 +105,6 @@ ul.pic_list li {
 						alt="Alternate Text" /></a> <a href="" class="right"></a>
 				</div>
 			</div>
-			<!--preview end-->
 		</div>
 	</div>
 
@@ -250,7 +230,7 @@ ul.pic_list li {
 						</div>
 					</div>
 				</div>
-				<div class="detail">1 sdfsdfsdf</div>
+				<div class="detail"></div>
 			</div>
 		</div>
 	</div>

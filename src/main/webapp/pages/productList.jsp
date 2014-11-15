@@ -89,10 +89,10 @@ ul.pic_list li {
                 </ul>
             </div>
             <ul class="topmenu">
-                <li>首页</li>
-                <li>产品展示</li>
-                <li>特价专区</li>
-                <li>自助装机</li>
+                <li onclick="pageLink('/todayPrice.do')">今日报价</li>
+				<li onclick="pageLink('/pages/index.jsp')">首页</li>
+				<li>特价专区</li>
+				<li>自助装机</li>
             </ul>
 
         </div>
