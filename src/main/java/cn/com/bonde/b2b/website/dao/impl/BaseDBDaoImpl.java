@@ -981,7 +981,11 @@ public class BaseDBDaoImpl implements IBaseDBDao
 	{
 		Pager pager=new Pager();
 		try
-		{
+		{    
+		    Integer totalCount = getTotalCountBySQLQuery(sql, parasMaps, totalCountSql);
+		    if(totalCount==0){
+		        return pager;
+		    }
 			SQLQuery query = this.getSession().createSQLQuery(sql);
 			query.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
 			if (parasMaps != null)
@@ -998,9 +1002,7 @@ public class BaseDBDaoImpl implements IBaseDBDao
 			}
 			query.setMaxResults(findEntity.getRows());
 			query.setFirstResult((findEntity.getPage()-1)*findEntity.getRows());
-			
 			List resultList = query.list();
-			Integer totalCount = getTotalCountBySQLQuery(sql, parasMaps, totalCountSql);
 			pager.setPageSize(findEntity.getRows());
 			pager.setPageNo(findEntity.getPage());
 			pager.setRows(resultList);
@@ -1334,6 +1336,10 @@ public class BaseDBDaoImpl implements IBaseDBDao
         Pager pager=new Pager();
         try
         {
+            Integer totalCount = getTotalCountBySQLQuery(hql, parasMaps, totalCountSql);
+            if(totalCount==0){
+                return pager;
+            }
             final Query query = this.getSession().createQuery(hql);
             if (parasMaps != null)
             {
@@ -1349,9 +1355,7 @@ public class BaseDBDaoImpl implements IBaseDBDao
             }
             query.setMaxResults(findEntity.getRows());
             query.setFirstResult((findEntity.getPage()-1)*findEntity.getRows());
-            
             List resultList = query.list();
-            Integer totalCount = getTotalCountBySQLQuery(hql, parasMaps, totalCountSql);
             pager.setPageSize(findEntity.getRows());
             pager.setPageNo(findEntity.getPage());
             pager.setRows(resultList);

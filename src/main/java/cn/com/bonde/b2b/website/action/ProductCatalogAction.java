@@ -10,9 +10,7 @@ import org.apache.struts2.convention.annotation.Results;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import cn.com.bonde.b2b.website.entity.QxDlxx;
 import cn.com.bonde.b2b.website.service.ICatalogService;
-import cn.com.bonde.b2b.website.service.ILoginService;
 import cn.com.bonde.b2b.website.util.MyException;
 import cn.com.bonde.b2b.website.util.WriteJsonToPage;
 
@@ -39,15 +37,7 @@ public class ProductCatalogAction extends ProjectBaseAction
 		this.catalogService = catalogService;
 	}
 
-	private String spflDm;  //页面传递的大类代码
-
-	public String getSpflDm() {
-		return spflDm;
-	}
-
-	public void setSpflDm(String spflDm) {
-		this.spflDm = spflDm;
-	}
+	private Long spflDm;  //页面传递的大类代码
 
 
 	@Action(value = "getCatalog")
@@ -63,6 +53,22 @@ public class ProductCatalogAction extends ProjectBaseAction
 			throw new MyException(e, this.getClass(), "");
 		}
 	}
+
+    
+    /**
+     * @return the spflDm
+     */
+    public Long getSpflDm() {
+        return spflDm;
+    }
+
+    
+    /**
+     * @param spflDm the spflDm to set
+     */
+    public void setSpflDm(Long spflDm) {
+        this.spflDm = spflDm;
+    }
 
 
 }

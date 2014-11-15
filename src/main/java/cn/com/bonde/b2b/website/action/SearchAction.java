@@ -18,7 +18,9 @@ import cn.com.bonde.b2b.website.util.Pager;
 @Scope("prototype")
 @ParentPackage(value = "base")
 @Namespace(value = "/")
-@Results({ @Result(name = "success", location = "/pages/productList.jsp") })
+@Results({ @Result(name = "productSearch", location = "/pages/productSearch.jsp"), 
+    @Result(name = "productList", location = "/pages/productList.jsp"),
+    @Result(name = "productDetail", location = "/pages/productDetail.jsp")})
 public class SearchAction extends ProjectBaseAction {
     
     private SearchFindEntity searchFindEntity;
@@ -35,15 +37,23 @@ public class SearchAction extends ProjectBaseAction {
     
     @Action(value="doSearch")
     public String doSearch(){
-        if(searchFindEntity.getPage()==0){
-            searchFindEntity.setPage(1);
-        }
+        searchFindEntity.setRows(50);
         try {
             pager = searchService.searchByKeyword(searchFindEntity);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return SUCCESS;
+        return "productSearch";
+    }
+    
+    @Action(value="searchCatalog")
+    public String searchCatalog(){
+        return "productList";
+    }
+    
+    @Action(value="searchProduct")
+    public String searchProdcut(){
+        return "productDetail";
     }
 
     

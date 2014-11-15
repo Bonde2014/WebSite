@@ -19,20 +19,19 @@ function requestCatalogTree(dldm){
 			if(!data){
 				return;
 			}
-		   var result = $.parseJSON(data);
+		   var dllb = eval("("+data+")")
 		   var catlogstr="";
 		   var isOdd=true;
 		   //循环大类列表
-		   var dllb=result.catlogTree;
 		   for(var i=0; i< dllb.length; i++) {
 		      listr= isOdd?"<li>":"<li class=\"odd\">";  //奇偶行样式不同
 		      isOdd=!isOdd;
-		      listr=listr+"<h2><a href=\"#"+dllb[i].dldm+"\">"+dllb[i].dlmc+"</a></h2>"; //链接待补充
+		      listr=listr+"<h2><a href=\"javascript:void(0)\" onclick=\"productSearch(null,"+dllb[i].dldm+")\" >"+dllb[i].dlmc+"</a></h2>"; 
 		      var xllb=dllb[i].xllb;
 		      if (xllb.length==0)  listr=listr+"<span></span>"; //空白行
 		      //循环小类列表
 		      for (var j=0; j< xllb.length; j++){
-		        listr=listr+"<span><a href=\"#"+xllb[j].spflDm+"\">"+xllb[j].spflMc+"</a></span>"; //链接待补充
+		        listr=listr+"<span><a href=\"javascript:void(0)\" onclick=\"productSearch(null,"+xllb[j].spflDm+")\" >"+xllb[j].spflMc+"</a></span>";
 		      }
 		      catlogstr=catlogstr+listr+"</li>"
 		   }

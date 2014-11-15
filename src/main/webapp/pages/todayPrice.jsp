@@ -65,11 +65,6 @@ ul.pic_list li {
 		
 	})
 	
-	function productDetail (productId){
-		var productDetailUrl = root+"/productDetail.do?productId="+productId;
-		window.open(productDetailUrl, "克莱姆购物平台");
-	}
-	
 	
 </script>
 </head>
@@ -102,21 +97,21 @@ ul.pic_list li {
 					<th>可售数量</th>
 					<th>最后报价时间</th>
 				</tr>
-				<s:if test="#list!=null">
-					<s:iterator value="list" id="map" status="s">
-						<tr>
-							<td><a href="javascprit:void(0)" class="link" onclick="productDetail(<s:property value='#map.spDm' />)"><s:property value="#map.spmc" /></a></td>
-							<td><s:property value="#map.spflMc" /></td>
-							<td><s:property value="#map.spppMc" /></td>
-							<td class="mktprice"><s:property value="#map.scjg" /></td>
-							<td class="avlprice">
-								<s:property value="#map['jg'+#session.session_khxx.qdsJb]" />
-							</td>
-							<td><s:property value="#map.kssl" /></td>
-							<td><s:property value="#map.bjsj" /></td>
-						</tr>
-					</s:iterator>
-				</s:if>
+				<s:iterator value="list" id="map" status="s">
+					<tr>
+						<td><a href="javascprit:void(0)" class="link"
+							onclick="productDetail(<s:property value='#map.spDm' />)"><s:property
+									value="#map.spmc" /></a></td>
+						<td><s:property value="#map.spflMc" /></td>
+						<td><s:property value="#map.spppMc" /></td>
+						<td class="mktprice"><s:property value="#map.scjg" /></td>
+						<td class="avlprice">
+							<s:property value="#map['jg'+#session.session_khxx.qdsJb]" />
+						</td>
+						<td><s:property value="#map.kssl" /></td>
+						<td><s:property value="#map.bjsj" /></td>
+					</tr>
+				</s:iterator>
 			</table>
 		</s:iterator>
 	</div>
