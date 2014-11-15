@@ -55,7 +55,7 @@ ul.pic_list li {
 	<div class="global_menu">
 		<div class="mainbox">
 			<div class="bigmenu">
-				<h1 onclick="catalogSearch()">全部商品分类</h1>
+				<h1 onclick="pageLink('/init.do')">全部商品分类</h1>
 				<ul id="catalogtree">
 				</ul>
 			</div>
