@@ -19,6 +19,9 @@ function productSearch(keyword, catalog, page) {
 	if (page) {
 		$('#page').val(page);
 	}
+	if(!$('#page').val()){
+		$('#page').val(1);
+	}
 	$('#searchForm').attr("action",root+"/doSearch.do");
 	$('#searchForm').submit();
 }
@@ -29,6 +32,9 @@ function catalogSearch(catalog,page) {
 	}
 	if (page) {
 		$('#page').val(page);
+	}
+	if(!$('#page').val()){
+		$('#page').val(1);
 	}
 	$('#searchForm').attr("action",root+"/searchCatalog.do");
 	$('#searchForm').submit();
@@ -62,12 +68,12 @@ function requestCatalogTree(dldm){
 		   for(var i=0; i< dllb.length; i++) {
 		      listr= isOdd?"<li>":"<li class=\"odd\">";  //奇偶行样式不同
 		      isOdd=!isOdd;
-		      listr=listr+"<h2><a href=\"javascript:void(0)\" onclick=\"catalogSearch("+dllb[i].dldm+")\" >"+dllb[i].dlmc+"</a></h2>"; 
+		      listr=listr+"<h2><a href=\"javascript:void(0)\" onclick=\"catalogSearch("+dllb[i].dldm+",1)\" >"+dllb[i].dlmc+"</a></h2>"; 
 		      var xllb=dllb[i].xllb;
 		      if (xllb.length==0)  listr=listr+"<span></span>"; //空白行
 		      //循环小类列表
 		      for (var j=0; j< xllb.length; j++){
-		        listr=listr+"<span><a href=\"javascript:void(0)\" onclick=\"catalogSearch("+xllb[j].spflDm+")\" >"+xllb[j].spflMc+"</a></span>";
+		        listr=listr+"<span><a href=\"javascript:void(0)\" onclick=\"catalogSearch("+xllb[j].spflDm+",1)\" >"+xllb[j].spflMc+"</a></span>";
 		      }
 		      catlogstr=catlogstr+listr+"</li>"
 		   }

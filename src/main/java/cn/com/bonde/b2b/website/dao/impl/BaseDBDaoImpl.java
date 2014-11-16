@@ -1007,6 +1007,7 @@ public class BaseDBDaoImpl implements IBaseDBDao
 			pager.setPageNo(findEntity.getPage());
 			pager.setRows(resultList);
 			pager.setTotal(totalCount);
+			pager.setPageTotal((totalCount+findEntity.getRows()-1)/findEntity.getRows());
 		}
 		catch (Exception e)
 		{
@@ -1360,6 +1361,7 @@ public class BaseDBDaoImpl implements IBaseDBDao
             pager.setPageNo(findEntity.getPage());
             pager.setRows(resultList);
             pager.setTotal(totalCount);
+            pager.setPageTotal((totalCount+findEntity.getRows()-1)/findEntity.getRows());
         }
         catch (Exception e)
         {

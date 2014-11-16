@@ -10,7 +10,7 @@
     <div class="logotop mainbox">
         <div class="search">
             <div class="searchinput">
-                <s:hidden id="page" value="1"  name="searchFindEntity.page"></s:hidden>
+                <s:hidden id="page"  name="searchFindEntity.page"></s:hidden>
                 <s:hidden id="catalog"  name="searchFindEntity.catalog"></s:hidden>
                 <s:textfield name="searchFindEntity.keyword" id="keyword" maxLength="100"></s:textfield>
                 <div class="searchbtn" onclick="productSearch()">搜索</div>

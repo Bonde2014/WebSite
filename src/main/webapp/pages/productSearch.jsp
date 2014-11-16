@@ -5,47 +5,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="<%=root%>/css/pager.css">
+<script type="text/javascript" src="<%=root%>/scripts/pager.js"></script>
 <title>克莱姆购物平台</title>
-<style>
-ul.pic_list {
-	width: 790px;
-	height: 300px;
-	position: relative
-}
-
-ul.pic_list li {
-	float: left;
-	width: 100%;
-	height: 300px;
-	position: absolute;
-	top: 0px;
-	left: 0px
-}
-
-.title_nav {
-	float: left;
-	width: 100%;
-	height: 52px;
-	position: absolute;
-	bottom: -10px;
-	left: 0px
-}
-
-.title_nav a {
-	float: left;
-	display: inline-block;
-	width: 79px;
-	margin-right: 1px;
-	background: #444;
-	padding: 5px 15px;
-	text-align: center;
-	color: #fff;
-	text-decoration: none;
-}
-</style>
-<script type="text/javascript">
-	
-</script>
 </head>
 <body>
 	<div class="topnav mainbox">
@@ -78,19 +40,24 @@ ul.pic_list li {
 		</ul>
 	</div>
 
-	<div class="mainbox"
-		style="text-align: center; padding: 10px; height: 50px">
-		<ul id="pagination-digg">
-			<li class="previous-off">&laquo;<a href="?page=8">上一页</a></li>
-			<li class="active">1</li>
-			<li><a href="?page=2">2</a></li>
-			<li><a href="?page=3">3</a></li>
-			<li><a href="?page=4">4</a></li>
-			<li><a href="?page=5">5</a></li>
-			<li><a href="?page=6">6</a></li>
-			<li><a href="?page=7">7</a></li>
-			<li class="next"><a href="?page=8">下一页 &raquo;</a></li>
-		</ul>
+	<div id="pager" align="center">
+		<s:if test="pager.total==null">
+			<strong>无符合条件的产品，请尝试其他搜索条件</strong>
+		</s:if>
+		<s:else>
+		    <s:hidden name="pager.total" id="recordTotal"></s:hidden>
+		    <s:hidden name="pager.pageTotal" id="pageTotal"></s:hidden>
+			<script type="text/javascript">
+				kkpager.generPageHtml({
+					pno : $('#page').val(),
+					total : $('#pageTotal').val(),
+					totalRecords :$('#recordTotal').val(),
+					click : function(n){
+						productSearch(null,null,n);
+					}
+				});
+			</script>
+		</s:else>
 	</div>
 	<s:include value="foot.html"></s:include>
 </body>

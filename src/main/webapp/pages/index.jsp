@@ -105,7 +105,7 @@ ul.pic_list li {
 
 	<div class="mainbox pro-box">
 		<div class="probox">
-			<img src="<%=root%>/images/temp4.png" /> <span class="title">扬天S320
+			<img src="<%=root%>/loadImage.do" /> <span class="title">扬天S320
 				G1620 2G 500GDVD刻录 带无线网卡 COM卡</span>
 		</div>
 		<div class="probox">

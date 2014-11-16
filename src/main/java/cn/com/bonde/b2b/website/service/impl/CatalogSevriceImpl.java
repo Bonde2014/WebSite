@@ -52,18 +52,29 @@ public class CatalogSevriceImpl implements ICatalogService
 		 String catlogStr = "";
 		List<DmSpfl> list = BaseCodeService.getSpflList();
 		if(!CollectionUtils.isEmpty(list)){
-			int catanum=list.size();
 			Map<Long, Map<String,Object>> catlogMap=new HashMap<Long, Map<String,Object>>();
-			//先整理一级分类组成的Map
-			for (int i=0; i<catanum; i++){
-				DmSpfl spfl=list.get(i);
-				if ((spfl.getSjSpflDm()==null&&spflDm==null)||(spflDm!=null&&spflDm.equals(spfl.getSjSpflDm()))){
-				    Map<String,Object> dlMap=new HashMap<String,Object>();  //构造一级分类的map对象
-					dlMap.put("dldm", spfl.getSpflDm());  //大类代码
-					dlMap.put("dlmc", spfl.getSpflMc());  //大类名称
-					dlMap.put("xllb", new ArrayList<DmSpfl>());   //小类列表	 
-					catlogMap.put(spfl.getSpflDm(), dlMap);
-				}
+			//先整理一级分类组成的Map，spflDm为空则获取所有上级代码为空的分类，不为空则获取自己
+			if(spflDm==null){
+			    for(DmSpfl spfl : list){
+			        if(spfl.getSjSpflDm()==null){
+			            Map<String,Object> dlMap=new HashMap<String,Object>();  //构造一级分类的map对象
+	                    dlMap.put("dldm", spfl.getSpflDm());  //大类代码
+	                    dlMap.put("dlmc", spfl.getSpflMc());  //大类名称
+	                    dlMap.put("xllb", new ArrayList<DmSpfl>());   //小类列表     
+	                    catlogMap.put(spfl.getSpflDm(), dlMap);
+			        }
+			    }
+			}else{
+			    for(DmSpfl spfl : list){
+                    if(spflDm.equals(spfl.getSpflDm())){
+                        Map<String,Object> dlMap=new HashMap<String,Object>();  //构造一级分类的map对象
+                        dlMap.put("dldm", spfl.getSpflDm());  //大类代码
+                        dlMap.put("dlmc", spfl.getSpflMc());  //大类名称
+                        dlMap.put("xllb", new ArrayList<DmSpfl>());   //小类列表     
+                        catlogMap.put(spfl.getSpflDm(), dlMap);
+                        break;
+                    }
+                }
 			}
 			//再整理二级分类，更细的分类直接就丢弃了
 			for(DmSpfl spfl : list){
