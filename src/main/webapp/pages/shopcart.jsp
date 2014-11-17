@@ -202,8 +202,8 @@ ul.pic_list li {
 						<td style="text-align: center;"><input type="checkbox"
 							name="checkbox" value=" " /></td>
 						<td style="text-align: center;"><a href="#" class="link">${item.SP_JG}</a></td>
-						<td style="text-align: center;" class="alir">${item.SP_JG}</td>
-						<td style="text-align: center;"><input id="spsl"
+						<td style="text-align: center;" class="alir" name="spJg">${item.SP_JG}</td>
+						<td style="text-align: center;"><input name="spSl"
 							class="easyui-numberspinner" style="width:60px;"
 							value="${item.SP_SL }" /></td>
 						<td class="alir" style="text-align: center;" name="spZj">${item.SP_ZJ}</td>
@@ -244,7 +244,7 @@ ul.pic_list li {
 	            return s;  
 	        }  
 		
-			$('#spsl').numberspinner({ min : 1, max : 1000, editable : true,
+			$("input[name='spSl']").numberspinner({ min : 1, max : 1000, editable : true,
 			//missingMessage:"请输入商品数量",
 			onChange : function(value)
 			{
@@ -252,13 +252,20 @@ ul.pic_list li {
 				{
 					$(this).val("1");
 				}
+				$(this).parent().parent().parent().find("td[name='spZj']").text(toDecimal2(parseFloat($(this).parent().parent().parent().find("td[name='spJg']").text())* $(this).val()));
+				countZje();
 			} });
 
 			function deleteSp(obj)
 			{
+				var checkList=$("input[name='checkbox']:checked");
+				if(checkList.size()==0){
+					 $.messager.alert('提示信息','请选择需要删除的商品!','info');
+					 return;
+				}
 				$.messager.confirm('删除商品', '确定从购物车中删除此商品？', function(value){
 		               if (value){
-		            	   $("input[name='checkbox']:checked").each(function(i)
+		            	   checkList.each(function(i)
 		           				{
 		           					$(this).parent().parent().remove();
 		           				});
