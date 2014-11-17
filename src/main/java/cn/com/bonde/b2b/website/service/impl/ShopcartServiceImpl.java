@@ -4,6 +4,7 @@
 package cn.com.bonde.b2b.website.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -52,6 +53,34 @@ public class ShopcartServiceImpl implements IShopcartService
 		shopcartDao.getEntitiesListByProperty(typeClass,propertyName,propertyValue,orderBy);
 		return null;
 	}
+
+	/**
+	 * @创建人：应洪峰
+	 * @创建时间：2014年11月17日
+	 * @功能说明：
+	 * @return
+	 * @throws MyException
+	 */
+	@Override
+	public <T> List<T> getEntityListByHQL(String hql, Map<String, Object>... paramMap) throws Exception
+	{
+		shopcartDao.getEntityListByHQL(hql, paramMap);
+		return null;
+	}
+
+	/**
+	 * @创建人：应洪峰
+	 * @创建时间：2014年11月17日
+	 * @功能说明：
+	 * @return
+	 * @throws MyException
+	 */
+	@Override
+	public List<Map<String,Object>> getEntityList(String khDm) throws Exception
+	{
+		return shopcartDao.getEntityList(khDm);
+	}
+	
 	
 
 }

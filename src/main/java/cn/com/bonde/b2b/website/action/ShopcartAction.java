@@ -3,6 +3,9 @@
  */
 package cn.com.bonde.b2b.website.action;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.apache.struts2.convention.annotation.Action;
@@ -13,9 +16,8 @@ import org.apache.struts2.convention.annotation.Results;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import cn.com.bonde.b2b.website.entity.XsGwc;
-import cn.com.bonde.b2b.website.entity.XsGwcId;
 import cn.com.bonde.b2b.website.service.IShopcartService;
+import cn.com.bonde.b2b.website.util.DataSwitch;
 import cn.com.bonde.b2b.website.util.MyException;
 
 /**
@@ -55,10 +57,8 @@ public class ShopcartAction extends ProjectBaseAction
 	{
 		try
 		{
-			XsGwcId id= new XsGwcId(); 
-			id.setKhDm(this.getKhxx().getKhDm());
-			shopcartService.getEntitiesListByProperty(XsGwc.class,"id", id, "tjsj");
-           this.setReuestAttr("shopcartList", shopcartService.getEntitiesListByProperty(XsGwc.class,"id", id, "tjsj"));
+			List<Map<String,Object>> list= shopcartService.getEntityList(DataSwitch.convertObjectToString(this.getKhxx().getKhDm()));
+           this.setReuestAttr("shopcartList", list);
 		}
 		catch (Exception e)
 		{
