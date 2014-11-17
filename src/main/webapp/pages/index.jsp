@@ -5,7 +5,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<script type="text/javascript" src="<%=root%>/scripts/catalogtree.js"></script>
 <title>克莱姆购物平台</title>
 <style>
 ul.pic_list {
@@ -50,7 +49,7 @@ ul.pic_list li {
 	    //轮换广告图片
 		$(".adbox").turnPic();
 		//刷新商品分类导航区域
-		requestCatalogTree("10"); //首页的大类代码默认是"10"--全部
+		requestCatalogTree();
 	})
 	
 	
@@ -60,50 +59,16 @@ ul.pic_list li {
 	<div class="global_menu">
 		<div class="mainbox">
 			<div class="bigmenu">
-				<h1>全部商品分类</h1>
+				<h1 onclick="pageLink('/init.do')">全部商品分类</h1>
 				<ul id="catalogtree">
-					<li>
-						<h2>手机通讯</h2> <span><a href="#ddd">手机</a></span> <span><a
-							href="#ddd">手机配件</a></span>
-					</li>
-					<li class="odd">
-						<h2>电脑整机</h2> <span><a href="#ddd">笔记本</a></span> <span><a
-							href="#ddd">台机</a></span> <span><a href="#ddd">苹果系列</a></span>
-					</li>
-					<li>
-						<h2>外设产品</h2> <span><a href="#ddd">键套</a></span> <span><a
-							href="#ddd">鼠标</a></span> <span><a href="#ddd">耳机</a></span><span><a
-							href="#ddd">手写板</a></span>
-					</li>
-					<li class="odd">
-						<h2>网络产品</h2> <span><a href="#ddd"></a>网络</span> <span><a
-							href="#ddd">路由器</a></span> <span><a href="#ddd">交换机</a></span><span><a
-							href="#ddd">网线</a></span>
-					</li>
-
-					<li>
-						<h2>安防监控</h2> <span><a href="#ddd">监控摄像头</a></span> <span><a
-							href="#ddd">监控录像机</a></span>
-					</li>
-					<li class="odd">
-						<h2>网络产品</h2> <span><a href="#ddd"></a>网络</span> <span><a
-							href="#ddd">路由器</a></span> <span><a href="#ddd">交换机</a></span><span><a
-							href="#ddd">网线</a></span>
-					</li>
-
-					<li>
-						<h2>安防监控</h2> <span><a href="#ddd">监控摄像头</a></span> <span><a
-							href="#ddd">监控录像机</a></span>
-					</li>
 				</ul>
 			</div>
 			<ul class="topmenu">
-				<li>今日报价</li>
-				<li onclick="pageLink('/pages/index.jsp')">首页</li>
+				<li onclick="pageLink('/todayPrice.do')">今日报价</li>
+				<li onclick="pageLink('/init.do')">首页</li>
 				<li>特价专区</li>
 				<li>自助装机</li>
 			</ul>
-
 		</div>
 	</div>
 
@@ -140,7 +105,7 @@ ul.pic_list li {
 
 	<div class="mainbox pro-box">
 		<div class="probox">
-			<img src="<%=root%>/images/temp4.png" /> <span class="title">扬天S320
+			<img src="<%=root%>/loadImage.do" /> <span class="title">扬天S320
 				G1620 2G 500GDVD刻录 带无线网卡 COM卡</span>
 		</div>
 		<div class="probox">

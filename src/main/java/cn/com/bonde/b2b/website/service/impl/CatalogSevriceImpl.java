@@ -10,21 +10,17 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpSession;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Service;
-
-import com.google.gson.Gson;
+import org.springframework.util.CollectionUtils;
 
 import cn.com.bonde.b2b.website.dao.ICatalogDao;
 import cn.com.bonde.b2b.website.entity.DmSpfl;
 import cn.com.bonde.b2b.website.service.BaseCodeService;
 import cn.com.bonde.b2b.website.service.ICatalogService;
-import cn.com.bonde.b2b.website.util.Constants;
-import cn.com.bonde.b2b.website.util.MD5;
-import cn.com.bonde.b2b.website.util.MyException;
+import cn.com.bonde.b2b.website.util.JsonUtil;
 
 /**
  * @author Administrator
@@ -50,56 +46,51 @@ public class CatalogSevriceImpl implements ICatalogService
 
 
 	@Override
-	public String queryCatalog(String spfl_dm)throws Exception
+	public String queryCatalog(Long spflDm) throws Exception
 	{
-		log.info("商品大类【"+spfl_dm+"】");
-		//先根据商品大类找出所有符合的分类列表
-//		Map<String, Object> propertyMap = new HashMap<String, Object>();
-//		propertyMap.put("dl_spfl_dm", spfl_dm);
+		log.info("商品大类【"+spflDm+"】");
+		 String catlogStr = "";
 		List<DmSpfl> list = BaseCodeService.getSpflList();
-				//catalogDao.getEntitiesListByProperties(DmSpfl.class, propertyMap);
-		if(list==null||list.size()==0){
-			log.info("系统内存中找不到具体的商品分类结构");
-			return "";
-		}else{
-			int catanum=list.size();
-			Map<String, Map> catlogMap=new HashMap<String, Map>();
-			//先整理一级分类组成的Map
-			for (int i=0; i<catanum; i++){
-				DmSpfl spfl=list.get(i);
-				if (spfl_dm.equalsIgnoreCase(String.valueOf(spfl.getSjSpflDm()))){
-					Map dlMap=new HashMap();  //构造一级分类的map对象
-					dlMap.put("dldm", spfl.getSpflDm());  //大类代码
-					dlMap.put("dlmc", spfl.getSpflMc());  //大类名称
-					dlMap.put("xllb", new ArrayList());   //小类列表	 
-					catlogMap.put(String.valueOf(spfl.getSpflDm()), dlMap);
-				}
+		if(!CollectionUtils.isEmpty(list)){
+			Map<Long, Map<String,Object>> catlogMap=new HashMap<Long, Map<String,Object>>();
+			//先整理一级分类组成的Map，spflDm为空则获取所有上级代码为空的分类，不为空则获取自己
+			if(spflDm==null){
+			    for(DmSpfl spfl : list){
+			        if(spfl.getSjSpflDm()==null){
+			            Map<String,Object> dlMap=new HashMap<String,Object>();  //构造一级分类的map对象
+	                    dlMap.put("dldm", spfl.getSpflDm());  //大类代码
+	                    dlMap.put("dlmc", spfl.getSpflMc());  //大类名称
+	                    dlMap.put("xllb", new ArrayList<DmSpfl>());   //小类列表     
+	                    catlogMap.put(spfl.getSpflDm(), dlMap);
+			        }
+			    }
+			}else{
+			    for(DmSpfl spfl : list){
+                    if(spflDm.equals(spfl.getSpflDm())){
+                        Map<String,Object> dlMap=new HashMap<String,Object>();  //构造一级分类的map对象
+                        dlMap.put("dldm", spfl.getSpflDm());  //大类代码
+                        dlMap.put("dlmc", spfl.getSpflMc());  //大类名称
+                        dlMap.put("xllb", new ArrayList<DmSpfl>());   //小类列表     
+                        catlogMap.put(spfl.getSpflDm(), dlMap);
+                        break;
+                    }
+                }
 			}
 			//再整理二级分类，更细的分类直接就丢弃了
-			for (int i=0; i<catanum; i++){
-				DmSpfl spfl=list.get(i);
-				String tmpsjfldm=String.valueOf(spfl.getSjSpflDm());
-				if (catlogMap.containsKey(tmpsjfldm)){
-					Map dlMap=catlogMap.get(tmpsjfldm);
-					((ArrayList)dlMap.get("xllb")).add(spfl);  //将匹配的分类对象添加到小类列表中
-				}
+			for(DmSpfl spfl : list){
+			    if (catlogMap.containsKey(spfl.getSjSpflDm())){
+                    ((ArrayList)catlogMap.get(spfl.getSjSpflDm()).get("xllb")).add(spfl);  //将匹配的分类对象添加到小类列表中
+                }
 			}
-			//将分类Map转成分类树
-			List<Map> catlogTree=new ArrayList();
-			Iterator<String> iterator = catlogMap.keySet().iterator();
-	        while (iterator.hasNext()) {
-	        	catlogTree.add(catlogMap.get(iterator.next()));
-	        }
-	        HashMap resultMap=new HashMap();
-	        resultMap.put("catlogTree", catlogTree);
 			//根据组织好的分类树，转成Json串
-			Gson gson=new Gson();
-	        String catlogStr=gson.toJson(resultMap);
-			log.info(catlogStr);
-			return catlogStr;
+			List<Map<String,Object>> resutList = new ArrayList<Map<String,Object>>();
+			Iterator<Long> iterator = catlogMap.keySet().iterator();
+			while(iterator.hasNext()){
+			    resutList.add(catlogMap.get(iterator.next()));
+			}
+			catlogStr = JsonUtil.getJsonFromObject(resutList);
 		}
-		
+		return catlogStr;
 	}
-
 
 }

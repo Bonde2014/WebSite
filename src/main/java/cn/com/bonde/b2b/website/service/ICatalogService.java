@@ -3,9 +3,6 @@
  */
 package cn.com.bonde.b2b.website.service;
 
-import javax.servlet.http.HttpSession;
-
-import cn.com.bonde.b2b.website.entity.QxDlxx;
 
 /**
  * @author Administrator
@@ -13,5 +10,5 @@ import cn.com.bonde.b2b.website.entity.QxDlxx;
  */
 public  interface ICatalogService
 {
-	public String queryCatalog(String spfl_dm)throws Exception;
+	public String queryCatalog(Long spflDm)throws Exception;
 }

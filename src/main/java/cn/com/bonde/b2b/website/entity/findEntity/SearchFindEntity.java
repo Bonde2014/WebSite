@@ -10,6 +10,8 @@ package cn.com.bonde.b2b.website.entity.findEntity;
 public class SearchFindEntity extends BaseFindEntity
 {
      private String keyword;
+     
+     private Long catalog;
 
     
     /**
@@ -27,6 +29,22 @@ public class SearchFindEntity extends BaseFindEntity
         this.keyword = keyword;
     }
 
+
     
+    /**
+     * @return the catalog
+     */
+    public Long getCatalog() {
+        return catalog;
+    }
+
+
+    
+    /**
+     * @param catalog the catalog to set
+     */
+    public void setCatalog(Long catalog) {
+        this.catalog = catalog;
+    }
     
 }

@@ -14,19 +14,9 @@
     .title_nav a.select{background:#09C url(../images/sanj.gif) no-repeat center 47px}
     </style>
     <script type="text/javascript">
-        $(function () {
-            $("table tr").hover(
-                function () {
-                    $(this).addClass("current");
-                },
-                function () { 
-                    $(this).removeClass("current");
-                })
-
-
-            $("#siwtchbox div").SwichBox({ def: "def", chg: "chg", chglist: "#daynow table",bindevent:"click" })
-
-        } )
+    $(function () {
+        $(".adbox").turnPic();
+    })
     </script>
 </head>
 
@@ -133,183 +123,62 @@
 
 
 
-    <div class="mainbox daynow " id="daynow">
-        
-        <div class="siwtchbox" id="siwtchbox">
-            <div class="def">分类一</div>
-            <div class="chg">分类一</div>
-            <div class="def">分类一</div>
+    <div class="mainbox usermain clearfix">
+        <div class="user-right">
+
+            <div class="myprosearch">
+                商品分类 
+                <select>
+                    <option value="volvo">Volvo</option>
+                    <option value="saab">Saab</option>
+                    <option value="opel">Opel</option>
+                    <option value="audi">Audi</option>
+                </select>
+                品牌
+                <select>
+                    <option value="volvo">Volvo</option>
+                    <option value="saab">Saab</option>
+                    <option value="opel">Opel</option>
+                    <option value="audi">Audi</option>
+                </select>
+                <input type="button" name="name" value="搜索" class="btn4" />
+              
+            </div>
+
+            <table width="100%" border="1" cellspacing="0" cellpadding="0">
+                <tr>
+                    <th style="width:45px"> <input type="checkbox" name="name" value=" " /> </th>
+                    <th style="width:245px">商品信息</th>
+                    <th>单价</th>
+                    <th>数量</th>
+                    <th>金额 (元)</th>
+                    <th style="width:100px;">操作</th>
+
+                </tr>
+                <tr>
+                    <td ><input type="checkbox" name="name" value=" " /></td>
+                    <td > <a href="#" class="link">铁三角CKR5</a> </td>
+                    <td class="alir">115.12</td>
+                    <td>11</td>
+                    <td class="alir">1535.22</td>
+                    <td> <a href="cdd" class="btn2">删除</a> </td>
+                </tr>
+            </table>
+            <div class="total">    <a href="cdd" class="btn3">放入我的货架</a>   </div>
+
         </div>
 
-        <table width="100%" border="1" cellspacing="0" cellpadding="0">
-            <tr>
-                <th style="width:245px">商品名称1</th>
-                <th>明细分类</th>
-                <th>品牌</th>
-                <th>市场价</th>
-                <th>平台销售价</th>
-                <th>可售数量</th>
-                <th>最后报价时间</th>
-            </tr>
-
-            <tr>
-                <td> <a href="#" class="link">铁三角CKR5</a> </td>
-                <td>电脑配件</td>
-                <td>11</td>
-                <td class="mktprice">1535.22</td>
-                <td class="avlprice">115.12 </td>
-                <td>22 </td>
-                <td>2014-11-11 12:12 </td>
-            </tr>
-
-            <tr class="odd">
-                <td> <a href="#" class="link">铁三角CKR5</a> </td>
-                <td >电脑配件</td>
-                <td>11</td>
-                <td class="mktprice" >1535.22</td>
-                <td class="avlprice">115.12 </td>
-                <td >22 </td>
-                <td>2014-11-11 12:12 </td>
-            </tr>
-
-            <tr>
-                <td> <a href="#" class="link">铁三角CKR5</a> </td>
-                <td>电脑配件</td>
-                <td>11</td>
-                <td class="mktprice">1535.22</td>
-                <td class="avlprice">115.12 </td>
-                <td>22 </td>
-                <td>2014-11-11 12:12 </td>
-            </tr>
-           
-            <tr class="odd">
-                <td> <a href="#" class="link">铁三角CKR5</a> </td>
-                <td>电脑配件</td>
-                <td>11</td>
-                <td class="mktprice">1535.22</td>
-                <td class="avlprice">115.12 </td>
-                <td>22 </td>
-                <td>2014-11-11 12:12 </td>
-            </tr>
-
-           
 
 
-        </table>
-
-        <table width="100%" border="1" cellspacing="0" cellpadding="0">
-            <tr>
-                <th style="width:245px">商品名称2</th>
-                <th>明细分类</th>
-                <th>品牌</th>
-                <th>市场价</th>
-                <th>平台销售价</th>
-                <th>可售数量</th>
-                <th>最后报价时间</th>
-            </tr>
-
-            <tr>
-                <td> <a href="#" class="link">铁三角CKR5</a> </td>
-                <td>电脑配件</td>
-                <td>11</td>
-                <td class="mktprice">1535.22</td>
-                <td class="avlprice">115.12 </td>
-                <td>22 </td>
-                <td>2014-11-11 12:12 </td>
-            </tr>
-
-            <tr class="odd">
-                <td> <a href="#" class="link">铁三角CKR5</a> </td>
-                <td>电脑配件</td>
-                <td>11</td>
-                <td class="mktprice">1535.22</td>
-                <td class="avlprice">115.12 </td>
-                <td>22 </td>
-                <td>2014-11-11 12:12 </td>
-            </tr>
-
-            <tr>
-                <td> <a href="#" class="link">铁三角CKR5</a> </td>
-                <td>电脑配件</td>
-                <td>11</td>
-                <td class="mktprice">1535.22</td>
-                <td class="avlprice">115.12 </td>
-                <td>22 </td>
-                <td>2014-11-11 12:12 </td>
-            </tr>
-
-            <tr class="odd">
-                <td> <a href="#" class="link">铁三角CKR5</a> </td>
-                <td>电脑配件</td>
-                <td>11</td>
-                <td class="mktprice">1535.22</td>
-                <td class="avlprice">115.12 </td>
-                <td>22 </td>
-                <td>2014-11-11 12:12 </td>
-            </tr>
-
-
-
-
-        </table>
-
-
-        <table width="100%" border="1" cellspacing="0" cellpadding="0">
-            <tr>
-                <th style="width:245px">商品名称3</th>
-                <th>明细分类</th>
-                <th>品牌</th>
-                <th>市场价</th>
-                <th>平台销售价</th>
-                <th>可售数量</th>
-                <th>最后报价时间</th>
-            </tr>
-
-            <tr>
-                <td> <a href="#" class="link">铁三角CKR5</a> </td>
-                <td>电脑配件</td>
-                <td>11</td>
-                <td class="mktprice">1535.22</td>
-                <td class="avlprice">115.12 </td>
-                <td>22 </td>
-                <td>2014-11-11 12:12 </td>
-            </tr>
-
-            <tr class="odd">
-                <td> <a href="#" class="link">铁三角CKR5</a> </td>
-                <td>电脑配件</td>
-                <td>11</td>
-                <td class="mktprice">1535.22</td>
-                <td class="avlprice">115.12 </td>
-                <td>22 </td>
-                <td>2014-11-11 12:12 </td>
-            </tr>
-
-            <tr>
-                <td> <a href="#" class="link">铁三角CKR5</a> </td>
-                <td>电脑配件</td>
-                <td>11</td>
-                <td class="mktprice">1535.22</td>
-                <td class="avlprice">115.12 </td>
-                <td>22 </td>
-                <td>2014-11-11 12:12 </td>
-            </tr>
-
-            <tr class="odd">
-                <td> <a href="#" class="link">铁三角CKR5</a> </td>
-                <td>电脑配件</td>
-                <td>11</td>
-                <td class="mktprice">1535.22</td>
-                <td class="avlprice">115.12 </td>
-                <td>22 </td>
-                <td>2014-11-11 12:12 </td>
-            </tr>
-
-
-
-
-        </table>
-        
+        <div class="user-left">
+            <h1>帐户中心</h1>
+            <ul>
+                <li><a href="#">个人主页</a>    </li>
+                <li><a href="#" class="current">我的购物车</a> </li>
+                <li><a href="#">我的订单</a> </li>
+                <li><a href="#">汇款方式</a> </li>
+            </ul>
+        </div>
 
 
 

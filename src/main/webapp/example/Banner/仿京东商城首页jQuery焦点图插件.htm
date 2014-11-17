@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0039)http://www.5icool.org/demo/2014/a01236/ -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<title>仿京东商城首页jQuery焦点图插件</title>
+<link rel="stylesheet" href="jd.css">
+<body>
+<div class="zxx_body">
+	<div class="zxx_constr">
+    	<!--  body of jd.html -->
+        <div class="jd_body">
+        	<div id="jdAdSlide" class="jd_ad_slide">
+				<img class="jd_ad_img"  src="./js/rBEhVlJ5oCUIAAAAAAE4O585pSAAAFGKgINDgcAAThT749.jpg">
+                <img class="jd_ad_img"  src="./js/rBEhVlJ4ugUIAAAAAADNu0WERsYAAFE9ABekBAAAM3T074.jpg">
+                <img class="jd_ad_img"  src="./js/rBEhUlJzCqoIAAAAAAE7yTNr8uEAAE2ggLjA1QAATvh176.jpg">
+                <img class="jd_ad_img"  src="./js/rBEhVVJ40jMIAAAAAAEESo4hULIAAFFRgKzU_IAAQRi366.jpg">
+				<img class="jd_ad_img"  src="./js/rBEhVlJ5oCUIAAAAAAE4O585pSAAAFGKgINDgcAAThT749.jpg">
+                <div id="jdAdBtn" class="jd_ad_btn">
+				</div><!-- add active -->
+            </div>
+        </div>
+    </div>
+</div>
+<script src="./js/jquery.min.js"></script>
+<script src="./js/jquery-powerSwitch.js"></script>
+<script>
+// 大的图片广告
+// 根据图片创建id,按钮元素等，实际开发建议使用JSON数据类似
+var htmlAdBtn = '';
+$("#jdAdSlide img").each(function(index, image) {
+	var id = "adImage" + index;
+	htmlAdBtn = htmlAdBtn + '<a href="javascript:" class="jd_ad_btn_a" data-rel="'+ id +'">'+ (index + 1) +'</a>';
+	image.id = id;
+});
+$("#jdAdBtn").html(htmlAdBtn).find("a").powerSwitch({
+	eventType: "hover",
+	classAdd: "active",
+	animation: "fade",
+	autoTime: 1000,
+	onSwitch: function(image) {
+		if (!image.attr("src")) {
+			image.attr("src", image.attr("data-src"));	
+		}
+	}
+}).eq(0).trigger("mouseover");
+</script>
+</body>
+</html>

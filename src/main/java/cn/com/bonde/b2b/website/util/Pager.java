@@ -5,9 +5,7 @@ import java.io.Serializable;
 import java.util.List;
 
 public class Pager implements Serializable {
-	/**
-	 * 
-	 */
+    
 	public  Pager() {
 
 	}
@@ -16,6 +14,7 @@ public class Pager implements Serializable {
 	
 	private Integer pageNo;
 	private Integer pageSize;
+	private Integer pageTotal;
 	private Integer total;
 	@SuppressWarnings("rawtypes")
 	private List rows;
@@ -49,4 +48,20 @@ public class Pager implements Serializable {
 	public void setRows(List rows) {
 		this.rows = rows;
 	}
+
+    
+    /**
+     * @return the pageTotal
+     */
+    public Integer getPageTotal() {
+        return pageTotal;
+    }
+
+    
+    /**
+     * @param pageTotal the pageTotal to set
+     */
+    public void setPageTotal(Integer pageTotal) {
+        this.pageTotal = pageTotal;
+    }
 }
