@@ -77,6 +77,7 @@
 				</value>
 				<value>cn.com.bonde.b2b.website.entity.SpSpxq</value>
 				<value>cn.com.bonde.b2b.website.entity.Userinfo</value>
-				<value>cn.com.bonde.b2b.website.entity.DmSpfl</value></list>
+				<value>cn.com.bonde.b2b.website.entity.DmSpfl</value>
+				<value>cn.com.bonde.b2b.website.entity.XsGwc</value></list>
 		</property></bean>
 </beans>

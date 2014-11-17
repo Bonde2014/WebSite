@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	//setDialog();
 	//进入页面，焦点在用户名文本框上
-	$("#dlm").focusout();
+	//$("#dlm").focusout();
 });
 
 /**

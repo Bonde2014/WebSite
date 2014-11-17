@@ -28,7 +28,7 @@
         	 	<span class="top_bar_wrap"><a href="<%=root%>/doLogout.do" >注销</a></span>
         	 </s:if>
             <span class="top_bar_wrap">客服热线：0571-56839396</span>
-            <span class="top_bar_wrap "><a href="javascript:void(0)" >购物车</a></span>
+            <span class="top_bar_wrap "><a href="<%=root%>/goShopcart.do" >购物车</a></span>
             <span class="top_bar_wrap"><a href="javascript:void(0)" >用户中心</a></span>
             <span class="top_bar_wrap"><a href="<%=root%>/pages/index.jsp">首页</a></span>
             <s:if test="#session.session_login!=null">

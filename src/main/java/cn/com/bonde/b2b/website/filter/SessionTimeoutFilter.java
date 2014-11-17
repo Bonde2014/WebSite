@@ -32,7 +32,6 @@ public class SessionTimeoutFilter implements Filter
 
 	}
 
-	@SuppressWarnings("unchecked")
 	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException
 	{
 		HttpServletRequest request = (HttpServletRequest) servletRequest;
@@ -40,7 +39,6 @@ public class SessionTimeoutFilter implements Filter
 		HttpServletResponse response = (HttpServletResponse) servletResponse;
 		HttpSession session = request.getSession();
 		String url = request.getRequestURL().toString();
-		// ---2013-12-30--刘滔----添加响应头
 		response.addHeader("X-UA-Compatible", "IE=EmulateIE8");
 		// 将过期日期设置为一个过去时间
 		response.setHeader("Expires", "Sat, 6 May 1995 12:00:00 GMT");
@@ -53,13 +51,13 @@ public class SessionTimeoutFilter implements Filter
 		// --------end------------
 		if (userInfo == null)
 		{
-			if (url.endsWith("login.jsp") || url.endsWith("doLogin.do"))
+			if (url.endsWith("doLogin.do") )
 			{
 				filterChain.doFilter(servletRequest, servletResponse);
 			}
 			else
 			{
-				response.sendRedirect(request.getContextPath() + "/pages/login.jsp");
+				servletResponse.getWriter().write("<script type=\"text/javascript\">window.location='"+request.getContextPath()+"/pages/login.jsp';</script>");
 			}
 		}
 		else

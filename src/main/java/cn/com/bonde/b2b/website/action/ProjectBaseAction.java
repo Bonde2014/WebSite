@@ -16,6 +16,8 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
 
+import cn.com.bonde.b2b.website.entity.QxKhxx;
+import cn.com.bonde.b2b.website.util.Constants;
 import cn.com.bonde.b2b.website.util.DataSwitch;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -90,7 +92,8 @@ public class ProjectBaseAction extends ActionSupport {
 
         try {
             T t = typClass.newInstance();
-            Map map = this.getRequest().getParameterMap();
+            @SuppressWarnings("rawtypes")
+			Map map = this.getRequest().getParameterMap();
             return (T) DataSwitch.ConvertDataTableToEntity(t, map);
         } catch (Exception e) {
             throw e;
@@ -166,6 +169,10 @@ public class ProjectBaseAction extends ActionSupport {
      */
     public String getAbsolutePath(String fileUrl) {
         return ServletActionContext.getServletContext().getRealPath(fileUrl);
+    }
+    
+    public  QxKhxx getKhxx(){
+    	return (QxKhxx)this.getSession().getAttribute(Constants.SESSION_KHXX);
     }
 
 }
