@@ -14,7 +14,10 @@
     .title_nav a.select{background:#09C url(../images/sanj.gif) no-repeat center 47px}
     </style>
     <script type="text/javascript">
-    
+        $(function () {
+            $(".ordermenu li:gt(0)").SwichBox({ def: "", chg: "current", chglist: ".orderinfo", bindevent: "click" })
+
+        })
     </script>
 </head>
 
@@ -108,14 +111,14 @@
 
     <div class="topnav mainbox">
         <div class="breadcrumb">
-            <strong><a href="http://channel.jd.com/electronic.html">家用电器</a></strong>
             <span>
+                <a href="http://channel.jd.com/electronic.html">家用电器</a>
+
                 &nbsp;&gt;&nbsp;<a href="http://channel.jd.com/737-794.html">大 家 电</a>&nbsp;&gt;&nbsp;
                 <a href="http://list.jd.com/list.html?cat=737,794,870">空调</a>
             </span>
         </div>
     </div>
-
 
 
 
@@ -134,58 +137,64 @@
             </ul>
 
 
-            <h4 class="ordertime">订单生成时间：2014-08-28:21:12:15        订单号：112347689653</h4>
-            <table width="100%" border="1" cellspacing="0" cellpadding="0" style="margin:0">
-                <tr>
-                   
-                    <th style="width:245px">商品信息</th>
-                    <th>单价</th>
-                    <th>数量</th>
-                    <th>实际应付款</th>
-                    <th>交易状态</th>
-                    <th style="width:100px;">操作</th>
+            <div class="orderinfo">
 
-                </tr>
-                <tr>
-                   
-                    <td > <a href="#" class="link">铁三角CKR5</a> </td>
-                    <td class="alir">115.12</td>
-                    <td>11</td>
-                    <td class="alir">1535.22</td>
-                    <td >待发货</td>
-                    <td> <a href="cdd" class="btn2">删除</a> </td>
-                </tr>
-            </table>
+                <h4 class="ordertime">订单生成时间：2014-08-28:21:12:15        订单号：112347689653</h4>
+                <table width="100%" border="1" cellspacing="0" cellpadding="0" style="margin:0">
+                    <tr>
 
-            <h4 class="ordertime">订单生成时间：2014-08-28:21:12:15        订单号：112347689653</h4>
-            <table width="100%" border="1" cellspacing="0" cellpadding="0" style="margin:0">
-                <tr>
+                        <th style="width:245px">商品信息</th>
+                        <th>单价</th>
+                        <th>数量</th>
+                        <th>实际应付款</th>
+                        <th>交易状态</th>
+                        <th style="width:100px;">操作</th>
 
-                    <th style="width:245px">商品信息</th>
-                    <th>单价</th>
-                    <th>数量</th>
-                    <th>实际应付款</th>
-                    <th>交易状态</th>
-                    <th style="width:100px;">操作</th>
+                    </tr>
+                    <tr>
 
-                </tr>
-                <tr>
+                        <td> <a href="#" class="link">铁三角CKR5</a> </td>
+                        <td class="alir">115.12</td>
+                        <td>11</td>
+                        <td class="alir">1535.22</td>
+                        <td>待发货</td>
+                        <td> <a href="cdd" class="btn2">删除</a> </td>
+                    </tr>
+                </table>
 
-                    <td> <a href="#" class="link">铁三角CKR5</a> </td>
-                    <td class="alir">115.12</td>
-                    <td>11</td>
-                    <td rowspan="2" class="alir">1535.22</td>
-                    <td rowspan="2">待发货</td>
-                    <td rowspan="2"> <a href="cdd" class="btn2">删除</a> </td>
-                </tr>
-                <tr>
-                  <td><a href="#" class="link">铁三角CKR5</a></td>
-                  <td class="alir">115.12</td>
-                  <td>11</td>
-                </tr>
-            </table>
+                <h4 class="ordertime">订单生成时间：2014-08-28:21:12:15        订单号：112347689653</h4>
+                <table width="100%" border="1" cellspacing="0" cellpadding="0" style="margin:0">
+                    <tr>
 
+                        <th style="width:245px">商品信息</th>
+                        <th>单价</th>
+                        <th>数量</th>
+                        <th>实际应付款</th>
+                        <th>交易状态</th>
+                        <th style="width:100px;">操作</th>
+
+                    </tr>
+                    <tr>
+
+                        <td> <a href="#" class="link">铁三角CKR5</a> </td>
+                        <td class="alir">115.12</td>
+                        <td>11</td>
+                        <td rowspan="2" class="alir">1535.22</td>
+                        <td rowspan="2">待发货</td>
+                        <td rowspan="2"> <a href="cdd" class="btn2">删除</a> </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="link">铁三角CKR5</a></td>
+                        <td class="alir">115.12</td>
+                        <td>11</td>
+                    </tr>
+                </table>
+            </div>
            
+            <div class="orderinfo">2</div>
+            <div class="orderinfo">3</div>
+            <div class="orderinfo">4</div>
+            <div class="orderinfo">5</div>
 
         </div>
 

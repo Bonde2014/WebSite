@@ -29,8 +29,13 @@
 <body>
 	<div class="topnav mainbox">
 		<div class="breadcrumb">
-			<strong><a href="<%=root%>/init.do">首页</a>
-				&nbsp;&gt;&nbsp;<a href="<%=root%>/todayPrice.do">今日报价</a></strong>
+			<!-- <strong><a href="<%=root%>/init.do">首页</a>
+				&nbsp;&gt;&nbsp;<a href="<%=root%>/todayPrice.do">今日报价</a></strong>   -->
+			<span>
+                <a href="<%=root%>/init.do">首页</a>
+				&nbsp;&gt;&nbsp;<a href="<%=root%>/todayPrice.do">今日报价</a>
+            </span>
+			
 		</div>
 	</div>
 

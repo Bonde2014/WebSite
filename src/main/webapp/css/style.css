@@ -1,4 +1,4 @@
-body {
+﻿body {
   margin: 0px;
   padding: 0px;
   font-size: 12px;
@@ -127,6 +127,7 @@ textarea {
   font-family: 'Microsoft YaHei';
 }
 .logotop .searchinput .searchbtn {
+  cursor: pointer;
   color: #fff;
   width: 76px;
   float: left;
@@ -378,8 +379,11 @@ textarea {
 .prolist-box ul {
   display: block;
 }
+.prolist-box ul .bg {
+  background: #efffe9;
+}
 .prolist-box ul li {
-  margin: 5px 0;
+  margin: 15px 0;
   padding: 0 17px;
   width: 160px;
   float: left;
@@ -405,13 +409,13 @@ textarea {
 }
 .prolist-box ul li .p-price {
   width: 100%;
-  height: 15px;
-  font: 10px/15px Verdana;
+  height: 32px;
+  font: 20px/32px Verdana;
   text-align: center;
   color: #E4393C;
 }
 #pagination-digg {
-  width: 500px;
+  width: 400px;
   margin: 0 auto;
   display: block;
   padding: 15px 0;
@@ -467,6 +471,11 @@ textarea {
 }
 .topnav {
   padding: 10px 0;
+}
+.topnav span {
+  background: url(../images/indexhead_sprite.png) 10px -1457px no-repeat;
+  padding-left: 50px;
+  display: block;
 }
 .topnav strong {
   font-size: 18px;
@@ -986,6 +995,7 @@ textarea {
   width: 100px;
   display: block;
   float: left;
+  cursor: pointer;
 }
 .usermain .ordermenu li span {
   display: block;
