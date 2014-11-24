@@ -13,6 +13,17 @@
 		$(".adbox").turnPic();
 		//刷新商品分类导航区域
 		requestCatalogTree($('#catalog').val());
+		
+		$("#prolist li").hover(
+	            function () {
+	                $(this).addClass("bg");
+	            },
+	            function () {
+	                $(this).removeClass("bg");
+
+	            }
+	        )
+		
 	})
 </script>
 </head>
@@ -20,7 +31,7 @@
 	<div class="global_menu">
 		<div class="mainbox">
 			<div class="bigmenu">
-				<h1 onclick="pageLink('/init.do')">全部商品分类</h1>
+				<h1 style="cursor:pointer" onclick="pageLink('/init.do')">全部商品分类</h1>
 				<ul id="catalogtree">
 				</ul>
 			</div>
@@ -57,7 +68,7 @@
 	<div class="prolistmenu mainbox"></div>
 
 	<div class="mainbox prolist-box clearfix">
-		<ul>
+		<ul id="prolist">
 			<s:iterator value="pager.rows" id="row" status="s">
 				<li class="fore3">
 					<div class="p-name">
