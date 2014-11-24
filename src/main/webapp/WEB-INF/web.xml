@@ -1,8 +1,6 @@
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-	 
-	 <!--  
 	<filter>
 		<filter-name>sessionTimeoutFilter</filter-name>
 		<filter-class>cn.com.bonde.b2b.website.filter.SessionTimeoutFilter</filter-class>
@@ -14,7 +12,6 @@
 	<session-config>
 		<session-timeout>60</session-timeout>
 	</session-config>
-	-->
 	<context-param>   
        <param-name>log4jConfigLocation</param-name>   
        <param-value>classpath:log4j.properties</param-value>   
