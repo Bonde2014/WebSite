@@ -51,13 +51,13 @@ public class SessionTimeoutFilter implements Filter
 		// --------end------------
 		if (userInfo == null)
 		{
-			if (url.endsWith("doLogin.do") )
+			if (url.endsWith("goShopcart.do") )
 			{
-				filterChain.doFilter(servletRequest, servletResponse);
+				servletResponse.getWriter().write("<script type=\"text/javascript\">window.location='"+request.getContextPath()+"/pages/login.jsp';</script>");
 			}
 			else
 			{
-				servletResponse.getWriter().write("<script type=\"text/javascript\">window.location='"+request.getContextPath()+"/pages/login.jsp';</script>");
+				filterChain.doFilter(servletRequest, servletResponse);
 			}
 		}
 		else
