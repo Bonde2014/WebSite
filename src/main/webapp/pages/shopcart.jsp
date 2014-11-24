@@ -254,7 +254,17 @@ ul.pic_list li {
 				}
 				$(this).parent().parent().parent().find("td[name='spZj']").text(toDecimal2(parseFloat($(this).parent().parent().parent().find("td[name='spJg']").text())* $(this).val()));
 				countZje();
-			} });
+				$.ajax({
+
+		             type: "POST",
+		             url : root+"/doUpdateSl.do?"+Math.random(),// 请求的action路径
+		     		 data : {
+		     			"qxDlxx.dllx":dllx,
+		     			"qxDlxx.dlm" : $.trim($('#name_'+dllx).val()),
+		     			"qxDlxx.dlkl" : $.trim($('#password_'+dllx).val())
+		     		}
+			} )；
+		});
 
 			function deleteSp(obj)
 			{
@@ -301,22 +311,7 @@ ul.pic_list li {
 				}); 
 			})
 		</script>
-
-
-
 	</div>
-
-
-
-
-
-
-
-
-
-
-
-
 	<div class="footcontent mainbox clearfix">
 		<ul class="icon1">
 			<li class="title">购物指南</li>
