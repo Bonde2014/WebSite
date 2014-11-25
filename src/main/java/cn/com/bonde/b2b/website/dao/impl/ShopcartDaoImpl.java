@@ -27,21 +27,35 @@ public class ShopcartDaoImpl extends BaseDBDaoImpl implements IShopcartDao
 	 * @return
 	 * @throws MyException
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public List<Map<String,Object>> getEntityList(String khDm) throws Exception
 	{
 		StringBuilder sbSql = new StringBuilder();
 		sbSql.append("SELECT ");
-		sbSql.append("  KH_DM, ");
-		sbSql.append("  SP_DM, ");
-		sbSql.append("  SP_JG, ");
-		sbSql.append("  SP_JG_CJ, ");
-		sbSql.append("  SP_SL, ");
-		sbSql.append("  SP_ZJ, ");
-		sbSql.append("  TJSJ ");
+		sbSql.append("  T.KH_DM, ");
+		sbSql.append("  S.SPMC, ");
+		sbSql.append("  T.SP_DM, ");
+		sbSql.append("  T.SP_SL, ");
+		sbSql.append("  T.TJSJ, ");
+		sbSql.append("  D.JG1*T.SP_SL AS ZJ1, ");
+		sbSql.append("  D.JG2*T.SP_SL AS ZJ2, ");
+		sbSql.append("  D.JG3*T.SP_SL AS ZJ3, ");
+		sbSql.append("  D.JG0*T.SP_SL AS ZJ0, ");
+		sbSql.append("  D.JG1, ");
+		sbSql.append("  D.JG2, ");
+		sbSql.append("  D.JG3, ");
+		sbSql.append("  D.JG0, ");
+		sbSql.append("  D.KSSL, ");
+		sbSql.append("  D.BJSJ, ");
+		sbSql.append("  D.BJRY_DM, ");
+		sbSql.append("  D.SJBZ, ");
+		sbSql.append("  D.BJBZ ");
 		sbSql.append("FROM ");
-		sbSql.append("  XS_GWC ");
+		sbSql.append("  XS_GWC T ");
+		sbSql.append("LEFT JOIN XS_FJBJ D ");
+		sbSql.append("  ON T.SP_DM=D.SP_DM ");
+		sbSql.append("LEFT JOIN SP_SPXX S ");
+		sbSql.append("  ON T.SP_DM=S.SP_DM ");
 		sbSql.append("WHERE ");
 		sbSql.append("  KH_DM=:KHDM ");
 		sbSql.append("ORDER BY ");

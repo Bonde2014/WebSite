@@ -1,10 +1,12 @@
 package cn.com.bonde.b2b.website.entity;
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 import java.sql.Timestamp;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -19,10 +21,10 @@ public class XsFjbj implements java.io.Serializable
 	// Fields
 	private static final long serialVersionUID = 1461965188817873018L;
 	private Long spDm;
-	private Long jg1;
-	private Long jg2;
-	private Long jg3;
-	private Long jg0;
+	private Double jg1;
+	private Double jg2;
+	private Double jg3;
+	private Double jg0;
 	private Integer kssl;
 	private Timestamp bjsj;
 	private Long bjryDm;
@@ -36,19 +38,6 @@ public class XsFjbj implements java.io.Serializable
 	{
 	}
 
-	/** full constructor */
-	public XsFjbj(Long jg1, Long jg2, Long jg3, Long jg0, Integer kssl, Timestamp bjsj, Long bjryDm, String sjbz, String bjbz)
-	{
-		this.jg1 = jg1;
-		this.jg2 = jg2;
-		this.jg3 = jg3;
-		this.jg0 = jg0;
-		this.kssl = kssl;
-		this.bjsj = bjsj;
-		this.bjryDm = bjryDm;
-		this.sjbz = sjbz;
-		this.bjbz = bjbz;
-	}
 
 	// Property accessors
 	@Id
@@ -64,46 +53,46 @@ public class XsFjbj implements java.io.Serializable
 		this.spDm = spDm;
 	}
 
-	@Column(name = "jg1", precision = 10, scale = 0)
-	public Long getJg1()
+	@Column(name = "jg1", precision = 10, scale = 2)
+	public Double getJg1()
 	{
 		return this.jg1;
 	}
 
-	public void setJg1(Long jg1)
+	public void setJg1(Double jg1)
 	{
 		this.jg1 = jg1;
 	}
 
-	@Column(name = "jg2", precision = 10, scale = 0)
-	public Long getJg2()
+	@Column(name = "jg2", precision = 10, scale = 2)
+	public Double getJg2()
 	{
 		return this.jg2;
 	}
 
-	public void setJg2(Long jg2)
+	public void setJg2(Double jg2)
 	{
 		this.jg2 = jg2;
 	}
 
-	@Column(name = "jg3", precision = 10, scale = 0)
-	public Long getJg3()
+	@Column(name = "jg3", precision = 10, scale = 2)
+	public Double getJg3()
 	{
 		return this.jg3;
 	}
 
-	public void setJg3(Long jg3)
+	public void setJg3(Double jg3)
 	{
 		this.jg3 = jg3;
 	}
 
-	@Column(name = "jg0", precision = 10, scale = 0)
-	public Long getJg0()
+	@Column(name = "jg0", precision = 10, scale = 2)
+	public Double getJg0()
 	{
 		return this.jg0;
 	}
 
-	public void setJg0(Long jg0)
+	public void setJg0(Double jg0)
 	{
 		this.jg0 = jg0;
 	}

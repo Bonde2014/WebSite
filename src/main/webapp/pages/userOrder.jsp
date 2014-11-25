@@ -9,9 +9,8 @@
 <body>
 	<div class="topnav mainbox">
 		<div class="breadcrumb">
-			<strong><a href="<%=root%>/init.do">首页</a> &nbsp;&gt;&nbsp;
-			<a href="<%=root%>/userCenter.do">用户中心</a></strong>
-
+			<span><a href="<%=root%>/init.do">首页</a>
+				&nbsp;&gt;&nbsp;<a href="<%=root%>/userCenter.action">用户中心</a></span>
 		</div>
 	</div>
 	<div class="mainbox usermain clearfix">
@@ -61,10 +60,10 @@
 		<div class="user-left">
 			<h1>用户中心</h1>
 			<ul>
-				<li><a href="<%=root%>/userCenter.do">个人主页</a></li>
+				<li><a href="<%=root%>/userCenter.action">个人主页</a></li>
 				<li><a href="#">修改密码</a></li>
-				<li><a href="<%=root%>/goShopcart.do">我的购物车</a></li>
-				<li><a href="<%=root%>/userOrder.do" class="current">我的订单</a></li>
+				<li><a href="<%=root%>/goShopcart.action">我的购物车</a></li>
+				<li><a href="<%=root%>/userOrder.action" class="current">我的订单</a></li>
 				<li><a href="#">汇款方式</a></li>
 			</ul>
 		</div>

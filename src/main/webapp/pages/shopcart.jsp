@@ -10,15 +10,10 @@
 <body>
 	<div class="topnav mainbox">
 		<div class="breadcrumb">
-			<strong><a href="<%=root%>/init.do">首页</a>
-		&nbsp;&gt;&nbsp;<a href="<%=root%>/userCenter.do">用户中心</a></strong>
+			<span><a href="<%=root%>/init.do">首页</a>
+				&nbsp;&gt;&nbsp;<a href="<%=root%>/userCenter.action">用户中心</a></span>
 		</div>
 	</div>
-
-
-
-
-
 
 	<div class="mainbox usermain clearfix">
 		<div class="user-right">
@@ -36,20 +31,20 @@
 					<th style="width:100px;">操作</th>
 
 				</tr>
-				<c:forEach items="${shopcartList }" var="item">
+				<s:iterator value="shopcartList" id="item" status="s">
 					<tr>
 						<td style="text-align: center;"><input type="checkbox"
 							name="checkbox" value=" " /></td>
-						<td style="text-align: center;"><a href="#" class="link">${item.SP_JG}</a></td>
-						<td style="text-align: center;" class="alir" name="spJg">${item.SP_JG}</td>
+						<td style="text-align: center;"><a href="<%=root%>/searchProduct.do?productId=<s:property value='#item.SP_DM'/>" class="link"><s:property value="#item.SPMC"/></a></td>
+						<td style="text-align: center;" class="alir" name="spJg"><s:property value="#item['JG'+#session.session_khxx.qdsJb]" /></td>
 						<td style="text-align: center;"><input name="spSl"
 							class="easyui-numberspinner" style="width:60px;"
-							value="${item.SP_SL }" /></td>
-						<td class="alir" style="text-align: center;" name="spZj">${item.SP_ZJ}</td>
+							value="<s:property value='#item.SP_SL'/>" /></td>
+						<td class="alir" style="text-align: center;" name="spZj"><s:property value="#item['ZJ'+#session.session_khxx.qdsJb]" /></td>
 						<td style="text-align: center;"><a href="#" class="btn2" onclick="deleteByIndex(this)">删除</a>
 						</td>
 					</tr>
-				</c:forEach>
+				</s:iterator>
 			</table>
 			<div class="total">
 				<a href="<%=root %>/pages/allorder.html" class="btn3" >去结算</a> <span>合计（不含运费）：<font color="red">¥</font><font id="zje" color="red">0</font></span>
@@ -58,10 +53,10 @@
 		<div class="user-left">
 			<h1>帐户中心</h1>
 			<ul>
-				<li><a href="<%=root%>/userCenter.do">个人主页</a></li>
-				 <li><a href="<%=root%>/addToShopCart.do?spdm='1'">修改密码</a> </li>
-				<li><a href="<%=root%>/goShopcart.do" class="current">我的购物车</a></li>
-				<li><a href="<%=root%>/userOrder.do" >我的订单</a></li>
+				<li><a href="<%=root%>/userCenter.action">个人主页</a></li>
+				 <li><a href="#">修改密码</a> </li>
+				<li><a href="<%=root%>/goShopcart.action" class="current">我的购物车</a></li>
+				<li><a href="<%=root%>/userOrder.action" >我的订单</a></li>
 				<li><a href="#">汇款方式</a></li>
 			</ul>
 		</div>
@@ -97,7 +92,7 @@
 			/* 	$.ajax({
 
 		             type: "POST",
-		             url : root+"/doUpdateSl.do?"+Math.random(),// 请求的action路径
+		             url : root+"/doUpdateSl.action?"+Math.random(),// 请求的action路径
 		     		 data : {
 		     			"qxDlxx.dllx":dllx,
 		     			"qxDlxx.dlm" : $.trim($('#name_'+dllx).val()),
