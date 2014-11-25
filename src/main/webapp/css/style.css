@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-﻿﻿body {
-=======
-body {
->>>>>>> branch 'master' of https://github.com/Bonde2014/WebSite.git
+﻿body {
   margin: 0px;
   padding: 0px;
   font-size: 12px;
@@ -898,11 +894,6 @@ textarea {
 .usermain .user-right .btn1:hover {
   background: #4e9f16;
 }
-.usermain .user-right table {
-  border: 1px solid #ccc;
-  border-collapse: collapse;
-  margin: 15px 0 0 0;
-}
 .usermain .user-right table th {
   padding: 10px;
   font-size: 14px;
@@ -913,11 +904,6 @@ textarea {
 }
 .usermain .user-right .alir {
   text-align: right;
-}
-.usermain .user-right table,
-.usermain .user-right th,
-.usermain .user-right td {
-  border: 1px solid #ccc;
 }
 .usermain .user-right a.link {
   color: #3da200;

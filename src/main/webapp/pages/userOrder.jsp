@@ -9,8 +9,13 @@
 <body>
 	<div class="topnav mainbox">
 		<div class="breadcrumb">
+<<<<<<< HEAD
 			<strong><a href="<%=root%>/init.do">首页</a>
 		&nbsp;&gt;&nbsp;<a href="<%=root%>/userCenter.do">用户中心</a></strong>
+=======
+			<strong><a href="<%=root%>/init.do">首页</a>
+				&nbsp;&gt;&nbsp;<a href="<%=root%>/userCenter.action">用户中心</a></strong>
+>>>>>>> branch 'master' of https://github.com/Bonde2014/WebSite.git
 		</div>
 	</div>
 <div class="mainbox usermain clearfix">
