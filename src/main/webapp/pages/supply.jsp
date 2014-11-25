@@ -46,17 +46,12 @@
 				<li>特价专区</li>
 				<li>自助装机</li>
 			</ul>
-
 		</div>
 	</div>
 
-
-
     <div class="topnav mainbox">
         <div class="breadcrumb">
-            <span><a href="http://channel.jd.com/electronic.html">家用电器</a>
-                &nbsp;&gt;&nbsp;<a href="http://channel.jd.com/737-794.html">大 家 电</a>&nbsp;&gt;&nbsp;
-                <a href="http://list.jd.com/list.html?cat=737,794,870">空调</a>
+            <span>供货商&nbsp;&gt;&nbsp;货架管理&nbsp;&gt;&nbsp;添加商品
             </span>
         </div>
     </div>
@@ -134,9 +129,9 @@
 
 
         <div class="user-left">
-            <h1>帐户中心</h1>
+            <h1>供货商</h1>
             <ul>
-                <li><a href="#">个人主页</a>    </li>
+                <li><a href="<%=root%>/pages/supplyCenter.jsp">用户中心</a>    </li>
                 <li><a href="<%=root%>/supplyManageInit.do" class="current">我的货架</a> </li>
 
             </ul>

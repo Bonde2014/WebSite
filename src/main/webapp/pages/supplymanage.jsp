@@ -46,11 +46,8 @@
 				<li>特价专区</li>
 				<li>自助装机</li>
 			</ul>
-
 		</div>
 	</div>
-
-
 
     <div class="topnav mainbox">
         <div class="breadcrumb">
@@ -118,9 +115,9 @@
         </div>
 
         <div class="user-left">
-            <h1>帐户中心</h1>
+            <h1>供货商</h1>
             <ul>
-                <li><a href="#">个人主页</a>    </li>
+                <li><a href="<%=root%>/pages/supplyCenter.jsp">用户中心</a>    </li>
                 <li><a href="<%=root%>/supplyManageInit.do" class="current">我的货架</a> </li>
             </ul>
         </div>
