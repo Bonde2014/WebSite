@@ -15,6 +15,18 @@
 			bindevent : "click"
 		})
 	})
+	
+	function addShopCart(){
+		
+	}
+	
+	function minus(){
+		
+	}
+	
+	function plus(){
+		
+	}
 </script>
 </head>
 <body>
@@ -37,8 +49,6 @@
 				<h1><s:property value="productMap.spmc"/></h1>
 				<div id="sku_adwords"><s:property value="productMap.tzms"/></div>
 			</div>
-			<!--name end-->
-
 			<div class="clearfix">
 				<ul class="summary">
 				    <li><strong>品牌：</strong><span><s:property value="productMap.sppp_mc"/></span></li>
@@ -48,12 +58,16 @@
 				<ul class="edit">
 					<li>选择颜色：</li>
 					<li>选择版本：</li>
-					<li>选择数量：<span class="minus"></span>
-					<input type="type" name="name" value=" " /> <span class="plus"></span>
-						库存：<s:property value="productMap.kssl"/></li>
+					<li>选择数量：
+					<span class="minus"></span>
+						<input type="text" name="spsl" id="spsl"/>
+						<input type="hidden" name="spDm" id="spDm" value="<s:property value='productMap.sp_dm'/>">
+					<span class="plus"></span>
+					库存：<s:property value="productMap.kssl"/>
+					</li>
 				</ul>
 			</div>
-			<div class="addin"></div>
+			<div class="addin" onclick="addShopCart()"></div>
 			<div class="preview">
 				<div class="imgbig">
 					<img data-img="1" width="350" height="350"
