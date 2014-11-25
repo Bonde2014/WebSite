@@ -1,9 +1,10 @@
 package cn.com.bonde.b2b.website.entity;
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -24,7 +25,7 @@ public class SpSpxx implements java.io.Serializable
 	private String spmc;
 	private String tzms;
 	private String jldw;
-	private Long scjg;
+	private Double scjg;
 
 	// Constructors
 
@@ -33,17 +34,6 @@ public class SpSpxx implements java.io.Serializable
 	{
 	}
 
-	/** full constructor */
-	public SpSpxx(Long spflDm, Long spppDm, String spxh, String spmc, String tzms, String jldw, Long scjg)
-	{
-		this.spflDm = spflDm;
-		this.spppDm = spppDm;
-		this.spxh = spxh;
-		this.spmc = spmc;
-		this.tzms = tzms;
-		this.jldw = jldw;
-		this.scjg = scjg;
-	}
 
 	// Property accessors
 	@Id
@@ -125,13 +115,13 @@ public class SpSpxx implements java.io.Serializable
 		this.jldw = jldw;
 	}
 
-	@Column(name = "scjg", precision = 10, scale = 0)
-	public Long getScjg()
+	@Column(name = "scjg", precision = 10, scale = 2)
+	public Double getScjg()
 	{
 		return this.scjg;
 	}
 
-	public void setScjg(Long scjg)
+	public void setScjg(Double scjg)
 	{
 		this.scjg = scjg;
 	}

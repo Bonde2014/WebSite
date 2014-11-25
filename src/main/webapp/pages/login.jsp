@@ -54,13 +54,13 @@ $(function () {
                 <div class="forms" id="form1">
                     <h4>用户名</h4>
                     <div class="inputs">
-                        <input type="text" name="name_1" id="name_1" class="easyui-validatebox" required="true" maxlength="30"/>
+                        <input type="text" name="name_1" id="name_1" class="easyui-validatebox"  maxlength="30"/>
                         <div class="username"></div>
                     </div>
 
                     <h4>密码</h4>
                     <div class="inputs">
-                         <input type="password" name="password_1" id="password_1" class="easyui-validatebox" required="true" maxlength="30"/>
+                         <input type="password" name="password_1" id="password_1" class="easyui-validatebox" maxlength="30"/>
                         <div class="password"></div>
                     </div>
 
@@ -76,13 +76,13 @@ $(function () {
                 <div class="forms" id="form2" style="display:none">
                     <h4>用户名</h4>
                     <div class="inputs">
-                        <input type="text" name="name_2" id="name_2" class="easyui-validatebox" required="true" maxlength="30"/>
+                        <input type="text" name="name_2" id="name_2" class="easyui-validatebox"  maxlength="30"/>
                         <div class="username"></div>
                     </div>
 
                     <h4>密码</h4>
                     <div class="inputs">
-                        <input type="password" name="password_2" id="password_2" class="easyui-validatebox" required="true" maxlength="30"/>
+                        <input type="password" name="password_2" id="password_2" class="easyui-validatebox" maxlength="30"/>
                         <div class="password"></div> 
                     </div>
 

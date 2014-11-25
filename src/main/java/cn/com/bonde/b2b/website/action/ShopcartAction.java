@@ -19,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import cn.com.bonde.b2b.website.service.IShopcartService;
 import cn.com.bonde.b2b.website.util.DataSwitch;
 import cn.com.bonde.b2b.website.util.MyException;
+import cn.com.bonde.b2b.website.util.WriteJsonToPage;
 
 /**
  * @author Administrator
@@ -65,6 +66,20 @@ public class ShopcartAction extends ProjectBaseAction
 			throw new MyException(e, this.getClass(), "");
 		}
 		return SUCCESS;
+	}
+	
+	@Action(value = "addToShopCart")
+	public void addToShopCart()throws MyException{
+		try
+		{
+			String spdm=this.getParameter("spdm");
+			boolean msg= shopcartService.addToShopCart( DataSwitch.convertObjectToLong(spdm),this.getKhxx().getKhDm());
+           WriteJsonToPage.WriteJson(msg);
+		}
+		catch (Exception e)
+		{
+			throw new MyException(e, this.getClass(), "");
+		}
 	}
 
 }

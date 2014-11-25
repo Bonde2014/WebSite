@@ -52,8 +52,8 @@
             <ul>
                 <li><a href="<%=root%>/userCenter.do" class="current">个人主页</a></li>
                 <li><a href="#">修改密码</a> </li>
-                <li><a href="#">我的购物车</a> </li>
-                <li><a href="<%=root%>/userOrder.do">我的订单</a> </li>
+                <li><a href="<%=root%>/goShopcart.do" >我的购物车</a> </li>
+                <li><a href="<%=root%>/userOrder.do">我的订单</a></li>
                 <li><a href="#">汇款方式</a> </li>
             </ul>
         </div>
