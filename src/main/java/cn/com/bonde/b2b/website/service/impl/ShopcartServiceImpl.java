@@ -9,10 +9,11 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
 
 import cn.com.bonde.b2b.website.dao.IShopcartDao;
-import cn.com.bonde.b2b.website.entity.SpSpxx;
+import cn.com.bonde.b2b.website.entity.QxKhxx;
 import cn.com.bonde.b2b.website.entity.XsGwc;
 import cn.com.bonde.b2b.website.entity.XsGwcId;
 import cn.com.bonde.b2b.website.service.IShopcartService;
@@ -87,28 +88,24 @@ public class ShopcartServiceImpl implements IShopcartService
 		return shopcartDao.getEntityList(khDm);
 	}
 
-	public boolean addToShopCart(Long spdm, Long khdm) throws Exception
+	public boolean addToShopCart(Long spdm, Integer spsl,QxKhxx khxx) throws Exception
 	{
 		boolean flag=false;
-		SpSpxx spxx = shopcartDao.getEntityByPrimaryId(SpSpxx.class, spdm);
 		XsGwcId id = new XsGwcId();
 		id.setSpDm(spdm);
-		id.setKhDm(khdm);
+		id.setKhDm(khxx.getKhDm());
 		XsGwc xsGwc = shopcartDao.getEntityByPrimaryId(XsGwc.class, id);
 		if (xsGwc != null)
 		{
-			xsGwc.setSpSl(xsGwc.getSpSl() + 1);
-			xsGwc.setSpZj(xsGwc.getSpZj() + xsGwc.getSpJg());
+			xsGwc.setSpSl(xsGwc.getSpSl() + spsl);
+			xsGwc.setTjsj(new Timestamp(DataSwitch.GetPresentTime().getTime()));
 			flag=shopcartDao.updateEntiy(xsGwc);
 		}
 		else
 		{
 			xsGwc = new XsGwc();
 			xsGwc.setId(id);
-			xsGwc.setSpJg(spxx.getScjg());
-			xsGwc.setSpJgCj(spxx.getScjg());
-			xsGwc.setSpSl(1);
-			xsGwc.setSpZj(spxx.getScjg());
+			xsGwc.setSpSl(spsl);
 			xsGwc.setTjsj(new Timestamp(DataSwitch.GetPresentTime().getTime()));
 			flag=shopcartDao.addEntity(xsGwc);
 		}

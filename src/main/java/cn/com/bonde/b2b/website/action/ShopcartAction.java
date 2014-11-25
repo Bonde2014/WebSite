@@ -73,7 +73,8 @@ public class ShopcartAction extends ProjectBaseAction
 		try
 		{
 			String spdm=this.getParameter("spdm");
-			boolean msg= shopcartService.addToShopCart( DataSwitch.convertObjectToLong(spdm),this.getKhxx().getKhDm());
+			String spsl=this.getParameter("spsl");
+			boolean msg= shopcartService.addToShopCart( DataSwitch.convertObjectToLong(spdm),DataSwitch.convertObjectToInteger(spsl),this.getKhxx());
            WriteJsonToPage.WriteJson(msg);
 		}
 		catch (Exception e)
