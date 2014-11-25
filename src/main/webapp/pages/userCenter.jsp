@@ -8,10 +8,25 @@
 <title>克莱姆购物平台</title>
 </head>
 <body>
+<div class="global_menu">
+		<div class="mainbox">
+			<div class="bigmenu">
+				<h1 style="cursor:pointer" onclick="pageLink('/init.do')">全部商品分类</h1>
+				<ul id="catalogtree">
+				</ul>
+			</div>
+			<ul class="topmenu">
+				<li onclick="pageLink('/todayPrice.action')">今日报价</li>
+				<li onclick="pageLink('/init.do')">首页</li>
+				<li>特价专区</li>
+				<li>自助装机</li>
+			</ul>
+		</div>
+	</div>
 	<div class="topnav mainbox">
 		<div class="breadcrumb">
-			<strong><a href="<%=root%>/init.do">首页</a>
-				&nbsp;&gt;&nbsp;<a href="<%=root%>/userCenter.action">用户中心</a></strong>
+			<span><a href="<%=root%>/init.do">首页</a>
+				&nbsp;&gt;&nbsp;<a href="<%=root%>/userCenter.action">用户中心</a></span>
 		</div>
 	</div>
 	<div class="mainbox usermain clearfix">
