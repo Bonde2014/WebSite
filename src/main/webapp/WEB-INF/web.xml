@@ -17,6 +17,15 @@
        <param-value>classpath:log4j.properties</param-value>   
     </context-param>
     
+    <filter>
+     <filter-name>HtmlEscapeFilter</filter-name>
+     <filter-class>cn.com.bonde.b2b.website.filter.HtmlEscapeFilter</filter-class>
+   </filter>
+    <filter-mapping>
+     <filter-name>HtmlEscapeFilter</filter-name>
+     <url-pattern>*.do</url-pattern>
+    </filter-mapping>
+    
     <listener>  
         <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>  
     </listener>
