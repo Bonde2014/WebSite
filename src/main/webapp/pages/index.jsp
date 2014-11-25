@@ -6,43 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>克莱姆购物平台</title>
-<style>
-ul.pic_list {
-	width: 790px;
-	height: 300px;
-	position: relative
-}
 
-ul.pic_list li {
-	float: left;
-	width: 100%;
-	height: 300px;
-	position: absolute;
-	top: 0px;
-	left: 0px
-}
-
-.title_nav {
-	float: left;
-	width: 100%;
-	height: 52px;
-	position: absolute;
-	bottom: -10px;
-	left: 0px
-}
-
-.title_nav a {
-	float: left;
-	display: inline-block;
-	width: 79px;
-	margin-right: 1px;
-	background: #444;
-	padding: 5px 15px;
-	text-align: center;
-	color: #fff;
-	text-decoration: none;
-}
-</style>
 <script type="text/javascript">
 
 	$(function() {
