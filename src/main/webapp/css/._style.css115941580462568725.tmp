@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-﻿﻿body {
-=======
-body {
->>>>>>> branch 'master' of https://github.com/Bonde2014/WebSite.git
+﻿body {
   margin: 0px;
   padding: 0px;
   font-size: 12px;

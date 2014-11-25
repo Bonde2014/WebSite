@@ -72,10 +72,10 @@ public class UserCenterAction extends ProjectBaseAction
 		this.mapList = mapList;
 	}
 
-	@Action(value="userCenter")
-    public String init(){
-        return "userCenter";
-    }
+	 @Action(value="userCenter")
+	    public String init(){
+	        return "userCenter";
+	    }
     
     @Action(value="userOrder")
     public String userOrder() throws Exception{

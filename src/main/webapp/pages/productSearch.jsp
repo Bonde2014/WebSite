@@ -12,8 +12,8 @@
 <body>
 	<div class="topnav mainbox">
 		<div class="breadcrumb">
-			<strong><a href="<%=root%>/init.do">首页</a>
-				&nbsp;&gt;&nbsp;<a href="javascript:void(0)" onclick="productSearch()">产品搜索</a></strong>
+			<span><a href="<%=root%>/init.do">首页</a>
+				&nbsp;&gt;&nbsp;<a href="javascript:void(0)" onclick="productSearch()">产品搜索</a></span>
 		</div>
 	</div>
 	<div class="prolistmenu mainbox"></div>
