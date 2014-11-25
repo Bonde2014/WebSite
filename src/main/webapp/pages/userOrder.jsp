@@ -10,7 +10,7 @@
 	<div class="topnav mainbox">
 		<div class="breadcrumb">
 			<strong><a href="<%=root%>/init.do">首页</a>
-				&nbsp;&gt;&nbsp;<a href="<%=root%>/userCenter.do">用户中心</a></strong>
+				&nbsp;&gt;&nbsp;<a href="<%=root%>/userCenter.action">用户中心</a></strong>
 		</div>
 	</div>
 <div class="mainbox usermain clearfix">
