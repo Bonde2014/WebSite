@@ -33,7 +33,7 @@
 				&nbsp;&gt;&nbsp;<a href="<%=root%>/todayPrice.do">今日报价</a></strong>   -->
 			<span>
                 <a href="<%=root%>/init.do">首页</a>
-				&nbsp;&gt;&nbsp;<a href="<%=root%>/todayPrice.do">今日报价</a>
+				&nbsp;&gt;&nbsp;<a href="<%=root%>/todayPrice.action">今日报价</a>
             </span>
 			
 		</div>

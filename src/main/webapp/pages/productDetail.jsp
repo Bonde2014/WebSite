@@ -20,14 +20,14 @@
 <body>
 	<div class="topnav mainbox">
 		<div class="breadcrumb">
-			<strong>
+			<span>
 				<a href="<%=root%>/init.do">首页</a>
 				<s:iterator value="spflList">
 					&nbsp;&gt;&nbsp;<a href="javascript:void(0)" onclick="catalogSearch(<s:property value='spflDm'/>)" >
 						<s:property value="spflMc"/>
 					</a>
 				</s:iterator>
-			</strong>
+			</span>
 		</div>
 	</div>
 
