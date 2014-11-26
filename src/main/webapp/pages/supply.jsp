@@ -33,25 +33,9 @@
 
 <body>
 
-	<div class="global_menu">
-		<div class="mainbox">
-			<div class="bigmenu">
-				<h1 style="cursor:pointer" onclick="pageLink('/init.do')">全部商品分类</h1>
-				<ul id="catalogtree">
-				</ul>
-			</div>
-			<ul class="topmenu">
-				<li onclick="pageLink('/todayPrice.do')">今日报价</li>
-				<li onclick="pageLink('/init.do')">首页</li>
-				<li>特价专区</li>
-				<li>自助装机</li>
-			</ul>
-		</div>
-	</div>
-
     <div class="topnav mainbox">
         <div class="breadcrumb">
-            <span>供货商&nbsp;&gt;&nbsp;货架管理&nbsp;&gt;&nbsp;添加商品
+            <span>首页&nbsp;&gt;&nbsp;供货商
             </span>
         </div>
     </div>
@@ -131,8 +115,8 @@
         <div class="user-left">
             <h1>供货商</h1>
             <ul>
-                <li><a href="<%=root%>/pages/supplyCenter.jsp">用户中心</a>    </li>
-                <li><a href="<%=root%>/supplyManageInit.do" class="current">我的货架</a> </li>
+                <li><a href="<%=root%>/supplyCenter.action">用户中心</a>    </li>
+                <li><a href="<%=root%>/supplyManageInit.action" class="current">我的货架</a> </li>
 
             </ul>
         </div>

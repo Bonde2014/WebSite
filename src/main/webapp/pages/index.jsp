@@ -20,21 +20,6 @@
 </script>
 </head>
 <body>
-	<div class="global_menu">
-		<div class="mainbox">
-			<div class="bigmenu">
-				<h1 style="cursor:pointer" onclick="pageLink('/init.do')">全部商品分类</h1>
-				<ul id="catalogtree">
-				</ul>
-			</div>
-			<ul class="topmenu">
-				<li onclick="pageLink('/todayPrice.action')">今日报价</li>
-				<li onclick="pageLink('/init.do')">首页</li>
-				<li>特价专区</li>
-				<li>自助装机</li>
-			</ul>
-		</div>
-	</div>
 
 	<div class="mainbox">
 		<div class="adbox">

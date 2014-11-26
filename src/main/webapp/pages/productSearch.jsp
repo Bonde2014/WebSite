@@ -8,6 +8,20 @@
 <link rel="stylesheet" type="text/css" href="<%=root%>/css/pager.css">
 <script type="text/javascript" src="<%=root%>/scripts/pager.js"></script>
 <title>克莱姆购物平台</title>
+<script type="text/javascript">
+	$(function() {
+		$("#prolist li").hover(
+	            function () {
+	                $(this).addClass("bg");
+	            },
+	            function () {
+	                $(this).removeClass("bg");
+
+	            }
+	        )
+		
+	})
+</script>
 </head>
 <body>
 	<div class="topnav mainbox">
@@ -16,19 +30,20 @@
 				&nbsp;&gt;&nbsp;<a href="javascript:void(0)" onclick="productSearch()">产品搜索</a></span>
 		</div>
 	</div>
-	<div class="prolistmenu mainbox"></div>
+	<!--  <div class="prolistmenu mainbox"></div>   隐藏这个空白的分割行 -->
 	<div class="mainbox prolist-box clearfix">
-		<ul>
+		<ul id="prolist">
 			<s:iterator value="pager.rows" id="row" status="s">
 				<li class="fore3">
 					<div class="p-name">
 						<a title="<s:property value='#row.spmc'/>" href="javascript:void(0)" onclick="productDetail(<s:property value='#row.sp_dm'/>)"><s:property value='#row.spmc'/></a>
 					</div>
 					<div class="p-img">
-						<a target="_blank" title="<s:property value='#row.spmc'/>" href="javascript:void(0)" onclick="productDetail(<s:property value='#row.sp_dm'/>" > 
+						<a title="<s:property value='#row.spmc'/>" href="javascript:void(0)" onclick="productDetail(<s:property value='#row.sp_dm'/>)" > 
 						<img width="160" height="160" data-src="done"  data-img="1"
 							src="http://img10.360buyimg.com/n2/jfs/t148/126/2809753935/89809/72561fe3/53d9f4c2N062a10af.jpg"
-							class="" data-lazy-img="done" data-lazyload="done">
+							class="" data-lazy-img="done" data-lazyload="done"
+							 />
 						</a>
 					</div>
 					<div class="p-price">
