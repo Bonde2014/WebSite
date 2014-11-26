@@ -3,9 +3,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
-    <link href="../csi/css/style.css" rel="stylesheet" />
-    <script src="../csi/script/jquery.js"></script>
-    <script src="../csi/script/comm.js"></script>
+    <link href="../css/style.css" rel="stylesheet" />
+    <script src="../scripts/jquery.js"></script>
+    <script src="../scripts/comm.js"></script>
     <style>
     ul.pic_list{width:790px;height:300px;position:relative}
     ul.pic_list li{float:left;width:100%;height:300px;position:absolute;top:0px;left:0px}
@@ -14,7 +14,9 @@
     .title_nav a.select{background:#09C url(../images/sanj.gif) no-repeat center 47px}
     </style>
     <script type="text/javascript">
-    
+    $(function () {
+        $(".adbox").turnPic();
+    })
     </script>
 </head>
 
@@ -124,44 +126,28 @@
     <div class="mainbox usermain clearfix">
         <div class="user-right">
 
-            <div class="shiptitle">
-                <h3>请选择配送方式：</h3>
-                <select>
-                    <option value="volvo">顺丰快递</option>
-                    <option value="saab">Saab</option>
-                    <option value="opel">Opel</option>
-                    <option value="audi">Audi</option>
-                </select>
-            </div>
-            <div class="shiptitle">
-                <h3>请确认收货人信息：</h3>
-                <div class="useraddr"> <input type="radio" checked="checked" name="name" value=" " /> 浙江省杭州市滨江区南环路3738号税友大厦（王剑锋）18258841204 <input type="button" name="name" class="btn4" value="修改" /> </div>
-            </div>
-            <div class="shiptitle">
-                <h3>请确认订单信息：</h3>
-                <table width="100%" border="1" cellspacing="0" cellpadding="0"  style="background:#fff;">
-                    <tr>
+            <a href="sdf" class="btn1">移除</a>
 
-                        <th style="width:245px">商品信息</th>
-                        <th>单价</th>
-                        <th>数量</th>
-                        <th>实际应付款</th>
-                        <th>交易状态</th>
-                        <th style="width:100px;">操作</th>
+            <table width="100%" border="1" cellspacing="0" cellpadding="0">
+                <tr>
+                    <th style="width:45px"> <input type="checkbox" name="name" value=" " /> </th>
+                    <th style="width:245px">商品信息</th>
+                    <th>单价</th>
+                    <th>数量</th>
+                    <th>金额 (元)</th>
+                    <th style="width:100px;">操作</th>
 
-                    </tr>
-                    <tr>
-
-                        <td> <a href="#" class="link">铁三角CKR5</a> </td>
-                        <td class="alir">115.12</td>
-                        <td>11</td>
-                        <td class="alir">1535.22</td>
-                        <td>待发货</td>
-                        <td> <a href="cdd" class="btn2">删除</a> </td>
-                    </tr>
-                </table>
-            </div>
-           
+                </tr>
+                <tr>
+                    <td ><input type="checkbox" name="name" value=" " /></td>
+                    <td > <a href="#" class="link">铁三角CKR5</a> </td>
+                    <td class="alir">115.12</td>
+                    <td>11</td>
+                    <td class="alir">1535.22</td>
+                    <td> <a href="cdd" class="btn2">删除</a> </td>
+                </tr>
+            </table>
+            <div class="total">    <a href="cdd" class="btn3">合计</a>  <span>合计（不含运费）：580</span> </div>
 
         </div>
 
