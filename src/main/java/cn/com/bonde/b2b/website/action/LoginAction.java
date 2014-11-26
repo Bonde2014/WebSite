@@ -80,19 +80,6 @@ public class LoginAction extends ProjectBaseAction
 		}
 	}
 
-	public String update() throws Exception
-	{
-		try
-		{
-			loginService.update(qxDlxx);
-			return "";
-		}
-		catch (Exception e)
-		{
-			throw new MyException(e, this.getClass(), "");
-		}
-	}
-	
 	@Action(value="doLogout")
     public String doLogout() throws Exception{
         getSession().invalidate();

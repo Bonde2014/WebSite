@@ -22,74 +22,62 @@ import cn.com.bonde.b2b.website.service.IOrderService;
 @ParentPackage(value = "base")
 @Namespace(value = "/")
 @Results({ @Result(name = "userCenter", location = "/pages/userCenter.jsp"),
-    @Result(name = "userOrder", location = "/pages/userOrder.jsp")})
-public class UserCenterAction extends ProjectBaseAction
-{
+          @Result(name = "userOrder", location = "/pages/userOrder.jsp") })
+public class UserCenterAction extends ProjectBaseAction {
 
     /**
      * serialVersionUID
      */
-    private static final long serialVersionUID = -4044106435263199102L;
-    
+    private static final long         serialVersionUID = -4044106435263199102L;
+
     @Resource
-    private IOrderService orderService;
-    private List<XsDdqk> xsddqkList=null;
-    private List<Map<String, Object>> mapList=null;
-    
-    
+    private IOrderService             orderService;
+    private List<XsDdqk>              xsddqkList       = null;
+    private List<Map<String, Object>> mapList          = null;
+
     /**
-	 * @return the xsddqkList
-	 */
-	public List<XsDdqk> getXsddqkList()
-	{
-		return xsddqkList;
-	}
+     * @return the xsddqkList
+     */
+    public List<XsDdqk> getXsddqkList() {
+        return xsddqkList;
+    }
 
-	/**
-	 * @param xsddqkList the xsddqkList to set
-	 */
-	public void setXsddqkList(List<XsDdqk> xsddqkList)
-	{
-		this.xsddqkList = xsddqkList;
-	}
+    /**
+     * @param xsddqkList the xsddqkList to set
+     */
+    public void setXsddqkList(List<XsDdqk> xsddqkList) {
+        this.xsddqkList = xsddqkList;
+    }
 
-	
-	
-	
-	/**
-	 * @return the mapList
-	 */
-	public List<Map<String, Object>> getMapList()
-	{
-		return mapList;
-	}
+    /**
+     * @return the mapList
+     */
+    public List<Map<String, Object>> getMapList() {
+        return mapList;
+    }
 
-	/**
-	 * @param mapList the mapList to set
-	 */
-	public void setMapList(List<Map<String, Object>> mapList)
-	{
-		this.mapList = mapList;
-	}
+    /**
+     * @param mapList the mapList to set
+     */
+    public void setMapList(List<Map<String, Object>> mapList) {
+        this.mapList = mapList;
+    }
 
-	 @Action(value="userCenter")
-	    public String init(){
-	        return "userCenter";
-	    }
-    
-    @Action(value="userOrder")
-    public String userOrder() throws Exception{
-    	xsddqkList= orderService.queryOrder(this.getKhxx().getKhDm(), null);
-    	List<Long> list = new  ArrayList<Long>();
-    	for(XsDdqk xsddqk:xsddqkList){
-    		list.add(xsddqk.getDdxh());
-    	}
-    	mapList=orderService.queryOrderDetail(list);
+    @Action(value = "userCenter")
+    public String init() {
+        return "userCenter";
+    }
+
+    @Action(value = "userOrder")
+    public String userOrder() throws Exception {
+        xsddqkList = orderService.queryOrder(this.getKhxx().getKhDm(), null);
+        List<Long> list = new ArrayList<Long>();
+        for (XsDdqk xsddqk : xsddqkList) {
+            list.add(xsddqk.getDdxh());
+        }
+        mapList = orderService.queryOrderDetail(list);
         return "userOrder";
     }
     
-    
 
-
-	
 }

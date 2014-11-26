@@ -17,7 +17,24 @@
 	})
 	
 	function addShopCart(){
-		
+		var spdm=$('#spdm').val();
+		var spsl=$('#spsl').val();
+		$.ajax({
+			type : "post",
+			url : root+"/addToShopCart.action?"+Math.random(),
+			data : {
+				"spdm" :$('#spdm').val(),
+				"spsl":$('#spsl').val()
+			},
+			async : false,
+			error : function() {
+			},
+			success : function(data) {
+				if(data){
+					$.messager.alert('提示信息','添加商品到购物车成功！','info');
+				}
+			}
+		});
 	}
 	
 	function minus(){
@@ -60,8 +77,8 @@
 					<li>选择版本：</li>
 					<li>选择数量：
 					<span class="minus"></span>
-						<input type="text" name="spsl" id="spsl"/>
-						<input type="hidden" name="spDm" id="spDm" value="<s:property value='productMap.sp_dm'/>">
+						<input type="text" name="spsl" id="spsl" value="1"/>
+						<input type="hidden" name="spdm" id="spdm" value="<s:property value='productMap.sp_dm'/>">
 					<span class="plus"></span>
 					库存：<s:property value="productMap.kssl"/>
 					</li>

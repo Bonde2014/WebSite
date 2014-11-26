@@ -56,7 +56,7 @@ public class SearchAction extends ProjectBaseAction {
 
     @Action(value = "init")
     public String init() throws Exception {
-        return "index";
+        return searchCatalog();
     }
 
     @Action(value = "doSearch")
