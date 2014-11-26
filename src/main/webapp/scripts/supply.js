@@ -36,5 +36,12 @@ function addSupply(){
 //	success : function() {
 //	}
 //  });
+
+	
+}
+
+
+function editSupplyinfo(ghxh){
+	alert(ghxh);
 }
 
