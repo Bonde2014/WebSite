@@ -62,7 +62,7 @@
 			<h1>渠道商</h1>
 			<ul>
 				<li><a href="<%=root%>/userCenter.action">用户中心</a></li>
-				<li><a href="#">修改密码</a></li>
+				<li><a href="<%=root%>/changePasswordInit.action">修改密码</a></li>
 				<li><a href="<%=root%>/goShopcart.action">我的购物车</a></li>
 				<li><a href="<%=root%>/userOrder.action" class="current">我的订单</a></li>
 				<li><a href="#">汇款方式</a></li>
