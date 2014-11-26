@@ -19,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import cn.com.bonde.b2b.website.service.IShopcartService;
 import cn.com.bonde.b2b.website.util.DataSwitch;
 import cn.com.bonde.b2b.website.util.MyException;
+import cn.com.bonde.b2b.website.util.WriteJsonToPage;
 
 /**
  * @author Administrator
@@ -32,6 +33,7 @@ import cn.com.bonde.b2b.website.util.MyException;
 public class ShopcartAction extends ProjectBaseAction
 {
 	private static final long serialVersionUID = 1L;
+	private List<Map<String, Object>> shopcartList = null;
 	@Resource(name = "shopcartService")
 	private IShopcartService shopcartService;
 
@@ -52,19 +54,51 @@ public class ShopcartAction extends ProjectBaseAction
 		this.shopcartService = shopcartService;
 	}
 
+	/**
+	 * @return the shopcartList
+	 */
+	public List<Map<String, Object>> getShopcartList()
+	{
+		return shopcartList;
+	}
+
+	/**
+	 * @param shopcartList
+	 *            the shopcartList to set
+	 */
+	public void setShopcartList(List<Map<String, Object>> shopcartList)
+	{
+		this.shopcartList = shopcartList;
+	}
+
 	@Action(value = "goShopcart")
 	public String goShopcart() throws MyException
 	{
 		try
 		{
-			List<Map<String,Object>> list= shopcartService.getEntityList(DataSwitch.convertObjectToString(this.getKhxx().getKhDm()));
-           this.setReuestAttr("shopcartList", list);
+			shopcartList = shopcartService.getEntityList(DataSwitch.convertObjectToString(this.getKhxx().getKhDm()));
 		}
 		catch (Exception e)
 		{
 			throw new MyException(e, this.getClass(), "");
 		}
 		return SUCCESS;
+	}
+
+	@Action(value = "addToShopCart")
+	public void addToShopCart() throws MyException
+	{
+		try
+		{
+			String spdm = this.getParameter("spdm");
+			String spsl = this.getParameter("spsl");
+			boolean msg = shopcartService.addToShopCart(DataSwitch.convertObjectToLong(spdm), DataSwitch.convertObjectToInteger(spsl), this.getKhxx());
+			WriteJsonToPage.WriteJson(msg);
+		}
+		catch (Exception e)
+		{
+			throw new MyException(e, this.getClass(), "");
+		}
 	}
 
 }

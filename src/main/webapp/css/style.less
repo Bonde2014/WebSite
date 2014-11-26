@@ -1,4 +1,9 @@
-﻿body {
+﻿/*easyui overrid*/
+.l-btn-text{padding:0 10px;}
+.datagrid-group{background:#E4FEC5;padding:5px}
+.datagrid-row-selected{background:#f9fff1 !important;color:#000 !important}
+
+body {
     margin: 0px;
     padding: 0px;
     font-size: 12px;
@@ -46,20 +51,20 @@ input, select, textarea {
 .hd_global_top_bar{height:30px;background:#FAFAFA;border-bottom:1px solid #DBDBDB;padding-top:5px;font-family:@fontyh;
        span{float:right;display:block;border-left:1px solid #CCCCCC;padding:2px 15px;margin:0 3px}
        .menuhover{display:block;background:#fff;border:1px solid #ccc;border-bottom:1px solid #fff;}
-       .icon-down{background-image:url(../image/indexhead_sprite.png);background-position: right -257px;background-repeat: no-repeat;padding-right:20px;}
-       .icon-up{background-image:url(../image/indexhead_sprite.png);background-position: right -285px;background-repeat: no-repeat;padding-right:20px;border:1px solid #FAFAFA;border-bottom:0;}
+       .icon-down{background-image:url(../images/indexhead_sprite.png);background-position: right -257px;background-repeat: no-repeat;padding-right:20px;}
+       .icon-up{background-image:url(../images/indexhead_sprite.png);background-position: right -285px;background-repeat: no-repeat;padding-right:20px;border:1px solid #FAFAFA;border-bottom:0;}
        .top_bar_dropmenu{display:block;margin:0;padding:0;position:absolute;list-style-type:none;background:#fff;width:83px;border:1px solid #ccc;border-top:0;margin:0 0 0 -16px;
                          li{text-align:center;padding:5px 0}
        }
 }
 .logotop{height:80px;
-    .logo{background:url(../image/index_logo.png) center center no-repeat;width:165px;height:59px;padding:10px}
+    .logo{background:url(../images/index_logo.png) center center no-repeat;width:165px;height:59px;padding:10px}
     .search{float:right;width:650px;padding-top:15px;}
     .searchinput{border:1px solid #3DA200;height:35px;background:#3DA200;overflow:hidden;float:left;box-shadow:0 0 5px #ccc;
                  input{border:0 solid #ccc;width:400px;height:35px;float:left;padding-left:20px;font-family:@fontyh}
                  .searchbtn{cursor:pointer;color:#fff;width:76px;float:left;height:30px;text-align:center;line-height:33px;font-weight:bold;font-family:@fontyh;font-size:14px;letter-spacing:5px;}
     }
-    .checkout{padding:5px 25px;font-family:@fontyh;float:left;border:1px solid #eaeaea;background:url(../image/indexhead_sprite.png) 5px -685px no-repeat #F7F7F7;margin:6px 0  6px 20px;cursor:pointer;
+    .checkout{padding:5px 25px;font-family:@fontyh;float:left;border:1px solid #eaeaea;background:url(../images/indexhead_sprite.png) 5px -685px no-repeat #F7F7F7;margin:6px 0  6px 20px;cursor:pointer;
           
     }
     .checkout:hover{
@@ -74,7 +79,7 @@ input, select, textarea {
 .global_menu{background:#3DA200;height:35px;overflow:hidden;
              .bigmenu{
                  position:absolute;background:#61CD12;width:210px;box-shadowx:2px 2px 2px #2D7800;overflow:hidden;border-bottom:1px solid #61CD12;
-                 h1{font-size:14px;color:#fff;text-align:center;background:url(../image/indexhead_sprite.png) -240px -1108px no-repeat;margin:0;padding:8px 0;}
+                 h1{font-size:14px;color:#fff;text-align:center;background:url(../images/indexhead_sprite.png) -240px -1108px no-repeat;margin:0;padding:8px 0;}
                  ul{text-align:center;color:#525252;
                     li{background:#E4FEC5;padding:0 0 4px 0}
                     .odd{background:#fff;}
@@ -92,7 +97,7 @@ input, select, textarea {
 }
 .adbox{width:790px;height:300px;margin-left:210px;background:red;position:relative;overflow:hidden;}
 
-.index-typett{background:#E4FEC5;background-image:url(../image/indexhead_sprite.png);background-repeat:no-repeat;height:40px;border-bottom:1px solid #3DA200;margin:10px auto;
+.index-typett{background:#E4FEC5;background-image:url(../images/indexhead_sprite.png);background-repeat:no-repeat;height:40px;border-bottom:1px solid #3DA200;margin:10px auto;
                 .typetext{font-size:15px;font-weight:bold;padding:0 50px 0  100px;line-height:35px;color:#277700;}
                   ul{margin:0;padding:0;list-style-type:none;display:inline;
                        li{display:inline;padding:0 20px;font-size:14px;border-left:1px dotted #277700;}
@@ -121,7 +126,7 @@ input, select, textarea {
 
 .footcontent{border-top:1px solid #3DA200;border-bottom:1px solid #ccc;margin:10px auto;padding:20px 0;color:#666;
              .title{font-size:14px;font-weight:bold;}
-             ul{background-image:url(../image/icon.png);background-repeat:no-repeat;float:left;margin:0 30px;
+             ul{background-image:url(../images/icon.png);background-repeat:no-repeat;float:left;margin:0 30px;
                  padding:0 10px 10px 70px;
                 li{line-height:20px;}
              }
@@ -168,8 +173,10 @@ text-decoration: none;}
             .p-img{width: 100%;height: 160px;text-align: center;padding: 5px 0;}
             .p-price{width: 100%;
                     height: 32px;
-                    font: 20px/32px Verdana;
-                    text-align: center;color: #E4393C;}
+                    font: 18px Verdana;
+                    text-align: center;color: #E4393C;
+                    span{font-size:12px;font-weight:bold;color:#000}
+            }
        }
     }
     .fore3{}
@@ -228,7 +235,7 @@ text-decoration: none;}
 
 
 .topnav{padding:10px 0;
-        span{background:url(../image/indexhead_sprite.png)  10px -1457px no-repeat;padding-left:50px;display:block;}
+        span{background:url(../images/indexhead_sprite.png)  10px -1457px no-repeat;padding-left:50px;display:block;}
         strong{font-size:18px;}
         a{text-decoration:none;color:#666;padding:0 10px;}
         span a{font-family:SimSun}
@@ -262,8 +269,8 @@ text-decoration: none;}
           input{width:100px;float:left;}
           strong,span,input{float:left}
           span{display:block;float:left;width:20px;height:20px;margin-top:5px}
-          .minus{background:url(../image/plus.png) left top no-repeat;}
-           .plus{background:url(../image/plus.png) right top no-repeat;}
+          .minus{background:url(../images/plus.png) left top no-repeat;}
+           .plus{background:url(../images/plus.png) right top no-repeat;}
     }
     .preview{
         position: absolute;
@@ -275,17 +282,17 @@ text-decoration: none;}
         }
         .zoompic{
             margin-top:15px;
-            a.left{display:block;float:left;background:url(../image/preview.png) left top no-repeat; height:54px;width:17px;}
-            a.left:hover{display:block;float:left;background:url(../image/preview.png) -34px top no-repeat; height:54px;width:17px;}
-            a.right{display:block;float:left;background:url(../image/preview.png) -17px 0 no-repeat; height:54px;width:17px;}
-            a.right:hover{display:block;float:left;background:url(../image/preview.png) -51px 0 no-repeat; height:54px;width:17px;}
+            a.left{display:block;float:left;background:url(../images/preview.png) left top no-repeat; height:54px;width:17px;}
+            a.left:hover{display:block;float:left;background:url(../images/preview.png) -34px top no-repeat; height:54px;width:17px;}
+            a.right{display:block;float:left;background:url(../images/preview.png) -17px 0 no-repeat; height:54px;width:17px;}
+            a.right:hover{display:block;float:left;background:url(../images/preview.png) -51px 0 no-repeat; height:54px;width:17px;}
             .pic{width:54px;height:54px;float:left;margin:0 2px;border:1px solid #ccc;padding:1px;
                  img{border:none;width:54px;height:54px;}
             }
             a.pic:hover{border:1px solid red;cursor:pointer;}
         }
     }
-     .addin{background:url(../image/btn.png) 0 0 ;color:#fff; width:137px;height:38px;margin:10px;}
+     .addin{background:url(../images/btn.png) 0 0 ;color:#fff; width:137px;height:38px;margin:10px;}
 }
 
 .intros{position: relative;
@@ -307,7 +314,7 @@ text-decoration: none;}
 
     .othermenu{position:absolute;left:0;top:0;height:170px;width:210px;
                .othertype{border:1px solid #ccc;margin-bottom:10px;
-                          h1{background:url(../image/bg.png) left top repeat-x;margin:0;padding:8px;font-size:14px;}
+                          h1{background:url(../images/bg.png) left top repeat-x;margin:0;padding:8px;font-size:14px;}
                         li{width:100px;float:left;line-height:25px;text-indent:15px;padding:2px 0;font-size:13px;
                            a{color:#333;}
                            
@@ -321,7 +328,7 @@ text-decoration: none;}
 }
 
 .graybg{background:#F2F2F2}
-.loginlogo{background:url(../image/login_logo.png) left 10px no-repeat;height:65px;}
+.loginlogo{background:url(../images/login_logo.png) left 10px no-repeat;height:65px;}
 .logincnt{margin:75px auto;background:#D7D7D7;padding:5px;width:890px;position:relative;
     .topswitch{
         width:260px;height:40px;position:absolute;right:100px;top:-34px;z-index:999;
@@ -329,8 +336,8 @@ text-decoration: none;}
         .click2{width:120px;height:40px;cursor:pointer;float:left;margin-left:10px;}
         
     }
-    .btn1{background:url(../image/bt1.png) left top no-repeat;}
-    .btn2{background:url(../image/bt2.png) left top no-repeat;}
+    .btn1{background:url(../images/bt1.png) left top no-repeat;}
+    .btn2{background:url(../images/bt2.png) left top no-repeat;}
 
 
     .loginbox{background:#fff;}
@@ -340,13 +347,13 @@ text-decoration: none;}
                    h4{font-size:14px;color:#999;margin:0;padding:15px 0;font-weight:normal;}
                    input{width:300px;font-size:14px;line-height:28px;}
                    .inputs{position:relative;margin-right:80px;}
-                   .username{background:url(../image/login-all-bg.png)  -369px -106px  no-repeat;width:20px;height:20px;position:absolute;right:30px;top:5px;}
-                   .password{background:url(../image/login-all-bg.png) -340px -106px  no-repeat;width:20px;height:20px;position:absolute;right:30px;top:5px;}
+                   .username{background:url(../images/login-all-bg.png)  -369px -106px  no-repeat;width:20px;height:20px;position:absolute;right:30px;top:5px;}
+                   .password{background:url(../images/login-all-bg.png) -340px -106px  no-repeat;width:20px;height:20px;position:absolute;right:30px;top:5px;}
                    .otherinput{margin:25px 0;
                                input{width:auto;}
                    }
-                   .loginbtn{background:url(../image/login-all-bg.png) 0 -62px;width:309px;height:32px;display:block;}
-                    .loginbtn:hover{background:url(../image/login-all-bg.png) 0 -96px;width:309px;height:32px;display:block;}
+                   .loginbtn{background:url(../images/login-all-bg.png) 0 -62px;width:309px;height:32px;display:block;}
+                    .loginbtn:hover{background:url(../images/login-all-bg.png) 0 -96px;width:309px;height:32px;display:block;}
                    
                     }
                }
@@ -410,7 +417,7 @@ text-decoration: none;}
                 i{font-weight:bold;font-style:normal;color:#277700;margin:0 5px}
             }
             .current{color:#3DA200;border-bottom:2px solid #3DA200}
-            .delorder{text-align:center;width:120px;display:block;position:absolute;right:0;top:5px;border:none;background:url(../image/indexhead_sprite.png) -282px -548px no-repeat;}         
+            .delorder{text-align:center;width:120px;display:block;position:absolute;right:0;top:5px;border:none;background:url(../images/indexhead_sprite.png) -282px -548px no-repeat;}         
 
        }
        .ordertime{margin:10px 0 0 0;padding:10px;font-size:14px;font-weight:normal;color:#666;border:1px solid #ccc;background:#E4FEC5;border-bottom:0}

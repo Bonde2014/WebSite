@@ -24,10 +24,7 @@ public class XsGwc implements java.io.Serializable
 	 */
 	private static final long serialVersionUID = -8922432571976777843L;
 	private XsGwcId id;
-	private Double spJg;
-	private Double spJgCj;
 	private Integer spSl;
-	private Double spZj;
 	private Timestamp tjsj;
 
 	// Constructors
@@ -58,27 +55,6 @@ public class XsGwc implements java.io.Serializable
 		this.id = id;
 	}
 
-	@Column(name = "sp_jg", length = 10,precision=2)
-	public Double getSpJg()
-	{
-		return this.spJg;
-	}
-
-	public void setSpJg(Double spJg)
-	{
-		this.spJg = spJg;
-	}
-
-	@Column(name = "sp_jg_cj",length = 10,precision=2)
-	public Double getSpJgCj()
-	{
-		return this.spJgCj;
-	}
-
-	public void setSpJgCj(Double spJgCj)
-	{
-		this.spJgCj = spJgCj;
-	}
 
 	@Column(name = "sp_sl")
 	public Integer getSpSl()
@@ -91,16 +67,6 @@ public class XsGwc implements java.io.Serializable
 		this.spSl = spSl;
 	}
 
-	@Column(name = "sp_zj",length = 10,precision=2)
-	public Double getSpZj()
-	{
-		return this.spZj;
-	}
-
-	public void setSpZj(Double spZj)
-	{
-		this.spZj = spZj;
-	}
 	
 	@Column(name = "tjsj", length = 19)
 	public Timestamp getTjsj()

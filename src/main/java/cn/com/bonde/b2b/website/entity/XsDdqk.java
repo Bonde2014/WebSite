@@ -119,7 +119,7 @@ public class XsDdqk implements java.io.Serializable
 		this.xsryDm = xsryDm;
 	}
 
-	@Column(name = "ddscsj", length = 19)
+	@Column(name = "ddscsj", length = 50)
 	public Timestamp getDdscsj()
 	{
 		return this.ddscsj;

@@ -3,25 +3,31 @@
  */
 package cn.com.bonde.b2b.website.service.impl;
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
 
 import cn.com.bonde.b2b.website.dao.IShopcartDao;
+import cn.com.bonde.b2b.website.entity.QxKhxx;
+import cn.com.bonde.b2b.website.entity.XsGwc;
+import cn.com.bonde.b2b.website.entity.XsGwcId;
 import cn.com.bonde.b2b.website.service.IShopcartService;
+import cn.com.bonde.b2b.website.util.DataSwitch;
 import cn.com.bonde.b2b.website.util.MyException;
 
 /**
  * @author Administrator
- *
+ * 
  */
 @Service(value = "shopcartService")
 public class ShopcartServiceImpl implements IShopcartService
 {
-	@Resource(name="shopcartDao")
+	@Resource(name = "shopcartDao")
 	private IShopcartDao shopcartDao;
 
 	/**
@@ -33,7 +39,8 @@ public class ShopcartServiceImpl implements IShopcartService
 	}
 
 	/**
-	 * @param shopcartDao the shopcartDao to set
+	 * @param shopcartDao
+	 *            the shopcartDao to set
 	 */
 	public void setShopcartDao(IShopcartDao shopcartDao)
 	{
@@ -50,7 +57,7 @@ public class ShopcartServiceImpl implements IShopcartService
 	@Override
 	public <T> List<T> getEntitiesListByProperty(Class<T> typeClass, String propertyName, Object propertyValue, String... orderBy) throws Exception
 	{
-		shopcartDao.getEntitiesListByProperty(typeClass,propertyName,propertyValue,orderBy);
+		shopcartDao.getEntitiesListByProperty(typeClass, propertyName, propertyValue, orderBy);
 		return null;
 	}
 
@@ -76,11 +83,33 @@ public class ShopcartServiceImpl implements IShopcartService
 	 * @throws MyException
 	 */
 	@Override
-	public List<Map<String,Object>> getEntityList(String khDm) throws Exception
+	public List<Map<String, Object>> getEntityList(String khDm) throws Exception
 	{
 		return shopcartDao.getEntityList(khDm);
 	}
-	
-	
+
+	public boolean addToShopCart(Long spdm, Integer spsl,QxKhxx khxx) throws Exception
+	{
+		boolean flag=false;
+		XsGwcId id = new XsGwcId();
+		id.setSpDm(spdm);
+		id.setKhDm(khxx.getKhDm());
+		XsGwc xsGwc = shopcartDao.getEntityByPrimaryId(XsGwc.class, id);
+		if (xsGwc != null)
+		{
+			xsGwc.setSpSl(xsGwc.getSpSl() + spsl);
+			xsGwc.setTjsj(new Timestamp(DataSwitch.GetPresentTime().getTime()));
+			flag=shopcartDao.updateEntiy(xsGwc);
+		}
+		else
+		{
+			xsGwc = new XsGwc();
+			xsGwc.setId(id);
+			xsGwc.setSpSl(spsl);
+			xsGwc.setTjsj(new Timestamp(DataSwitch.GetPresentTime().getTime()));
+			flag=shopcartDao.addEntity(xsGwc);
+		}
+		return flag;
+	}
 
 }

@@ -39,7 +39,8 @@ import cn.com.bonde.b2b.website.util.Pager;
 @Namespace(value = "/")
 @Results({ @Result(name = "success", location = "/pages/index.jsp") ,
     @Result(name = "supplyProducts", location = "/pages/supply.jsp"),
-    @Result(name = "supplyManage", location = "/pages/supplymanage.jsp")
+    @Result(name = "supplyManage", location = "/pages/supplymanage.jsp"),
+    @Result(name = "supplyCenter", location = "/pages/supplyCenter.jsp")
     })
 public class SupplySelectAction extends ProjectBaseAction
 {
@@ -89,6 +90,14 @@ public class SupplySelectAction extends ProjectBaseAction
 	public void setPager(Pager pager) {
 		this.pager = pager;
 	}
+	
+	/**
+	 * 进入供货商用户中心页面
+	 */
+    @Action(value="supplyCenter")
+    public String init(){
+        return "supplyCenter";
+    }
 
 	/**
 	 * 选择待放入货架的商品信息，货架里已有的商品要过滤掉
