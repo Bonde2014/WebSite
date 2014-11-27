@@ -28,22 +28,7 @@
 </script>
 </head>
 <body>
-	<div class="global_menu">
-		<div class="mainbox">
-			<div class="bigmenu">
-				<h1 style="cursor:pointer" onclick="pageLink('/init.do')">全部商品分类</h1>
-				<ul id="catalogtree">
-				</ul>
-			</div>
-			<ul class="topmenu">
-				<li onclick="pageLink('/todayPrice.action')">今日报价</li>
-				<li onclick="pageLink('/init.do')">首页</li>
-				<li>特价专区</li>
-				<li>自助装机</li>
-			</ul>
 
-		</div>
-	</div>
 
 	<div class="mainbox">
 		<div class="adbox">
@@ -65,7 +50,7 @@
 
 
 
-	<div class="prolistmenu mainbox"></div>
+    <!--  <div class="prolistmenu mainbox"></div>   隐藏这个空白的分割行 -->
 
 	<div class="mainbox prolist-box clearfix">
 		<ul id="prolist">
@@ -78,9 +63,10 @@
 								value='#row.spmc' /></a>
 					</div>
 					<div class="p-img">
-						<a target="_blank" title="<s:property value='#row.spmc'/>"
-							href="javascript:void(0)"> <img width="160" height="160"
-							src="" onclick="productDetail(<s:property value='#row.sp_dm'/>)" />
+					    <!-- 这样的写法，在ie下会在当前页面基础上新弹出两个窗口 ，其中一个是空白的javascript:void(0)，而在chrome下则是直接跳转 -->
+						<a  title="<s:property value='#row.spmc'/>"
+							href="javascript:void(0)"  onclick="productDetail(<s:property value='#row.sp_dm'/>)" > 
+							<img width="160" height="160" src="" />
 						</a>
 					</div>
 					<div class="p-price">

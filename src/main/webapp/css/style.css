@@ -1,4 +1,16 @@
-﻿body {
+﻿/*easyui overrid*/
+.l-btn-text {
+  padding: 0 10px;
+}
+.datagrid-group {
+  background: #E4FEC5;
+  padding: 5px;
+}
+.datagrid-row-selected {
+  background: #f9fff1 !important;
+  color: #000000 !important;
+}
+body {
   margin: 0px;
   padding: 0px;
   font-size: 12px;
@@ -410,9 +422,14 @@ textarea {
 .prolist-box ul li .p-price {
   width: 100%;
   height: 32px;
-  font: 20px/32px Verdana;
+  font: 18px Verdana;
   text-align: center;
   color: #E4393C;
+}
+.prolist-box ul li .p-price span {
+  font-size: 12px;
+  font-weight: bold;
+  color: #000000;
 }
 #pagination-digg {
   width: 400px;

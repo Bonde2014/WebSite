@@ -2,6 +2,7 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@include file="base.jsp"%>
+<%@include file="/pages/top.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -11,7 +12,7 @@
 	<div class="topnav mainbox">
 		<div class="breadcrumb">
 			<span><a href="<%=root%>/init.do">首页</a>
-				&nbsp;&gt;&nbsp;<a href="<%=root%>/userCenter.action">用户中心</a></span>
+				&nbsp;&gt;&nbsp;<a href="<%=root%>/userCenter.action">渠道商</a></span>
 		</div>
 	</div>
 
@@ -51,12 +52,12 @@
 			</div>
 		</div>
 		<div class="user-left">
-			<h1>帐户中心</h1>
+			<h1>渠道商</h1>
 			<ul>
-				<li><a href="<%=root%>/userCenter.action">个人主页</a></li>
-				 <li><a href="#">修改密码</a> </li>
+				<li><a href="<%=root%>/userCenter.action">用户中心</a></li>
+				<li><a href="#">修改密码</a></li>
 				<li><a href="<%=root%>/goShopcart.action" class="current">我的购物车</a></li>
-				<li><a href="<%=root%>/userOrder.action" >我的订单</a></li>
+				<li><a href="<%=root%>/userOrder.action">我的订单</a></li>
 				<li><a href="#">汇款方式</a></li>
 			</ul>
 		</div>

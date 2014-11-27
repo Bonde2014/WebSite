@@ -8,25 +8,10 @@
 <title>克莱姆购物平台</title>
 </head>
 <body>
-	<div class="global_menu">
-		<div class="mainbox">
-			<div class="bigmenu">
-				<h1 style="cursor:pointer" onclick="pageLink('/init.do')">全部商品分类</h1>
-				<ul id="catalogtree">
-				</ul>
-			</div>
-			<ul class="topmenu">
-				<li onclick="pageLink('/todayPrice.action')">今日报价</li>
-				<li onclick="pageLink('/init.do')">首页</li>
-				<li>特价专区</li>
-				<li>自助装机</li>
-			</ul>
-		</div>
-	</div>
 
 	<div class="topnav mainbox">
 		<div class="breadcrumb">
-		    <span>供货商&nbsp;&gt;&nbsp;用户中心
+		    <span>首页&nbsp;&gt;&nbsp;供货商
             </span>
 		</div>
 	</div>
@@ -56,8 +41,8 @@
         <div class="user-left">
             <h1>供货商</h1>
             <ul>
-                 <li><a href="<%=root%>/pages/supplyCenter.jsp" class="current">用户中心</a>    </li>
-                <li><a href="<%=root%>/supplyManageInit.do" >我的货架</a> </li>
+                <li><a href="<%=root%>/supplyCenter.action" class="current">用户中心</a>    </li>
+                <li><a href="<%=root%>/supplyManageInit.action">我的货架</a> </li>
             </ul>
         </div>
     </div>

@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@include file="base.jsp"%>
+<%@include file="/pages/top.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,7 +11,7 @@
 	<div class="topnav mainbox">
 		<div class="breadcrumb">
 			<span><a href="<%=root%>/init.do">首页</a>
-				&nbsp;&gt;&nbsp;<a href="<%=root%>/userCenter.action">用户中心</a></span>
+				&nbsp;&gt;&nbsp;<a href="<%=root%>/userCenter.action">渠道商</a></span>
 		</div>
 	</div>
 	<div class="mainbox usermain clearfix">
@@ -48,14 +49,14 @@
             </div>
         </div>
         <div class="user-left">
-            <h1>用户中心</h1>
-            <ul>
-                <li><a href="<%=root%>/userCenter.action" class="current">个人主页</a></li>
-                <li><a href="#">修改密码</a> </li>
-                <li><a href="<%=root%>/goShopcart.action" >我的购物车</a> </li>
-                <li><a href="<%=root%>/userOrder.action">我的订单</a></li>
-                <li><a href="#">汇款方式</a> </li>
-            </ul>
+			<h1>渠道商</h1>
+			<ul>
+				<li><a href="<%=root%>/userCenter.action" class="current">用户中心</a></li>
+				<li><a href="<%=root%>/changePasswordInit.action">修改密码</a></li>
+				<li><a href="<%=root%>/goShopcart.action">我的购物车</a></li>
+				<li><a href="<%=root%>/userOrder.action">我的订单</a></li>
+				<li><a href="#">汇款方式</a></li>
+			</ul>
         </div>
     </div>
 	<s:include value="foot.html"></s:include>

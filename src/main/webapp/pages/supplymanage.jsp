@@ -33,25 +33,10 @@
 
 <body>
 
-	<div class="global_menu">
-		<div class="mainbox">
-			<div class="bigmenu">
-				<h1 style="cursor:pointer" onclick="pageLink('/init.do')">全部商品分类</h1>
-				<ul id="catalogtree">
-				</ul>
-			</div>
-			<ul class="topmenu">
-				<li onclick="pageLink('/todayPrice.do')">今日报价</li>
-				<li onclick="pageLink('/init.do')">首页</li>
-				<li>特价专区</li>
-				<li>自助装机</li>
-			</ul>
-		</div>
-	</div>
 
     <div class="topnav mainbox">
         <div class="breadcrumb">
-            <span>供货商&nbsp;&gt;&nbsp;货架管理
+            <span>首页&nbsp;&gt;&nbsp;供货商
             </span>
         </div>
     </div>
@@ -83,7 +68,7 @@
                     <td><s:property value='#row.sp_sl'/></td>
                     <td><s:property value='#row.jldw'/></td>
                     <td>
-                    <input type="button" name="editSupply" value="理货" class="btn4" onclick="editSupplyinfo()"/>
+                    <input type="button" name="editSupply" value="理货" class="btn4" onclick="editSupplyinfo(<s:property value='#row.ghxh'/>)"/>
                     <s:if test="#row.ghbz==1">   <!-- 对于已上架的记录，允许进行下架操作 -->
                        <input type="button" name="downSupply" value="下架" class="btn4" onclick="downSupplyProduct()"/>
                     </s:if>
@@ -117,8 +102,8 @@
         <div class="user-left">
             <h1>供货商</h1>
             <ul>
-                <li><a href="<%=root%>/pages/supplyCenter.jsp">用户中心</a>    </li>
-                <li><a href="<%=root%>/supplyManageInit.do" class="current">我的货架</a> </li>
+                <li><a href="<%=root%>/supplyCenter.action">用户中心</a>    </li>
+                <li><a href="<%=root%>/supplyManageInit.action" class="current">我的货架</a> </li>
             </ul>
         </div>
 
