@@ -41,7 +41,8 @@
         <div class="user-left">
             <h1>供货商</h1>
             <ul>
-                <li><a href="<%=root%>/supplyCenter.action" class="current">用户中心</a>    </li>
+                <li><a href="<%=root%>/supplyCenter.action" class="current">用户中心</a></li>
+                <li><a href="<%=root%>/changeSupplyPasswordInit.action">修改密码</a></li>
                 <li><a href="<%=root%>/supplyManageInit.action">我的货架</a> </li>
             </ul>
         </div>

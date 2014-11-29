@@ -39,8 +39,6 @@
 			</div>
 		</div>
 	</div>
-
-
 	
 <s:include value="foot.html"></s:include>
 </body>

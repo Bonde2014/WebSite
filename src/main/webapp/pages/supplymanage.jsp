@@ -4,16 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>供货商货架管理</title>
-    <link href="<%=root%>/css/style.css" rel="stylesheet" />
-    <script src="<%=root%>/scripts/jquery.js"></script>
-    <script src="<%=root%>/scripts/comm.js"></script>
+    <title>克莱姆购物平台</title>
     <script src="<%=root%>/scripts/supply.js"></script>
-    <link rel="stylesheet" type="text/css" href="<%=root%>/scripts/jquery-easyui-1.3.6/themes/default/easyui.css">
-    <link rel="stylesheet" type="text/css" href="<%=root%>/scripts/jquery-easyui-1.3.6/themes/icon.css">
-    <script type="text/javascript" src="<%=root%>/scripts/jquery-easyui-1.3.6/jquery.easyui.min.js"></script>
-    <script type="text/javascript" src="<%=root%>/scripts/jquery-easyui-1.3.6/easyui-lang-zh_CN.js"></script>
-    <script type="text/javascript" src="<%=root%>/scripts/jquery-easyui-1.3.6/validate/easyui_validate.js"></script>
     
     <link rel="stylesheet" type="text/css" href="<%=root%>/css/pager.css">
     <script type="text/javascript" src="<%=root%>/scripts/pager.js"></script>
@@ -24,11 +16,7 @@
     .title_nav a{float:left;display:inline-block;width:79px;margin-right:1px;background:#444;padding:5px 15px;text-align:center;color:#fff;text-decoration:none;}
     .title_nav a.select{background:#09C url(../images/sanj.gif) no-repeat center 47px}
     </style>
-    <script type="text/javascript">
-    $(function () {
-        $(".adbox").turnPic();
-    })
-    </script>
+
 </head>
 
 <body>
@@ -67,10 +55,10 @@
                     <td class="alir"><s:property value='#row.sp_jg'/></td>
                     <td><s:property value='#row.sp_sl'/></td>
                     <td><s:property value='#row.jldw'/></td>
-                    <td>
+                    <td id="oper<s:property value='#row.ghxh'/>">
                     <input type="button" name="editSupply" value="理货" class="btn4" onclick="editSupplyinfo(<s:property value='#row.ghxh'/>)"/>
-                    <s:if test="#row.ghbz==1">   <!-- 对于已上架的记录，允许进行下架操作 -->
-                       <input type="button" name="downSupply" value="下架" class="btn4" onclick="downSupplyProduct()"/>
+                    <s:if test="#row.ghbz=='1'">   <!-- 对于已上架的记录，允许进行下架操作 -->
+                       <input type="button" name="downSupply" value="下架" class="btn4" onclick="downSupplyProduct(<s:property value='#row.ghxh'/>)"/>
                     </s:if>
                     </td>
                 </tr>
@@ -102,95 +90,18 @@
         <div class="user-left">
             <h1>供货商</h1>
             <ul>
+<<<<<<< HEAD
                 <li><a href="<%=root%>/supplyCenter.action">用户中心</a>    </li>
+=======
+                <li><a href="<%=root%>/supplyCenter.action">用户中心</a></li>
+                <li><a href="<%=root%>/changeSupplyPasswordInit.action">修改密码</a></li>
+>>>>>>> branch 'master' of https://github.com/Bonde2014/WebSite.git
                 <li><a href="<%=root%>/supplyManageInit.action" class="current">我的货架</a> </li>
             </ul>
         </div>
-
-
-
-
     </div>
 
-
-   
-
-    
-
-   
-
-
-
-
-
-    <div class="footcontent mainbox clearfix">
-        <ul class="icon1">
-            <li class="title">购物指南</li>
-            <li>购物流程</li>
-            <li>会员介绍</li>
-            <li>团购机票</li>
-            <li>常用问题</li>
-            <li>大家电</li>
-            <li>联系客服</li>
-        </ul>
-        <ul class="icon2">
-            <li class="title">购物指南</li>
-            <li>购物流程</li>
-            <li>会员介绍</li>
-            <li>团购机票</li>
-            <li>常用问题</li>
-            <li>大家电</li>
-            <li>联系客服</li>
-        </ul>
-        <ul class="icon3">
-            <li class="title">购物指南</li>
-            <li>购物流程</li>
-            <li>会员介绍</li>
-            <li>团购机票</li>
-            <li>常用问题</li>
-            <li>大家电</li>
-            <li>联系客服</li>
-        </ul>
-        <ul class="icon4">
-            <li class="title">购物指南</li>
-            <li>购物流程</li>
-            <li>会员介绍</li>
-            <li>团购机票</li>
-            <li>常用问题</li>
-            <li>大家电</li>
-            <li>联系客服</li>
-        </ul>
-        <ul class="icon5">
-            <li class="title">购物指南</li>
-            <li>购物流程</li>
-            <li>会员介绍</li>
-            <li>团购机票</li>
-            <li>常用问题</li>
-            <li>大家电</li>
-            <li>联系客服</li>
-        </ul>
-    </div>
-
-    <div class="linkme mainbox">
-        <div>
-            <span>关于我们</span>|
-            <span>联系我们</span>|
-            <span>人才招聘</span>|
-            <span>商家入驻</span>|
-            <span>营销中心</span>|
-            <span>手机京东</span>|
-            <span>友情链接</span>|
-            <span>销售联盟</span>|
-            <span>京东社区</span>|
-            <span>京东公益</span>
-        </div>
-        <div>
-            北京市公安局朝阳分局备案编号110105014669  |  京ICP证070359号  |  互联网药品信息服务资格证编号(京)-经营性-2014-0008  |  新出发京零 字第大120007号<br>
-            音像制品经营许可证苏宿批005号  |  出版物经营许可证编号新出发(苏)批字第N-012号  |  互联网出版许可证编号新出网证(京)字150号<br>
-            网络文化经营许可证京网文[2011]0168-061号  违法和不良信息举报电话：4006561155  Copyright © 2004-2014  京东JD.com 版权所有<br>
-            京东旗下网站：360TOP  拍拍网  网银在线<br>
-        </div>
-    </div>
+    <s:include value="foot.html"></s:include>
 
 </body>
 </html>

@@ -35,7 +35,7 @@ function doLogin() {
 		},
 		success : function(data) { // 请求成功后处理函数。
 			if (data == "true") {
-				window.location = root+"/pages/index.jsp";
+				window.location = root+"/init.do";
 			} else {//后台异常处理
 				$("#login_msg").html(data);
 			}
