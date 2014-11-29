@@ -65,6 +65,7 @@ public class UserCenterAction extends ProjectBaseAction {
 
     @Action(value = "userCenter")
     public String init() {
+    	
         return "userCenter";
     }
 
