@@ -42,8 +42,7 @@
 <body>
 	<div class="topnav mainbox">
 		<div class="breadcrumb">
-			<span><a href="<%=root%>/init.do">首页</a>
-				&nbsp;&gt;&nbsp;<a href="<%=root%>/userCenter.action">渠道商</a></span>
+			<span>首页&nbsp;&gt;&nbsp;供货商</span>
 		</div>
 	</div>
 	<div class="mainbox usermain clearfix">
@@ -68,13 +67,11 @@
            </div> 
         </div>
         <div class="user-left">
-			<h1>渠道商</h1>
+			<h1>供货商</h1>
 			<ul>
-				<li><a href="<%=root%>/userCenter.action">用户中心</a></li>
-				<li><a href="<%=root%>/changePasswordInit.action" class="current">修改密码</a></li>
-				<li><a href="<%=root%>/goShopcart.action">我的购物车</a></li>
-				<li><a href="<%=root%>/userOrder.action">我的订单</a></li>
-				<li><a href="#">汇款方式</a></li>
+                <li><a href="<%=root%>/supplyCenter.action">用户中心</a></li>
+                <li><a href="<%=root%>/changeSupplyPasswordInit.action" class="current">修改密码</a></li>
+                <li><a href="<%=root%>/supplyManageInit.action">我的货架</a> </li>
 			</ul>
         </div>
     </div>

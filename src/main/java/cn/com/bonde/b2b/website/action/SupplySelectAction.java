@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.struts2.convention.annotation.Action;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Controller;
 
 
 import cn.com.bonde.b2b.website.entity.CgGhsSpmx;
+import cn.com.bonde.b2b.website.entity.QxDlxx;
 import cn.com.bonde.b2b.website.entity.QxKhxx;
 import cn.com.bonde.b2b.website.entity.findEntity.SearchFindEntity;
 import cn.com.bonde.b2b.website.entity.findEntity.SupplyListFindEntity;
@@ -24,8 +26,10 @@ import cn.com.bonde.b2b.website.entity.findEntity.SupplySelfFindEntity;
 import cn.com.bonde.b2b.website.service.ISupplySelfService;
 
 import cn.com.bonde.b2b.website.util.Constants;
+import cn.com.bonde.b2b.website.util.MD5;
 import cn.com.bonde.b2b.website.util.MyException;
 import cn.com.bonde.b2b.website.util.Pager;
+import cn.com.bonde.b2b.website.util.WriteJsonToPage;
 
 
 /**
@@ -40,7 +44,8 @@ import cn.com.bonde.b2b.website.util.Pager;
 @Results({ @Result(name = "success", location = "/pages/index.jsp") ,
     @Result(name = "supplyProducts", location = "/pages/supply.jsp"),
     @Result(name = "supplyManage", location = "/pages/supplymanage.jsp"),
-    @Result(name = "supplyCenter", location = "/pages/supplyCenter.jsp")
+    @Result(name = "supplyCenter", location = "/pages/supplyCenter.jsp"),
+    @Result(name = "changeSupplyPassword", location = "/pages/changeSupplyPassword.jsp")
     })
 public class SupplySelectAction extends ProjectBaseAction
 {
@@ -92,6 +97,14 @@ public class SupplySelectAction extends ProjectBaseAction
 	}
 	
 	/**
+	 * 进入供货商修改密码页面
+	 */
+	@Action(value="changeSupplyPasswordInit")
+	public String changePasswordInit(){
+	    return "changeSupplyPassword";
+	}
+	
+	/**
 	 * 进入供货商用户中心页面
 	 */
     @Action(value="supplyCenter")
@@ -126,8 +139,12 @@ public class SupplySelectAction extends ProjectBaseAction
 	public String addSupply() throws Exception
 	{
 		Long ghsdm=((QxKhxx)this.getSession().getAttribute(Constants.SESSION_KHXX)).getKhDm();
-		log.info("开始将商品列表"+spdms+"放入[ghsdm="+ghsdm+"]的货架...");
-		supplyService.addProduct2Supply(spdms, ghsdm);
+		if(null!=spdms){
+		  log.info("开始将商品列表"+spdms+"放入[ghsdm="+ghsdm+"]的货架...");
+		  supplyService.addProduct2Supply(spdms, ghsdm);
+		}else{
+			log.info("未选择商品列表，所以直接跳转到[ghsdm="+ghsdm+"]的货架...");
+		}
         //暂不考虑失败时如何跳转
 		//return "supplyManageInit";  //跳转到forward太麻烦，直接方法调用
 		return supplyManageInit();
@@ -151,6 +168,17 @@ public class SupplySelectAction extends ProjectBaseAction
 		return "supplyManage";  //跳转到货架管理页面
 	}
     
+	/**
+	 * 查询某供货商的货架
+	 */
+	@Action(value = "downSupplyProduct")
+	public void downSupplyProduct() throws Exception
+	{
+		log.info("对货架上商品[ghxh="+ghxh+"]进行下架操作...");
+		String msg =String.valueOf(supplyService.downSupplyProduct(ghxh));
+		WriteJsonToPage.WriteJson(msg);
+	}
+	
     /**
      * @return the spflDm
      */
