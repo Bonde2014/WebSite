@@ -16,7 +16,7 @@
 	$(function()
 	{
 			$("#dd${ddzt}").addClass("current");
-			$("table a").attr("target", "_blank"); 
+			$(".link").attr("target", "_blank"); 
 	})
 </script>
 </head>

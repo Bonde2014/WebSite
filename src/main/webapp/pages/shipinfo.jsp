@@ -169,7 +169,7 @@
 
 		$(function()
 		{
-			$("table a .link").attr("target", "_blank"); 
+			$(".link").attr("target", "_blank"); 
 			countZje();
 		});
 
