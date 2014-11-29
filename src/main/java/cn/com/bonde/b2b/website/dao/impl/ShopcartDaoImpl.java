@@ -10,6 +10,7 @@ import java.util.Map;
 import org.springframework.stereotype.Repository;
 
 import cn.com.bonde.b2b.website.dao.IShopcartDao;
+import cn.com.bonde.b2b.website.entity.DmPsfs;
 import cn.com.bonde.b2b.website.util.MyException;
 
 /**
@@ -28,7 +29,7 @@ public class ShopcartDaoImpl extends BaseDBDaoImpl implements IShopcartDao
 	 * @throws MyException
 	 */
 	@Override
-	public List<Map<String,Object>> getEntityList(String khDm) throws Exception
+	public List<Map<String,Object>> getEntityList(String khDm,String...  ids ) throws Exception
 	{
 		StringBuilder sbSql = new StringBuilder();
 		sbSql.append("SELECT ");
@@ -58,11 +59,21 @@ public class ShopcartDaoImpl extends BaseDBDaoImpl implements IShopcartDao
 		sbSql.append("  ON T.SP_DM=S.SP_DM ");
 		sbSql.append("WHERE ");
 		sbSql.append("  KH_DM=:KHDM ");
+		if(ids.length!=0){
+			sbSql.append(" AND T.SP_DM IN (:SPDM) ");
+		}
 		sbSql.append("ORDER BY ");
 		sbSql.append("  TJSJ ASC ");
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("KHDM", khDm);
+		if(ids.length!=0){
+		   paramMap.put("SPDM", ids[0].toString().trim());
+		}
 		return this.getMapListBySql(sbSql.toString(), paramMap);
+	}
+	
+	public List<DmPsfs> getPsfsList() throws Exception{
+		return getEntityListByHQL("from DmPsfs where sfyx=1 order by pxwz");
 	}
 
 }

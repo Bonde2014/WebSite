@@ -2,8 +2,6 @@ package cn.com.bonde.b2b.website.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -16,8 +14,12 @@ public class XsDdqkShxx implements java.io.Serializable
 {
 
 	// Fields
-	private static final long serialVersionUID = 1461965188817873018L;
-	private Long ddxh;
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Integer ddid;
 	private String fhfsDm;
 	private String shrXm;
 	private String shrDh;
@@ -30,9 +32,16 @@ public class XsDdqkShxx implements java.io.Serializable
 	{
 	}
 
-	/** full constructor */
-	public XsDdqkShxx(String fhfsDm, String shrXm, String shrDh, String shrDz)
+	/** minimal constructor */
+	public XsDdqkShxx(Integer ddid)
 	{
+		this.ddid = ddid;
+	}
+
+	/** full constructor */
+	public XsDdqkShxx(Integer ddid, String fhfsDm, String shrXm, String shrDh, String shrDz)
+	{
+		this.ddid = ddid;
 		this.fhfsDm = fhfsDm;
 		this.shrXm = shrXm;
 		this.shrDh = shrDh;
@@ -41,16 +50,15 @@ public class XsDdqkShxx implements java.io.Serializable
 
 	// Property accessors
 	@Id
-	@GeneratedValue(strategy = IDENTITY)
-	@Column(name = "ddxh", unique = true, nullable = false)
-	public Long getDdxh()
+	@Column(name = "ddid", unique = true, nullable = false)
+	public Integer getDdid()
 	{
-		return this.ddxh;
+		return this.ddid;
 	}
 
-	public void setDdxh(Long ddxh)
+	public void setDdid(Integer ddid)
 	{
-		this.ddxh = ddxh;
+		this.ddid = ddid;
 	}
 
 	@Column(name = "fhfs_dm", length = 2)

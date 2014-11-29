@@ -11,9 +11,13 @@ public class XsDdqkSpmxId implements java.io.Serializable
 {
 
 	// Fields
-	private static final long serialVersionUID = 1461965188817873018L;
-	private Long ddxh;
-	private Integer xxh;
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Integer ddid;
+	private Integer  xxh;
 
 	// Constructors
 
@@ -23,23 +27,23 @@ public class XsDdqkSpmxId implements java.io.Serializable
 	}
 
 	/** full constructor */
-	public XsDdqkSpmxId(Long ddxh, Integer xxh)
+	public XsDdqkSpmxId(Integer ddid, Integer xxh)
 	{
-		this.ddxh = ddxh;
+		this.ddid = ddid;
 		this.xxh = xxh;
 	}
 
 	// Property accessors
 
-	@Column(name = "ddxh", nullable = false)
-	public Long getDdxh()
+	@Column(name = "ddid", nullable = false)
+	public Integer getDdid()
 	{
-		return this.ddxh;
+		return this.ddid;
 	}
 
-	public void setDdxh(Long ddxh)
+	public void setDdid(Integer ddid)
 	{
-		this.ddxh = ddxh;
+		this.ddid = ddid;
 	}
 
 	@Column(name = "xxh", nullable = false)
@@ -63,7 +67,7 @@ public class XsDdqkSpmxId implements java.io.Serializable
 			return false;
 		XsDdqkSpmxId castOther = (XsDdqkSpmxId) other;
 
-		return ((this.getDdxh() == castOther.getDdxh()) || (this.getDdxh() != null && castOther.getDdxh() != null && this.getDdxh().equals(castOther.getDdxh())))
+		return ((this.getDdid() == castOther.getDdid()) || (this.getDdid() != null && castOther.getDdid() != null && this.getDdid().equals(castOther.getDdid())))
 				&& ((this.getXxh() == castOther.getXxh()) || (this.getXxh() != null && castOther.getXxh() != null && this.getXxh().equals(castOther.getXxh())));
 	}
 
@@ -71,7 +75,7 @@ public class XsDdqkSpmxId implements java.io.Serializable
 	{
 		int result = 17;
 
-		result = 37 * result + (getDdxh() == null ? 0 : this.getDdxh().hashCode());
+		result = 37 * result + (getDdid() == null ? 0 : this.getDdid().hashCode());
 		result = 37 * result + (getXxh() == null ? 0 : this.getXxh().hashCode());
 		return result;
 	}

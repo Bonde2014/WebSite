@@ -16,6 +16,7 @@ import org.apache.struts2.convention.annotation.Results;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import cn.com.bonde.b2b.website.entity.DmPsfs;
 import cn.com.bonde.b2b.website.service.IShopcartService;
 import cn.com.bonde.b2b.website.util.DataSwitch;
 import cn.com.bonde.b2b.website.util.MyException;
@@ -29,11 +30,12 @@ import cn.com.bonde.b2b.website.util.WriteJsonToPage;
 @Scope("prototype")
 @ParentPackage(value = "base")
 @Namespace(value = "/")
-@Results({ @Result(name = "success", location = "shopcart.jsp") })
+@Results({ @Result(name = "success", location = "shopcart.jsp"), @Result(name = "makeOrder", location = "/pages/shipinfo.jsp") })
 public class ShopcartAction extends ProjectBaseAction
 {
 	private static final long serialVersionUID = 1L;
 	private List<Map<String, Object>> shopcartList = null;
+	private List<DmPsfs> psfsList = null;
 	@Resource(name = "shopcartService")
 	private IShopcartService shopcartService;
 
@@ -52,6 +54,23 @@ public class ShopcartAction extends ProjectBaseAction
 	public void setShopcartService(IShopcartService shopcartService)
 	{
 		this.shopcartService = shopcartService;
+	}
+
+	/**
+	 * @return the psfsList
+	 */
+	public List<DmPsfs> getPsfsList()
+	{
+		return psfsList;
+	}
+
+	/**
+	 * @param psfsList
+	 *            the psfsList to set
+	 */
+	public void setPsfsList(List<DmPsfs> psfsList)
+	{
+		this.psfsList = psfsList;
 	}
 
 	/**
@@ -101,4 +120,35 @@ public class ShopcartAction extends ProjectBaseAction
 		}
 	}
 
+	@Action(value = "doUpdateSl")
+	public void doUpdateSl() throws MyException
+	{
+		try
+		{
+			String spdm = this.getParameter("spdm").trim();
+			String spsl = this.getParameter("spsl");
+			boolean msg = shopcartService.updateShopCart(DataSwitch.convertObjectToLong(spdm), DataSwitch.convertObjectToInteger(spsl), this.getKhxx());
+			WriteJsonToPage.WriteJson(msg);
+		}
+		catch (Exception e)
+		{
+			throw new MyException(e, this.getClass(), "");
+		}
+	}
+
+	@Action(value = "goOrder")
+	public String goOrder() throws MyException
+	{
+		try
+		{
+			String productIds = this.getParameter("productIds");
+			shopcartList = shopcartService.getEntityList(DataSwitch.convertObjectToString(this.getKhxx().getKhDm()), productIds);
+			psfsList = shopcartService.getPsfsList();
+		}
+		catch (Exception e)
+		{
+			throw new MyException(e, this.getClass(), "");
+		}
+		return "makeOrder";
+	}
 }

@@ -17,12 +17,16 @@ public class XsDdqkZfmx implements java.io.Serializable
 {
 
 	// Fields
-	private static final long serialVersionUID = 1461965188817873018L;
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private XsDdqkZfmxId id;
 	private String zffsDm;
 	private String yhzhPt;
 	private Long fkzhQds;
-	private Long zfje;
+	private Double zfje;
 	private Timestamp zfsj;
 	private String zfbz;
 
@@ -40,7 +44,7 @@ public class XsDdqkZfmx implements java.io.Serializable
 	}
 
 	/** full constructor */
-	public XsDdqkZfmx(XsDdqkZfmxId id, String zffsDm, String yhzhPt, Long fkzhQds, Long zfje, Timestamp zfsj, String zfbz)
+	public XsDdqkZfmx(XsDdqkZfmxId id, String zffsDm, String yhzhPt, Long fkzhQds, Double zfje, Timestamp zfsj, String zfbz)
 	{
 		this.id = id;
 		this.zffsDm = zffsDm;
@@ -53,7 +57,7 @@ public class XsDdqkZfmx implements java.io.Serializable
 
 	// Property accessors
 	@EmbeddedId
-	@AttributeOverrides({ @AttributeOverride(name = "ddxh", column = @Column(name = "ddxh", nullable = false)),
+	@AttributeOverrides({ @AttributeOverride(name = "ddid", column = @Column(name = "ddid", nullable = false)),
 			@AttributeOverride(name = "xxh", column = @Column(name = "xxh", nullable = false)) })
 	public XsDdqkZfmxId getId()
 	{
@@ -98,13 +102,13 @@ public class XsDdqkZfmx implements java.io.Serializable
 		this.fkzhQds = fkzhQds;
 	}
 
-	@Column(name = "zfje", precision = 10, scale = 0)
-	public Long getZfje()
+	@Column(name = "zfje", precision = 10)
+	public Double getZfje()
 	{
 		return this.zfje;
 	}
 
-	public void setZfje(Long zfje)
+	public void setZfje(Double zfje)
 	{
 		this.zfje = zfje;
 	}

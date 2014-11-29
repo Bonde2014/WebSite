@@ -11,8 +11,8 @@
 <body>
 	<div class="topnav mainbox">
 		<div class="breadcrumb">
-			<span><a href="<%=root%>/init.do">首页</a>
-				&nbsp;&gt;&nbsp;<a href="<%=root%>/userCenter.action">渠道商</a></span>
+			<span><a href="<%=root%>/init.do">首页</a> &nbsp;&gt;&nbsp;<a
+				href="<%=root%>/userCenter.action">渠道商</a></span>
 		</div>
 	</div>
 
@@ -20,10 +20,10 @@
 		<div class="user-right">
 
 			<a href="#" onclick="deleteSp(this);" class="btn1">移除</a>
-
-			<table width="100%" border="1" cellspacing="0" cellpadding="0" id="gwc_table">
+			<table width="100%" border="1" cellspacing="0" cellpadding="0"
+				id="gwc_table">
 				<tr>
-					<th style="width:45px"><input type="checkbox" id="checkboxAll" 
+					<th style="width:45px"><input type="checkbox" id="checkboxAll"
 						value=" " /></th>
 					<th style="width:245px">商品信息</th>
 					<th>单价</th>
@@ -35,119 +35,154 @@
 				<s:iterator value="shopcartList" id="item" status="s">
 					<tr>
 						<td style="text-align: center;"><input type="checkbox"
-							name="checkbox" value=" " /></td>
-						<td style="text-align: center;"><a href="<%=root%>/searchProduct.do?productId=<s:property value='#item.SP_DM'/>" class="link"><s:property value="#item.SPMC"/></a></td>
-						<td style="text-align: center;" class="alir" name="spJg"><s:property value="#item['JG'+#session.session_khxx.qdsJb]" /></td>
+							name="checkbox" value="<s:property value='#item.SP_DM'/>" /></td>
+						<td style="text-align: center;"><a
+							href="<%=root%>/searchProduct.do?productId=<s:property value='#item.SP_DM'/>"
+							class="link"><s:property value="#item.SPMC" /></a></td>
+						<td style="text-align: center;" class="alir" name="spJg"><s:property
+								value="#item['JG'+#session.session_khxx.qdsJb]" /></td>
 						<td style="text-align: center;"><input name="spSl"
 							class="easyui-numberspinner" style="width:60px;"
 							value="<s:property value='#item.SP_SL'/>" /></td>
-						<td class="alir" style="text-align: center;" name="spZj"><s:property value="#item['ZJ'+#session.session_khxx.qdsJb]" /></td>
-						<td style="text-align: center;"><a href="#" class="btn2" onclick="deleteByIndex(this)">删除</a>
-						</td>
+						<td class="alir" style="text-align: center;" name="spZj"><s:property
+								value="#item['ZJ'+#session.session_khxx.qdsJb]" /></td>
+						<td style="text-align: center;"><a href="#" class="btn2"
+							onclick="deleteByIndex(this)">删除</a></td>
 					</tr>
 				</s:iterator>
 			</table>
 			<div class="total">
-				<a href="<%=root %>/pages/allorder.html" class="btn3" >去结算</a> <span>合计（不含运费）：<font color="red">¥</font><font id="zje" color="red">0</font></span>
+				<a href="#" class="btn3" onclick="doAccount(this);">去结算</a> <span>合计（不含运费）：<font
+					color="red">¥</font><font id="zje" color="red">0</font></span>
 			</div>
 		</div>
 		<div class="user-left">
 			<h1>渠道商</h1>
 			<ul>
 				<li><a href="<%=root%>/userCenter.action">用户中心</a></li>
-				<li><a href="#">修改密码</a></li>
+				<li><a href="<%=root%>/changePasswordInit.action">修改密码</a></li>
 				<li><a href="<%=root%>/goShopcart.action" class="current">我的购物车</a></li>
 				<li><a href="<%=root%>/userOrder.action">我的订单</a></li>
 				<li><a href="#">汇款方式</a></li>
 			</ul>
 		</div>
-		<script type="text/javascript">
-		 function toDecimal2(x) {  
-	            var f = parseFloat(x);  
-	            if (isNaN(f)) {  
-	                return false;  
-	            }  
-	            var f = Math.round(x*100)/100;  
-	            var s = f.toString();  
-	            var rs = s.indexOf('.');  
-	            if (rs < 0) {  
-	                rs = s.length;  
-	                s += '.';  
-	            }  
-	            while (s.length <= rs + 2) {  
-	                s += '0';  
-	            }  
-	            return s;  
-	        }  
-		
-			$("input[name='spSl']").numberspinner({ min : 1, max : 1000, editable : true,
-			//missingMessage:"请输入商品数量",
-			onChange : function(value)
+	</div>
+	<script type="text/javascript">
+		function toDecimal2(x)
+		{
+			var f = parseFloat(x);
+			if (isNaN(f))
 			{
-				if (value == "")
+				return false;
+			}
+			var f = Math.round(x * 100) / 100;
+			var s = f.toString();
+			var rs = s.indexOf('.');
+			if (rs < 0)
+			{
+				rs = s.length;
+				s += '.';
+			}
+			while (s.length <= rs + 2)
+			{
+				s += '0';
+			}
+			return s;
+		}
+
+		$("input[name='spSl']").numberspinner({ min : 1, max : 1000, editable : true,
+		//missingMessage:"请输入商品数量",
+		onChange : function(value)
+		{
+			if (value == "")
+			{
+				$(this).val("1");
+				value = 1;
+			}
+			$(this).parent().parent().parent().find("td[name='spZj']").text(toDecimal2(parseFloat($(this).parent().parent().parent().find("td[name='spJg']").text()) * $(this).val()));
+			countZje();
+			$.ajax({ type : "POST", async : false, cache : false, url : root + "/doUpdateSl.action?" + Math.random(),// 请求的action路径
+			data : { "spdm" : $(this).parent().parent().parent().find("td :checkbox")[0].value, "spsl" : value } })
+		} });
+
+		function deleteSp(obj)
+		{
+			var checkList = $("input[name='checkbox']:checked");
+			if (checkList.size() == 0)
+			{
+				$.messager.alert('提示信息', '请选择需要删除的商品!', 'info');
+				return;
+			}
+			$.messager.confirm('删除商品', '确定从购物车中删除此商品？', function(value)
+			{
+				if (value)
 				{
-					$(this).val("1");
+					checkList.each(function(i)
+					{
+						$(this).parent().parent().remove();
+					});
+					countZje();
 				}
-				$(this).parent().parent().parent().find("td[name='spZj']").text(toDecimal2(parseFloat($(this).parent().parent().parent().find("td[name='spJg']").text())* $(this).val()));
-				countZje();
-			/* 	$.ajax({
-
-		             type: "POST",
-		             url : root+"/doUpdateSl.action?"+Math.random(),// 请求的action路径
-		     		 data : {
-		     			"qxDlxx.dllx":dllx,
-		     			"qxDlxx.dlm" : $.trim($('#name_'+dllx).val()),
-		     			"qxDlxx.dlkl" : $.trim($('#password_'+dllx).val())
-		     		} 
-			} )；*/
-			}
-		});
-
-			function deleteSp(obj)
+			});
+		}
+		function deleteByIndex(obj)
+		{
+			$.messager.confirm('删除商品', '确定从购物车中删除此商品？', function(value)
 			{
-				var checkList=$("input[name='checkbox']:checked");
-				if(checkList.size()==0){
-					 $.messager.alert('提示信息','请选择需要删除的商品!','info');
-					 return;
+				if (value)
+				{
+					$(obj).parent().parent().remove();
+					countZje();
 				}
-				$.messager.confirm('删除商品', '确定从购物车中删除此商品？', function(value){
-		               if (value){
-		            	   checkList.each(function(i)
-		           				{
-		           					$(this).parent().parent().remove();
-		           				});
-		           				countZje();
-		               }
-              });	
-		  }
-			function deleteByIndex(obj){
-				$.messager.confirm('删除商品', '确定从购物车中删除此商品？', function(value){
-				               if (value){
-				   				$(obj).parent().parent().remove();
-				   				countZje();
-				               }
-		           });
+			});
+		}
+
+		function countZje()
+		{
+			$("#zje").text(toDecimal2("0"));
+			$("td[name='spZj']").each(function(i)
+			{
+				$("#zje").text(toDecimal2(parseFloat($("#zje").text()) + parseFloat($(this).text())));
+			});
+		}
+
+		$(function()
+		{
+			$("table a").attr("target", "_blank"); 
+			countZje();
+			$("#checkboxAll").click(function()
+			{
+				if ($(this).attr("checked") == true)
+				{
+					$("input[name='checkbox']").attr("checked", true);
+				}
+				else
+				{
+					$("input[name='checkbox']").attr("checked", false);
+				}
+
+			});
+		})
+
+		function doAccount(obj)
+		{
+			var checkList = $("input[name='checkbox']:checked");
+			if (checkList.size() == 0)
+			{
+				$.messager.alert('提示信息', '请至少选择一件商品!', 'warning');
+				return;
 			}
-			
-			function countZje(){
-			    $("#zje").text(toDecimal2("0"));
-			    $("td[name='spZj']").each(function(i){
-				       $("#zje").text(toDecimal2(parseFloat($("#zje").text())+parseFloat($(this).text())));
-			    });
+			else
+			{
+				var idArr = new Array();
+				for (var i = 0; i < checkList.size(); i++)
+				{
+					idArr[i] = checkList[i].value;
+				}
+				window.location = root + "/goOrder.action?productIds=" + idArr.toString();
 			}
-			
-			$(function(){
-				countZje();
-				$("#checkboxAll").click(function(){
-					if($(this).attr("checked")==true){
-						$("input[name='checkbox']").attr("checked",true);
-					}else{
-						$("input[name='checkbox']").attr("checked",false);
-					}
-					
-				}); 
-			})
-		</script>
+		}
+	</script>
 	</div>
 	<s:include value="foot.html"></s:include>
 </body>

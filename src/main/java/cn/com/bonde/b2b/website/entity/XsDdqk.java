@@ -1,12 +1,16 @@
 package cn.com.bonde.b2b.website.entity;
 
-import java.sql.Timestamp;
+import static javax.persistence.GenerationType.IDENTITY;
+
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * XsDdqk entity. @author MyEclipse Persistence Tools
@@ -17,17 +21,22 @@ public class XsDdqk implements java.io.Serializable
 {
 
 	// Fields
-	private static final long serialVersionUID = 1461965188817873018L;
-	private Long ddxh;
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Integer ddid;
+	private String ddxh;
 	private Long qdsDm;
-	private Long ddzje;
-	private Long ddzjeGj;
+	private Double ddzje;
+	private Double ddzjeGj;
 	private String ddzt;
 	private Long xsryDm;
-	private Timestamp ddscsj;
-	private Timestamp ddqrsj;
-	private Timestamp ddfhsj;
-	private Timestamp ddzfsj;
+	private Date ddscsj;
+	private Date ddqrsj;
+	private Date ddfhsj;
+	private Date ddzfsj;
 
 	// Constructors
 
@@ -37,8 +46,10 @@ public class XsDdqk implements java.io.Serializable
 	}
 
 	/** full constructor */
-	public XsDdqk(Long qdsDm, Long ddzje, Long ddzjeGj, String ddzt, Long xsryDm, Timestamp ddscsj, Timestamp ddqrsj, Timestamp ddfhsj, Timestamp ddzfsj)
+	public XsDdqk(String ddxh, Long qdsDm, Double ddzje, Double ddzjeGj, String ddzt, Long xsryDm, Date ddscsj, Date ddqrsj, Date ddfhsj,
+			Date ddzfsj)
 	{
+		this.ddxh = ddxh;
 		this.qdsDm = qdsDm;
 		this.ddzje = ddzje;
 		this.ddzjeGj = ddzjeGj;
@@ -53,13 +64,24 @@ public class XsDdqk implements java.io.Serializable
 	// Property accessors
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
-	@Column(name = "ddxh", unique = true, nullable = false)
-	public Long getDdxh()
+	@Column(name = "ddid", unique = true, nullable = false)
+	public Integer getDdid()
+	{
+		return this.ddid;
+	}
+
+	public void setDdid(Integer ddid)
+	{
+		this.ddid = ddid;
+	}
+
+	@Column(name = "ddxh", length = 20)
+	public String getDdxh()
 	{
 		return this.ddxh;
 	}
 
-	public void setDdxh(Long ddxh)
+	public void setDdxh(String ddxh)
 	{
 		this.ddxh = ddxh;
 	}
@@ -75,24 +97,24 @@ public class XsDdqk implements java.io.Serializable
 		this.qdsDm = qdsDm;
 	}
 
-	@Column(name = "ddzje", precision = 10, scale = 0)
-	public Long getDdzje()
+	@Column(name = "ddzje", precision = 10)
+	public Double getDdzje()
 	{
 		return this.ddzje;
 	}
 
-	public void setDdzje(Long ddzje)
+	public void setDdzje(Double ddzje)
 	{
 		this.ddzje = ddzje;
 	}
 
-	@Column(name = "ddzje_gj", precision = 10, scale = 0)
-	public Long getDdzjeGj()
+	@Column(name = "ddzje_gj", precision = 10)
+	public Double getDdzjeGj()
 	{
 		return this.ddzjeGj;
 	}
 
-	public void setDdzjeGj(Long ddzjeGj)
+	public void setDdzjeGj(Double ddzjeGj)
 	{
 		this.ddzjeGj = ddzjeGj;
 	}
@@ -119,46 +141,46 @@ public class XsDdqk implements java.io.Serializable
 		this.xsryDm = xsryDm;
 	}
 
-	@Column(name = "ddscsj", length = 50)
-	public Timestamp getDdscsj()
+	@Column(name = "ddscsj", length = 19)
+	public Date getDdscsj()
 	{
 		return this.ddscsj;
 	}
 
-	public void setDdscsj(Timestamp ddscsj)
+	public void setDdscsj(Date ddscsj)
 	{
 		this.ddscsj = ddscsj;
 	}
 
 	@Column(name = "ddqrsj", length = 19)
-	public Timestamp getDdqrsj()
+	public Date getDdqrsj()
 	{
 		return this.ddqrsj;
 	}
 
-	public void setDdqrsj(Timestamp ddqrsj)
+	public void setDdqrsj(Date ddqrsj)
 	{
 		this.ddqrsj = ddqrsj;
 	}
 
 	@Column(name = "ddfhsj", length = 19)
-	public Timestamp getDdfhsj()
+	public Date getDdfhsj()
 	{
 		return this.ddfhsj;
 	}
 
-	public void setDdfhsj(Timestamp ddfhsj)
+	public void setDdfhsj(Date ddfhsj)
 	{
 		this.ddfhsj = ddfhsj;
 	}
 
 	@Column(name = "ddzfsj", length = 19)
-	public Timestamp getDdzfsj()
+	public Date getDdzfsj()
 	{
 		return this.ddzfsj;
 	}
 
-	public void setDdzfsj(Timestamp ddzfsj)
+	public void setDdzfsj(Date ddzfsj)
 	{
 		this.ddzfsj = ddzfsj;
 	}

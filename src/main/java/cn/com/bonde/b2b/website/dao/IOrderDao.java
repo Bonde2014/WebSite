@@ -10,6 +10,7 @@ public interface IOrderDao extends IBaseDBDao {
 
     public List<XsDdqk> queryOrder(Long userId, String orderStatus) throws Exception;
 
-    public List<Map<String, Object>> queryOrderDetail(List<Long> orderNumList) throws Exception;
-
+    public List<Map<String, Object>> queryOrderDetail(List<String> orderNumList) throws Exception;
+    public List<Map<String, Object>> queryOrderList(Long userId, String orderStatus) throws Exception;
+    public List<Map<String, Object>> queryDdztList(Long userId) throws Exception;
 }

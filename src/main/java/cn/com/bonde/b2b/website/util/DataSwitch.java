@@ -313,41 +313,51 @@ public class DataSwitch
 			return "";
 		}
 	}
-	
-	
-	//oracle.sql.Clob类型转换成String类型
-    public static String convertClobToString(Clob clob) {
-        String reString = "";
-        Reader is = null;
-        try {
-            is = clob.getCharacterStream();
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        // 得到流
-        BufferedReader br = new BufferedReader(is);
-        String s = null;
-        try {
-            s = br.readLine();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        StringBuffer sb = new StringBuffer();
-        while (s != null) {
-            //执行循环将字符串全部取出付值给StringBuffer由StringBuffer转成STRING
-            sb.append(s);
-            try {
-                s = br.readLine();
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-        }
-        reString = sb.toString();
-        return reString;
-    }
+
+	// oracle.sql.Clob类型转换成String类型
+	public static String convertClobToString(Clob clob)
+	{
+		String reString = "";
+		Reader is = null;
+		try
+		{
+			is = clob.getCharacterStream();
+		}
+		catch (SQLException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		// 得到流
+		BufferedReader br = new BufferedReader(is);
+		String s = null;
+		try
+		{
+			s = br.readLine();
+		}
+		catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		StringBuffer sb = new StringBuffer();
+		while (s != null)
+		{
+			// 执行循环将字符串全部取出付值给StringBuffer由StringBuffer转成STRING
+			sb.append(s);
+			try
+			{
+				s = br.readLine();
+			}
+			catch (IOException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		reString = sb.toString();
+		return reString;
+	}
 
 	/**
 	 * 得到当前日期(2010年10月10日)，如果传入对象为 null 或 空，返回 ""
@@ -1415,7 +1425,9 @@ public class DataSwitch
 		else if (dateStr.equals("12"))
 		{
 			return "十二";
-		}else{
+		}
+		else
+		{
 			return "";
 		}
 	}
@@ -1545,9 +1557,25 @@ public class DataSwitch
 		else if (day.equals("31"))
 		{
 			return "三十一";
-		}else{
+		}
+		else
+		{
 			return "";
 		}
+	}
+
+	@SuppressWarnings("rawtypes")
+	public static String getStr(String[] args)
+	{
+		String  str = "";
+		for (int i = 0; i < args.length; i++)
+		{
+			str+=args[i]+",";
+		}
+	if(str.length()!=0){
+		str=str.substring(0, str.length()-1);
+	}
+		return str;
 	}
 
 }

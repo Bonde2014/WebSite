@@ -3,80 +3,81 @@ package cn.com.bonde.b2b.website.entity;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
-
 /**
  * XsDdqkZfmxId entity. @author MyEclipse Persistence Tools
  */
 @Embeddable
+public class XsDdqkZfmxId implements java.io.Serializable
+{
 
-public class XsDdqkZfmxId  implements java.io.Serializable {
+	// Fields
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Integer ddid;
+	private Integer xxh;
 
-    // Fields    
-	private static final long serialVersionUID = 1461965188817873018L;
-     private Long ddxh;
-     private Integer xxh;
+	// Constructors
 
+	/** default constructor */
+	public XsDdqkZfmxId()
+	{
+	}
 
-    // Constructors
+	/** full constructor */
+	public XsDdqkZfmxId(Integer ddid, Integer xxh)
+	{
+		this.ddid = ddid;
+		this.xxh = xxh;
+	}
 
-    /** default constructor */
-    public XsDdqkZfmxId() {
-    }
+	// Property accessors
 
-    
-    /** full constructor */
-    public XsDdqkZfmxId(Long ddxh, Integer xxh) {
-        this.ddxh = ddxh;
-        this.xxh = xxh;
-    }
+	@Column(name = "ddid", nullable = false)
+	public Integer getDdid()
+	{
+		return this.ddid;
+	}
 
-   
-    // Property accessors
+	public void setDdid(Integer ddid)
+	{
+		this.ddid = ddid;
+	}
 
-    @Column(name="ddxh", nullable=false)
+	@Column(name = "xxh", nullable = false)
+	public Integer getXxh()
+	{
+		return this.xxh;
+	}
 
-    public Long getDdxh() {
-        return this.ddxh;
-    }
-    
-    public void setDdxh(Long ddxh) {
-        this.ddxh = ddxh;
-    }
+	public void setXxh(Integer xxh)
+	{
+		this.xxh = xxh;
+	}
 
-    @Column(name="xxh", nullable=false)
+	public boolean equals(Object other)
+	{
+		if ((this == other))
+			return true;
+		if ((other == null))
+			return false;
+		if (!(other instanceof XsDdqkZfmxId))
+			return false;
+		XsDdqkZfmxId castOther = (XsDdqkZfmxId) other;
 
-    public Integer getXxh() {
-        return this.xxh;
-    }
-    
-    public void setXxh(Integer xxh) {
-        this.xxh = xxh;
-    }
-   
+		return ((this.getDdid() == castOther.getDdid()) || (this.getDdid() != null && castOther.getDdid() != null && this.getDdid().equals(castOther.getDdid())))
+				&& ((this.getXxh() == castOther.getXxh()) || (this.getXxh() != null && castOther.getXxh() != null && this.getXxh().equals(castOther.getXxh())));
+	}
 
+	public int hashCode()
+	{
+		int result = 17;
 
-
-   public boolean equals(Object other) {
-         if ( (this == other ) ) return true;
-		 if ( (other == null ) ) return false;
-		 if ( !(other instanceof XsDdqkZfmxId) ) return false;
-		 XsDdqkZfmxId castOther = ( XsDdqkZfmxId ) other; 
-         
-		 return ( (this.getDdxh()==castOther.getDdxh()) || ( this.getDdxh()!=null && castOther.getDdxh()!=null && this.getDdxh().equals(castOther.getDdxh()) ) )
- && ( (this.getXxh()==castOther.getXxh()) || ( this.getXxh()!=null && castOther.getXxh()!=null && this.getXxh().equals(castOther.getXxh()) ) );
-   }
-   
-   public int hashCode() {
-         int result = 17;
-         
-         result = 37 * result + ( getDdxh() == null ? 0 : this.getDdxh().hashCode() );
-         result = 37 * result + ( getXxh() == null ? 0 : this.getXxh().hashCode() );
-         return result;
-   }   
-
-
-
-
+		result = 37 * result + (getDdid() == null ? 0 : this.getDdid().hashCode());
+		result = 37 * result + (getXxh() == null ? 0 : this.getXxh().hashCode());
+		return result;
+	}
 
 }

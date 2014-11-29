@@ -9,10 +9,10 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
 
 import cn.com.bonde.b2b.website.dao.IShopcartDao;
+import cn.com.bonde.b2b.website.entity.DmPsfs;
 import cn.com.bonde.b2b.website.entity.QxKhxx;
 import cn.com.bonde.b2b.website.entity.XsGwc;
 import cn.com.bonde.b2b.website.entity.XsGwcId;
@@ -74,7 +74,18 @@ public class ShopcartServiceImpl implements IShopcartService
 		shopcartDao.getEntityListByHQL(hql, paramMap);
 		return null;
 	}
-
+	public List<DmPsfs> getPsfsList() throws Exception{
+		try
+		{
+			return shopcartDao.getPsfsList();
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			throw e;
+		}
+	}
+	
 	/**
 	 * @创建人：应洪峰
 	 * @创建时间：2014年11月17日
@@ -83,14 +94,29 @@ public class ShopcartServiceImpl implements IShopcartService
 	 * @throws MyException
 	 */
 	@Override
-	public List<Map<String, Object>> getEntityList(String khDm) throws Exception
+	public List<Map<String, Object>> getEntityList(String khDm, String... ids) throws Exception
 	{
-		return shopcartDao.getEntityList(khDm);
+		return shopcartDao.getEntityList(khDm, ids);
 	}
-
-	public boolean addToShopCart(Long spdm, Integer spsl,QxKhxx khxx) throws Exception
+	public boolean updateShopCart(Long spdm, Integer spsl, QxKhxx khxx) throws Exception
 	{
-		boolean flag=false;
+		boolean flag = false;
+		XsGwcId id = new XsGwcId();
+		id.setSpDm(spdm);
+		id.setKhDm(khxx.getKhDm());
+		XsGwc xsGwc = shopcartDao.getEntityByPrimaryId(XsGwc.class, id);
+		if (xsGwc != null)
+		{
+			xsGwc.setSpSl(spsl);
+			xsGwc.setTjsj(new Timestamp(DataSwitch.GetPresentTime().getTime()));
+			flag = shopcartDao.updateEntiy(xsGwc);
+		}
+		return flag;
+	}
+	
+	public boolean addToShopCart(Long spdm, Integer spsl, QxKhxx khxx) throws Exception
+	{
+		boolean flag = false;
 		XsGwcId id = new XsGwcId();
 		id.setSpDm(spdm);
 		id.setKhDm(khxx.getKhDm());
@@ -99,7 +125,7 @@ public class ShopcartServiceImpl implements IShopcartService
 		{
 			xsGwc.setSpSl(xsGwc.getSpSl() + spsl);
 			xsGwc.setTjsj(new Timestamp(DataSwitch.GetPresentTime().getTime()));
-			flag=shopcartDao.updateEntiy(xsGwc);
+			flag = shopcartDao.updateEntiy(xsGwc);
 		}
 		else
 		{
@@ -107,9 +133,10 @@ public class ShopcartServiceImpl implements IShopcartService
 			xsGwc.setId(id);
 			xsGwc.setSpSl(spsl);
 			xsGwc.setTjsj(new Timestamp(DataSwitch.GetPresentTime().getTime()));
-			flag=shopcartDao.addEntity(xsGwc);
+			flag = shopcartDao.addEntity(xsGwc);
 		}
 		return flag;
 	}
+
 
 }
