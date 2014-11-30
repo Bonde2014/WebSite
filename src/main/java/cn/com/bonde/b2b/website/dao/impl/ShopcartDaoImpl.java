@@ -11,11 +11,12 @@ import org.springframework.stereotype.Repository;
 
 import cn.com.bonde.b2b.website.dao.IShopcartDao;
 import cn.com.bonde.b2b.website.entity.DmPsfs;
+import cn.com.bonde.b2b.website.entity.QxKhxx;
 import cn.com.bonde.b2b.website.util.MyException;
 
 /**
  * @author Administrator
- *
+ * 
  */
 @Repository("shopcartDao")
 public class ShopcartDaoImpl extends BaseDBDaoImpl implements IShopcartDao
@@ -29,7 +30,7 @@ public class ShopcartDaoImpl extends BaseDBDaoImpl implements IShopcartDao
 	 * @throws MyException
 	 */
 	@Override
-	public List<Map<String,Object>> getEntityList(String khDm,String...  ids ) throws Exception
+	public List<Map<String, Object>> getEntityList(String khDm, String... ids) throws Exception
 	{
 		StringBuilder sbSql = new StringBuilder();
 		sbSql.append("SELECT ");
@@ -59,21 +60,35 @@ public class ShopcartDaoImpl extends BaseDBDaoImpl implements IShopcartDao
 		sbSql.append("  ON T.SP_DM=S.SP_DM ");
 		sbSql.append("WHERE ");
 		sbSql.append("  KH_DM=:KHDM ");
-		if(ids.length!=0){
-			sbSql.append(" AND T.SP_DM IN (:SPDM) ");
+		if (ids.length != 0)
+		{
+			sbSql.append(" AND T.SP_DM IN (" + ids[0].toString().trim() + ") ");
 		}
 		sbSql.append("ORDER BY ");
-		sbSql.append("  TJSJ ASC ");
+		sbSql.append("  T.SP_DM ASC ");
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("KHDM", khDm);
-		if(ids.length!=0){
-		   paramMap.put("SPDM", ids[0].toString().trim());
-		}
 		return this.getMapListBySql(sbSql.toString(), paramMap);
 	}
-	
-	public List<DmPsfs> getPsfsList() throws Exception{
+
+	@SuppressWarnings("unchecked")
+	public List<DmPsfs> getPsfsList() throws Exception
+	{
 		return getEntityListByHQL("from DmPsfs where sfyx=1 order by pxwz");
 	}
 
+	public boolean deleteShopCart(QxKhxx khxx, String spdms) throws Exception
+	{
+		Map<String, Object> paramMaps = new HashMap<String, Object>();
+		paramMaps.put("KHDM", khxx.getKhDm());
+		StringBuffer sbSql = new StringBuffer();
+		sbSql.append("DELETE FROM ");
+		sbSql.append("  XS_GWC ");
+		sbSql.append("WHERE ");
+		sbSql.append("  KH_DM=:KHDM ");
+		sbSql.append("  AND SP_DM ");
+		sbSql.append("IN ");
+		sbSql.append("  (" + spdms + ") ");
+		return this.deleteBySql(sbSql.toString(), paramMaps);
+	}
 }

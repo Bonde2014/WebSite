@@ -74,7 +74,9 @@ public class ShopcartServiceImpl implements IShopcartService
 		shopcartDao.getEntityListByHQL(hql, paramMap);
 		return null;
 	}
-	public List<DmPsfs> getPsfsList() throws Exception{
+
+	public List<DmPsfs> getPsfsList() throws Exception
+	{
 		try
 		{
 			return shopcartDao.getPsfsList();
@@ -85,7 +87,7 @@ public class ShopcartServiceImpl implements IShopcartService
 			throw e;
 		}
 	}
-	
+
 	/**
 	 * @创建人：应洪峰
 	 * @创建时间：2014年11月17日
@@ -98,6 +100,12 @@ public class ShopcartServiceImpl implements IShopcartService
 	{
 		return shopcartDao.getEntityList(khDm, ids);
 	}
+
+	public boolean deleteShopCart(QxKhxx khxx, String spdms) throws Exception
+	{
+		return shopcartDao.deleteShopCart(khxx, spdms);
+	}
+
 	public boolean updateShopCart(Long spdm, Integer spsl, QxKhxx khxx) throws Exception
 	{
 		boolean flag = false;
@@ -113,7 +121,7 @@ public class ShopcartServiceImpl implements IShopcartService
 		}
 		return flag;
 	}
-	
+
 	public boolean addToShopCart(Long spdm, Integer spsl, QxKhxx khxx) throws Exception
 	{
 		boolean flag = false;
@@ -137,6 +145,5 @@ public class ShopcartServiceImpl implements IShopcartService
 		}
 		return flag;
 	}
-
 
 }

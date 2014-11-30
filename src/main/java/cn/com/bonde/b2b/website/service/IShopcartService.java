@@ -25,5 +25,7 @@ public interface IShopcartService
 
 	public List<DmPsfs> getPsfsList() throws Exception;
 
+	public boolean deleteShopCart(QxKhxx khxx, String spdms) throws Exception;
+
 	public boolean updateShopCart(Long spdm, Integer spsl, QxKhxx khxx) throws Exception;
 }

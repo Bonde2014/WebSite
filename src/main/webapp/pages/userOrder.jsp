@@ -71,7 +71,7 @@
 									<td rowspan="<s:property value='#row.SPSL' />"><s:property
 											value='#row.NAME' /></td>
 									<td rowspan="<s:property value='#row.SPSL' />"><div>
-											<a href="<%=root%>/goShopcart.action" id="chaKan">查看</a>
+											<a href="#" id="chaKan">查看</a>
 										</div>
 										<div>
 											<p></p>

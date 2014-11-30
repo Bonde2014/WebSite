@@ -103,7 +103,7 @@
 					</table>
 				</div>
 				<div class="total">
-					<a href="#" class="btn3" onclick="saveOrder(this);">提交订单</a> <span>合计（不含运费）：<font
+					  <a href="#" class="btn3" onclick="saveOrder(this);">提交订单</a><span>合计（不含运费）：<font
 						color="red">¥</font><font id="zje" color="red">0</font></span>
 				</div>
 			</div>
@@ -177,6 +177,7 @@
 		{
 			$('#form').form('submit', { url : root + "/saveOrder.action?" + Math.random(), onSubmit : function()
 			{
+				$(".btn3").attr("target", "_blank"); 
 			}, success : function(msg)
 			{
 				if (msg == "true")

@@ -2,7 +2,7 @@ package cn.com.bonde.b2b.website.entity;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,7 +26,7 @@ public class XsFjbj implements java.io.Serializable
 	private Double jg3;
 	private Double jg0;
 	private Integer kssl;
-	private Timestamp bjsj;
+	private Date bjsj;
 	private Long bjryDm;
 	private String sjbz;
 	private String bjbz;
@@ -109,12 +109,12 @@ public class XsFjbj implements java.io.Serializable
 	}
 
 	@Column(name = "bjsj", length = 19)
-	public Timestamp getBjsj()
+	public Date getBjsj()
 	{
 		return this.bjsj;
 	}
 
-	public void setBjsj(Timestamp bjsj)
+	public void setBjsj(Date bjsj)
 	{
 		this.bjsj = bjsj;
 	}

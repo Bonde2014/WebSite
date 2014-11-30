@@ -96,6 +96,7 @@ public class ShopcartAction extends ProjectBaseAction
 		try
 		{
 			shopcartList = shopcartService.getEntityList(DataSwitch.convertObjectToString(this.getKhxx().getKhDm()));
+			psfsList = shopcartService.getPsfsList();
 		}
 		catch (Exception e)
 		{
@@ -128,6 +129,25 @@ public class ShopcartAction extends ProjectBaseAction
 			String spdm = this.getParameter("spdm").trim();
 			String spsl = this.getParameter("spsl");
 			boolean msg = shopcartService.updateShopCart(DataSwitch.convertObjectToLong(spdm), DataSwitch.convertObjectToInteger(spsl), this.getKhxx());
+			WriteJsonToPage.WriteJson(msg);
+		}
+		catch (Exception e)
+		{
+			throw new MyException(e, this.getClass(), "");
+		}
+	}
+
+	@Action(value = "doDeleteSp")
+	public void doDeleteSp() throws MyException
+	{
+		try
+		{
+			String spdms = this.getParameter("spdm");
+			if (spdms.endsWith(","))
+			{
+				spdms = spdms.substring(0, spdms.length() - 1);
+			}
+			boolean msg = shopcartService.deleteShopCart(this.getKhxx(), spdms);
 			WriteJsonToPage.WriteJson(msg);
 		}
 		catch (Exception e)
