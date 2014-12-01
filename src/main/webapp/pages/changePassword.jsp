@@ -8,13 +8,18 @@
 <title>克莱姆购物平台</title>
 <script type="text/javascript">
 	function submitForm(){
-		if(($('#dlkl_new').val()=="")||($('#dlkl_old').val()=="")){
-			$.messager.alert('提示信息','密码不能为空','info');
-			return;
-		}
-		
-		if($('#dlkl_new').val()!=$('#dlkl_new2').val()){
-			$.messager.alert('提示信息','两次录入的新密码不一致','info');
+		var validateResult = true;
+		$(":password").each(function () {
+			if ($(this).attr('required') || $(this).attr('validType')) {
+				if (!$(this).validatebox('isValid')) {
+					//如果验证不通过，则返回false
+					$(this).focus();
+					validateResult = false;
+					return false;
+			    }
+			}
+	    });
+		if(validateResult==false){
 			return;
 		}
 		$.ajax({
@@ -28,8 +33,7 @@
 			error : function() {
 			},
 			success : function(data) {
-				//alert(data);
-				if(data=="true"){
+				if(data){
 					$.messager.alert('提示信息','密码修改成功','info');
 				}else{
 					$.messager.alert('提示信息','密码修改失败','info');
@@ -37,6 +41,20 @@
 			}
 		});
 	}
+	$.extend($.fn.validatebox.defaults.rules, {
+		equalTo: {
+	        validator: function (value, param) {
+	            return value == $(param[0]).val();
+	        },
+	        message: '两次录入的新密码不一致'
+	    },
+	    equals: {
+	        validator: function (value, param) {
+	            return value != $(param[0]).val();
+	        },
+	        message: '原密码和新密码不能相同'
+	    }
+	});
 </script>
 </head>
 <body>
@@ -51,16 +69,19 @@
         	<div class="shiptitle">
         	<s:set name="dlxx" value="#session.session_login"></s:set>
             <div class="useraddr">
-                <b>用户名：　　</b> <s:property value="#dlxx.dlm"/>
+                <b>用户名：</b> <s:property value="#dlxx.dlm"/>
             </div>
             <div class="useraddr">
-                <b>原密码：　　</b> <input type="password" id="dlkl_old" maxlength="20">
+                <b>原密码：</b> <input type="password" id="dlkl_old"  maxlength="20" class="textbox-text validatebox-text textbox-prompt easyui-validatebox"     
+    required="required" data-options="missingMessage:'原密码不能为空'">
             </div>
              <div class="useraddr">
-                <b>新密码：　　</b> <input type="password" id="dlkl_new" maxlength="20">
+                <b>新密码：</b> <input type="password" id="dlkl_new" maxlength="20" class="easyui-validatebox"     
+    required="required" data-options="missingMessage:'新密码不能为空'"  validType="equals['#dlkl_old']" >
             </div>
             <div class="useraddr">
-                <b>确认新密码：</b> <input type="password" id="dlkl_new2" maxlength="20">
+                <b>确认新密码：</b> <input type="password" id="dlkl_new2" maxlength="20"  class="easyui-validatebox"     
+    required="required" validType="equalTo['#dlkl_new']" data-options="missingMessage:'确认新密码不能为空'">
             </div>
             	<div align="center"> 
             		<input type="button" class="btn4" align="middle" value="修改" onclick="submitForm()"/>

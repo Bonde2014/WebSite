@@ -110,7 +110,7 @@
 					</table>
 				</div>
 				<div class="total">
-					<a href="#" class="btn3" onclick="saveOrder(this);">生成订单</a><span>合计（不含运费）：<font
+					<a href="#" class="btn3" onclick="saveOrder(this);">生成订单</a><span>应付款金额（不含运费）：<font
 						color="red">¥</font><font id="zje" color="red">0</font></span>
 				</div>
 			</div>
