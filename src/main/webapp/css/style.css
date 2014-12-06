@@ -15,6 +15,9 @@ body {
   padding: 0px;
   font-size: 12px;
 }
+img {
+  border: 0;
+}
 ul {
   margin: 0;
   padding: 0;
@@ -395,6 +398,7 @@ textarea {
   background: #efffe9;
 }
 .prolist-box ul li {
+  height: 290px;
   margin: 15px 0;
   padding: 0 17px;
   width: 160px;
@@ -430,6 +434,9 @@ textarea {
   font-size: 12px;
   font-weight: bold;
   color: #000000;
+}
+.prolist-box ul li .p-price-num {
+  width: 90px;
 }
 #pagination-digg {
   width: 400px;
