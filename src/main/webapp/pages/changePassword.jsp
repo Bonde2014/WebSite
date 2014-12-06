@@ -33,7 +33,7 @@
 			error : function() {
 			},
 			success : function(data) {
-				if(data){
+				if(data=="true"){
 					$.messager.alert('提示信息','密码修改成功','info');
 				}else{
 					$.messager.alert('提示信息','密码修改失败','info');
