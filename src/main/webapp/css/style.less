@@ -76,12 +76,29 @@ input, select, textarea {
     }
 }
 
-.global_menu{background:#3DA200;height:35px;overflow:hidden;
+.global_menu{background:#3DA200;height:35px;
              .bigmenu{
-                 position:absolute;background:#61CD12;width:210px;box-shadowx:2px 2px 2px #2D7800;overflow:hidden;border-bottom:1px solid #61CD12;
-                 h1{font-size:14px;color:#fff;text-align:center;background:url(../images/indexhead_sprite.png) -240px -1108px no-repeat;margin:0;padding:8px 0;}
-                 ul{text-align:center;color:#525252;
-                    li{background:#E4FEC5;padding:0 0 4px 0}
+                 position:absolute;background:#61CD12;width:205px;box-shadowx:2px 2px 2px #2D7800;border-bottom:1px solid #61CD12;
+                 h1{cursor:pointer; font-size:14px;color:#fff;text-align:center;background:url(../images/indexhead_sprite.png) -240px -1108px no-repeat;margin:0;padding:8px 0;}
+                 ul{text-align:center;color:#525252;border:1px solid #61CD12;
+                    li{background:#E4FEC5;padding:0 0 4px 0;position:relative;z-index:9999;
+                        .othermenu{display:none; position:absolute;width:500px;height:500px;z-index:999;background:#FAFFF3;left:203px;border:1px solid #61CD12;margin-top:-1px;
+                                   .mask{height:43px;width:25px;background:#FAFFF3;margin:0 0 0 -5px;position:absolute;}
+                                    dl{border-bottom: 1px solid #EEE;padding: 6px 0;overflow: hidden;display:block;
+                                       dt{display:block; float: left;width: 54px;line-height: 22px;text-align: right;padding: 3px 6px 0 0;font-weight: 700;color: #E4393C;}
+                                       dd{display:block;padding: 3px 0 0;margin:0;float:left;width:430px;
+                                          em{float: left;
+height: 14px;
+margin: 4px 0;
+line-height: 14px;
+padding: 0 8px;
+border-left: 1px solid #ccc;font-style:normal;}
+                                       }
+                                    }
+                                   
+                                   }
+                    }
+                    .lihover{background:#FAFFF3 !important;box-shadow:0 0 5px #3DA200;position:relative;z-index:99999}
                     .odd{background:#fff;}
                      h2{font-size:14px;margin:0;padding:2px 0;}
                      span{padding:0 10px;}
@@ -90,6 +107,7 @@ input, select, textarea {
 
                  }
              }
+            
              .topmenu{display:block;height:35px;margin-left:250px;
                       li{display:inline;padding:7px 40px;line-height:36px;font-size:14px;color:#fff;cursor:pointer;}
                       li:hover{background:#61CD12;}

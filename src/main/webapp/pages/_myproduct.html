@@ -16,6 +16,26 @@
     <script type="text/javascript">
     $(function () {
         $(".adbox").turnPic();
+
+        $("#menutype").click(function () {
+            if ($("#menutype2").is(":hidden")) {
+                $("#menutype2").show();
+            } else {
+                $("#menutype2").hide();
+            }
+        })
+
+        $("#menutype2>li").hover(function () {
+            $(".othermenu").hide();
+            $(".lihover").removeClass("lihover");
+            
+            $(this).find(".othermenu").show();
+            $(this).addClass("lihover")
+        })
+        $("#menutype2").mouseleave(function () {
+            $(".othermenu").hide();
+            $(".lihover").removeClass("lihover")
+        })
     })
     </script>
 </head>
@@ -61,35 +81,101 @@
     <div class="global_menu">
         <div class="mainbox">
             <div class="bigmenu">
-                <h1>全部商品分类</h1>
-                <ul style="display:none">
-                    <li>
+                <h1 id="menutype">全部商品分类</h1>
+                <ul style="display:none" id="menutype2">
+                    <li><div class="othermenu">
+                            <div class="mask"></div>
+                            <dl >
+                                <dt><a style="" href="http://book.jd.com/library/life.html">生活</a></dt>
+                                <dd>
+                                    <em><a style="" href="http://channel.jd.com/1713-3270.html">家教与育儿</a></em>
+                                    <em><a style="" href="http://channel.jd.com/1713-3271.html">旅游/地图</a></em>
+                                    <em><a style="" href="http://channel.jd.com/1713-9278.html">烹饪/美食</a></em>
+                                    <em><a style="" href="http://channel.jd.com/1713-9291.html">时尚/美妆</a></em>
+                                    <em><a style="" href="http://channel.jd.com/1713-9301.html">家居</a></em>
+                                    <em><a style="" href="http://channel.jd.com/1713-9309.html">婚恋与两性</a></em>
+                                    <em><a style="" href="http://channel.jd.com/1713-9314.html">娱乐/休闲</a></em>
+                                    <em><a style="" href="http://channel.jd.com/1713-3269.html">健身与保健</a></em>
+                                    <em><a style="" href="http://channel.jd.com/1713-3272.html">动漫/幽默</a></em>
+                                    <em><a style="" href="http://channel.jd.com/1713-3288.html">体育/运动</a></em>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt><a style="" href="http://book.jd.com/library/life.html">生活</a></dt>
+                                <dd>
+                                    <em><a style="" href="http://channel.jd.com/1713-3270.html">家教与育儿</a></em>
+                                    <em><a style="" href="http://channel.jd.com/1713-3271.html">旅游/地图</a></em>
+                                    <em><a style="" href="http://channel.jd.com/1713-9278.html">烹饪/美食</a></em>
+                                    <em><a style="" href="http://channel.jd.com/1713-9291.html">时尚/美妆</a></em>
+                                    <em><a style="" href="http://channel.jd.com/1713-9301.html">家居</a></em>
+                                    <em><a style="" href="http://channel.jd.com/1713-9309.html">婚恋与两性</a></em>
+                                    <em><a style="" href="http://channel.jd.com/1713-9314.html">娱乐/休闲</a></em>
+                                    <em><a style="" href="http://channel.jd.com/1713-3269.html">健身与保健</a></em>
+                                    <em><a style="" href="http://channel.jd.com/1713-3272.html">动漫/幽默</a></em>
+                                    <em><a style="" href="http://channel.jd.com/1713-3288.html">体育/运动</a></em>
+                                </dd>
+                            </dl>
+                        </div>
                         <h2>手机通讯</h2>
                         <span><a href="#ddd">手机</a></span>    <span><a href="#ddd">手机配件</a></span>
+                        
                     </li>
                     <li class="odd">
+                        <div class="othermenu">
+                            <div class="mask"></div>
+                            <dl class="fore7">
+                                <dt><a style="" href="http://book.jd.com/library/life.html">生活</a></dt>
+                                <dd>
+                                    <em><a style="" href="http://channel.jd.com/1713-3270.html">家教与育儿</a></em>
+                                    <em><a style="" href="http://channel.jd.com/1713-3271.html">旅游/地图</a></em>
+                                    <em><a style="" href="http://channel.jd.com/1713-9278.html">烹饪/美食</a></em>
+                                    <em><a style="" href="http://channel.jd.com/1713-9291.html">时尚/美妆</a></em>
+                                    <em><a style="" href="http://channel.jd.com/1713-9301.html">家居</a></em>
+                                    <em><a style="" href="http://channel.jd.com/1713-9309.html">婚恋与两性</a></em>
+                                    <em><a style="" href="http://channel.jd.com/1713-9314.html">娱乐/休闲</a></em>
+                                    <em><a style="" href="http://channel.jd.com/1713-3269.html">健身与保健</a></em>
+                                    <em><a style="" href="http://channel.jd.com/1713-3272.html">动漫/幽默</a></em>
+                                    <em><a style="" href="http://channel.jd.com/1713-3288.html">体育/运动</a></em>
+                                </dd>
+                            </dl>
+                        </div>
                         <h2>电脑整机</h2>
                         <span><a href="#ddd">笔记本</a></span>    <span><a href="#ddd">台机</a></span> <span><a href="#ddd">苹果系列</a></span>
                     </li>
                     <li>
+                        <div class="othermenu">
+                            <div class="mask"></div>
+                        </div>
                         <h2>外设产品</h2>
                         <span><a href="#ddd">键套</a></span>    <span><a href="#ddd">鼠标</a></span> <span><a href="#ddd">耳机</a></span><span><a href="#ddd">手写板</a></span>
                     </li>
                     <li class="odd">
+                        <div class="othermenu">
+                            <div class="mask"></div>
+                        </div>
                         <h2>网络产品</h2>
                         <span><a href="#ddd"></a>网络</span>    <span><a href="#ddd">路由器</a></span> <span><a href="#ddd">交换机</a></span><span><a href="#ddd">网线</a></span>
                     </li>
 
                     <li>
+                        <div class="othermenu">
+                            <div class="mask"></div>
+                        </div>
                         <h2>安防监控</h2>
                         <span><a href="#ddd">监控摄像头</a></span>    <span><a href="#ddd">监控录像机</a></span>
                     </li>
                     <li class="odd">
+                        <div class="othermenu">
+                            <div class="mask"></div>
+                        </div>
                         <h2>网络产品</h2>
                         <span><a href="#ddd"></a>网络</span>    <span><a href="#ddd">路由器</a></span> <span><a href="#ddd">交换机</a></span><span><a href="#ddd">网线</a></span>
                     </li>
 
                     <li>
+                        <div class="othermenu">
+                            <div class="mask"></div>
+                        </div>
                         <h2>安防监控</h2>
                         <span><a href="#ddd">监控摄像头</a></span>    <span><a href="#ddd">监控录像机</a></span>
                     </li>
