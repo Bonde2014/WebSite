@@ -1194,4 +1194,59 @@ textarea {
 .daynow .siwtchbox .chg {
   background: #fff;
 }
+.addcart {
+  border-top: 3px solid #333;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #E7E7E7;
+}
+.addcart .lightcartinfo {
+  border: 2px solid #DDD;
+  background: #F0F0F0;
+  height: 30px;
+  margin: 10px ;
+  min-width: 900px;
+  line-height: 30px;
+}
+.addcart .lightcartinfo p {
+  margin: 0 30px;
+}
+.addcart .lightcartinfo .unitext {
+  float: right;
+}
+.addcart .lightcartinfo .unitext .b {
+  font-weight: bold;
+}
+.addcart .lightcartinfo .unitext .fred {
+  color: #ff0000;
+}
+.addcart .strip {
+  width: 22px;
+  background: url(../images/buy_55.gif);
+  height: 13px;
+  margin: -13px auto 15px auto;
+  cursor: pointer;
+}
+.addcart .completeframe {
+  padding: 5px;
+  margin: 15px;
+  border: 1px solid #ccc;
+}
+.addcart .completeframe h2 {
+  font-weight: normal;
+  font-size: 12px;
+}
+.addcart .completeframe .ordertotal {
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+}
+.addcart .completeframe .b {
+  font-weight: bold;
+}
+.addcart .completeframe .fred {
+  color: #ff0000;
+}
 /*# sourceMappingURL=style.css.map */
