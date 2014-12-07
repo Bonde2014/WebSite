@@ -42,7 +42,7 @@
             </s:if>
             <s:else>
             	<span class="top_bar_wrap" style="border-left:0">您好，欢迎来到克莱姆！
-            		<a href="<%=root%>/pages/login.jsp">登陆</a>
+            		<a href="<%=root%>/pages/login.jsp">登录</a>
             	</span>
             </s:else>
         </div>

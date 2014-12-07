@@ -36,6 +36,7 @@ function addSupply(){
 //	success : function() {
 //	}
 //  });
+    }
 
 	
 
@@ -77,4 +78,57 @@ function downSupplyProduct(ghxh){
 		
 	}
   });
+}
+
+/**
+ * 将客户注册信息保存下来
+ * @param 
+ * @return
+ */
+function saveRegist(){
+	//alert( $('[name="token"]').val() );
+	if(($('#dlm').val()=="")||($('#dlkl_new').val()=="")||($('#dlkl_old').val()=="")
+			||($('#khmc').val()=="")||($('#fzr_xm').val()=="")||($('#lxdh').val()=="")
+			){
+		$.messager.alert('提示信息','登录名、密码、企业名称、负责人姓名、联系电话等都不能为空','info');
+		return;
+	}
+	
+	if($('#dlkl').val()!=$('#dlkl_2').val()){
+		$.messager.alert('提示信息','两次录入的密码不一致','info');
+		return;
+	}
+	//TODO:这里后续可以改成easyui的validate，但是风格比较丑
+	//TODO：这里要先查询下dlm是否有重复
+	//用ajax提交，而不是struts提交，因为要相应提示信息
+	$.ajax({
+		async : false,
+		//cache : false,
+		type : 'POST',
+		//dataType : "json",
+		url : root+"/addRegist.do?"+Math.random(),// 请求的action路径
+		data : {
+			//"token": $('[name="token"]').val() , //防止重复提交的作用
+			"khlb":  $('#khlb').val(),
+			"qxDlxx.dlm" : $.trim($('#dlm').val()),
+			"qxDlxx.dlkl" : $.trim($('#dlkl').val()),
+			"qxKhxx.fzrXm": $.trim($('#fzrXm').val()),
+			"qxKhxx.khMc": $.trim($('#khMc').val()),
+			"qxKhxx.lxdz": $.trim($('#lxdz').val()),
+			"qxKhxx.lxdh": $.trim($('#lxdh').val())
+		},
+		error : function() {// 请求失败处理函数
+			$.messager.alert("提示信息","注册失败","error");
+		},
+		success : function(data) { // 请求成功后处理函数。
+			if (data == "true") {
+				$.messager.alert('提示信息','客户信息注册成功，跳转登录页面...','info');  //TODO：这里直接一闪而过，要怎么停顿住？
+				window.location = root+"/pages/login.jsp";
+			} else {//后台异常处理
+				$.messager.alert('提示信息','客户信息注册失败，请检查...','error');
+			}
+		}
+	});
+	//$('#registForm').attr("action",root+"/saveRegist.do");
+	//$('#registForm').submit();
 }

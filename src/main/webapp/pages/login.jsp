@@ -66,7 +66,7 @@ $(function () {
 
                     <div class="otherinput">
                         <input type="checkbox" value=" " /> 自动登录　　
-                        <input type="checkbox" value=" " />安全控件登录  　　  忘记密码？
+                        <a href="<%=root%>/initRegister.do?khlb=0" >初次使用，未注册？</a>  　　  忘记密码？
                     </div>
 
                     <a href="javascript:void(0)" onclick="doLogin()" class="loginbtn"></a>
@@ -88,7 +88,7 @@ $(function () {
 
                     <div class="otherinput">
                         <input type="checkbox"  value=" " /> 自动登录　　
-                        <input type="checkbox"  value=" " />安全控件登录  　　  忘记密码？
+                        <a href="<%=root%>/initRegister.do?khlb=1" >初次使用，未注册？</a>   　　  忘记密码？
                     </div>
 
                     <a href="javascript:void(0)" onclick="doLogin()" class="loginbtn"></a>

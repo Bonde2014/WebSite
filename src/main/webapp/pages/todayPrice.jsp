@@ -52,27 +52,27 @@
 		<s:iterator value="todayPriceList" id="list" status="st">
 			<table width="100%" border="1" cellspacing="0" cellpadding="0">
 				<tr>
-					<th style="width: 245px">商品名称</th>
-					<th>商品分类</th>
+					<th style="width: 345px">商品名称</th>
+					<!-- <th>商品分类</th> -->  <!-- 客户要求今日报价页面只显示商品名称、品牌、销售价格即可 -->
 					<th>品牌</th>
-					<th>市场价</th>
+					<!-- <th>市场价</th> -->
 					<th>平台销售价</th>
-					<th>可售数量</th>
-					<th>最后报价时间</th>
+					<!--<th>可售数量</th>  -->
+					<!--<th>最后报价时间</th> -->
 				</tr>
 				<s:iterator value="list" id="map" status="s">
 					<tr>
 						<td><a href="javascprit:void(0)" class="link"
 							onclick="productDetail(<s:property value='#map.spDm' />)"><s:property
 									value="#map.spmc" /></a></td>
-						<td><s:property value="#map.spflMc" /></td>
+						<!--<td><s:property value="#map.spflMc" /></td> -->
 						<td><s:property value="#map.spppMc" /></td>
-						<td class="mktprice"><s:property value="#map.scjg" /></td>
+						<!--<td class="mktprice"><s:property value="#map.scjg" /></td> -->
 						<td class="avlprice">
 							<s:property value="#map['jg'+#session.session_khxx.qdsJb]" />
 						</td>
-						<td><s:property value="#map.kssl" /></td>
-						<td><s:property value="#map.bjsj" /></td>
+						<!--<td><s:property value="#map.kssl" /></td> -->
+						<!--<td><s:property value="#map.bjsj" /></td> -->
 					</tr>
 				</s:iterator>
 			</table>

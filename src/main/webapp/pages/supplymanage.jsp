@@ -90,12 +90,8 @@
         <div class="user-left">
             <h1>供货商</h1>
             <ul>
-<<<<<<< HEAD
-                <li><a href="<%=root%>/supplyCenter.action">用户中心</a>    </li>
-=======
                 <li><a href="<%=root%>/supplyCenter.action">用户中心</a></li>
                 <li><a href="<%=root%>/changeSupplyPasswordInit.action">修改密码</a></li>
->>>>>>> branch 'master' of https://github.com/Bonde2014/WebSite.git
                 <li><a href="<%=root%>/supplyManageInit.action" class="current">我的货架</a> </li>
             </ul>
         </div>
