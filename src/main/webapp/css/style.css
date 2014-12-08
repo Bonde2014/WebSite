@@ -15,6 +15,9 @@ body {
   padding: 0px;
   font-size: 12px;
 }
+img {
+  border: 0;
+}
 ul {
   margin: 0;
   padding: 0;
@@ -172,17 +175,16 @@ textarea {
 .global_menu {
   background: #3DA200;
   height: 35px;
-  overflow: hidden;
 }
 .global_menu .bigmenu {
   position: absolute;
   background: #61CD12;
-  width: 210px;
+  width: 205px;
   box-shadowx: 2px 2px 2px #2D7800;
-  overflow: hidden;
   border-bottom: 1px solid #61CD12;
 }
 .global_menu .bigmenu h1 {
+  cursor: pointer;
   font-size: 14px;
   color: #fff;
   text-align: center;
@@ -193,10 +195,69 @@ textarea {
 .global_menu .bigmenu ul {
   text-align: center;
   color: #525252;
+  border: 1px solid #61CD12;
 }
 .global_menu .bigmenu ul li {
   background: #E4FEC5;
   padding: 0 0 4px 0;
+  position: relative;
+  z-index: 9999;
+}
+.global_menu .bigmenu ul li .othermenu {
+  display: none;
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  z-index: 999;
+  background: #FAFFF3;
+  left: 203px;
+  border: 1px solid #61CD12;
+  margin-top: -1px;
+}
+.global_menu .bigmenu ul li .othermenu .mask {
+  height: 43px;
+  width: 25px;
+  background: #FAFFF3;
+  margin: 0 0 0 -5px;
+  position: absolute;
+}
+.global_menu .bigmenu ul li .othermenu dl {
+  border-bottom: 1px solid #EEE;
+  padding: 6px 0;
+  overflow: hidden;
+  display: block;
+}
+.global_menu .bigmenu ul li .othermenu dl dt {
+  display: block;
+  float: left;
+  width: 54px;
+  line-height: 22px;
+  text-align: right;
+  padding: 3px 6px 0 0;
+  font-weight: 700;
+  color: #E4393C;
+}
+.global_menu .bigmenu ul li .othermenu dl dd {
+  display: block;
+  padding: 3px 0 0;
+  margin: 0;
+  float: left;
+  width: 430px;
+}
+.global_menu .bigmenu ul li .othermenu dl dd em {
+  float: left;
+  height: 14px;
+  margin: 4px 0;
+  line-height: 14px;
+  padding: 0 8px;
+  border-left: 1px solid #ccc;
+  font-style: normal;
+}
+.global_menu .bigmenu ul .lihover {
+  background: #FAFFF3 !important;
+  box-shadow: 0 0 5px #3DA200;
+  position: relative;
+  z-index: 99999;
 }
 .global_menu .bigmenu ul .odd {
   background: #fff;
@@ -395,6 +456,7 @@ textarea {
   background: #efffe9;
 }
 .prolist-box ul li {
+  height: 290px;
   margin: 15px 0;
   padding: 0 17px;
   width: 160px;
@@ -430,6 +492,9 @@ textarea {
   font-size: 12px;
   font-weight: bold;
   color: #000000;
+}
+.prolist-box ul li .p-price-num {
+  width: 90px;
 }
 #pagination-digg {
   width: 400px;
@@ -1128,5 +1193,60 @@ textarea {
 }
 .daynow .siwtchbox .chg {
   background: #fff;
+}
+.addcart {
+  border-top: 3px solid #333;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #E7E7E7;
+}
+.addcart .lightcartinfo {
+  border: 2px solid #DDD;
+  background: #F0F0F0;
+  height: 30px;
+  margin: 10px ;
+  min-width: 900px;
+  line-height: 30px;
+}
+.addcart .lightcartinfo p {
+  margin: 0 30px;
+}
+.addcart .lightcartinfo .unitext {
+  float: right;
+}
+.addcart .lightcartinfo .unitext .b {
+  font-weight: bold;
+}
+.addcart .lightcartinfo .unitext .fred {
+  color: #ff0000;
+}
+.addcart .strip {
+  width: 22px;
+  background: url(../images/buy_55.gif);
+  height: 13px;
+  margin: -13px auto 15px auto;
+  cursor: pointer;
+}
+.addcart .completeframe {
+  padding: 5px;
+  margin: 15px;
+  border: 1px solid #ccc;
+}
+.addcart .completeframe h2 {
+  font-weight: normal;
+  font-size: 12px;
+}
+.addcart .completeframe .ordertotal {
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+}
+.addcart .completeframe .b {
+  font-weight: bold;
+}
+.addcart .completeframe .fred {
+  color: #ff0000;
 }
 /*# sourceMappingURL=style.css.map */
