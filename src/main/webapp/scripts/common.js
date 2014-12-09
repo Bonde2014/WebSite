@@ -119,7 +119,7 @@ function requestCatalogTree(dldm) {
 								// 循环三级列表
 								var thirdChildArray = childArray[j].childList;
 								if (thirdChildArray) {
-									thirdChildStr = "<dl><dt><a href=\"javascript:void(0)\" onclick=\"catalogSearch("
+									thirdChildStr += "<dl><dt><a href=\"javascript:void(0)\" onclick=\"catalogSearch("
 										+ childArray[j].id + ",1)\" >"
 										+ childArray[j].name + "</a></dt><dd>";
 									for (var k = 0; k < thirdChildArray.length; k++) {
