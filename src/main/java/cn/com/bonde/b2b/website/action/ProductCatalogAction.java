@@ -53,6 +53,21 @@ public class ProductCatalogAction extends ProjectBaseAction
 			throw new MyException(e, this.getClass(), "");
 		}
 	}
+	
+	@Action(value = "getAllCatalog")
+    public void getAllCatalogList() throws Exception
+    {
+        try
+        {
+            WriteJsonToPage.WriteJson(catalogService.queryAllCatalog());
+        }
+        catch (Exception e)
+        {
+            throw new MyException(e, this.getClass(), "");
+        }
+    }
+	
+	
 
     
     /**
