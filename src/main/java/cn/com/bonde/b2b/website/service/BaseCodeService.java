@@ -14,7 +14,7 @@ import cn.com.bonde.b2b.website.dao.IBaseCodeDao;
 import cn.com.bonde.b2b.website.entity.DmSpfl;
 import cn.com.bonde.b2b.website.entity.DmSpfl2;
 
-@Service
+@Service(value = "baseCodeService")
 public class BaseCodeService implements ApplicationListener<ContextRefreshedEvent> {
 
     private static final Logger  log = Logger.getLogger(BaseCodeService.class);

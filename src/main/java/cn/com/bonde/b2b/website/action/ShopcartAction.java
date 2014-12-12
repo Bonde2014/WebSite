@@ -19,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import cn.com.bonde.b2b.website.entity.DmPsfs;
 import cn.com.bonde.b2b.website.service.IShopcartService;
 import cn.com.bonde.b2b.website.util.DataSwitch;
+import cn.com.bonde.b2b.website.util.JsonUtil;
 import cn.com.bonde.b2b.website.util.MyException;
 import cn.com.bonde.b2b.website.util.WriteJsonToPage;
 
@@ -90,6 +91,29 @@ public class ShopcartAction extends ProjectBaseAction
 		this.shopcartList = shopcartList;
 	}
 
+	
+	@Action(value = "initShopCart")
+	public void initShopCart() throws MyException
+	{
+		try
+		{
+			
+			shopcartList = shopcartService.getEntityList(DataSwitch.convertObjectToString(this.getKhxx().getKhDm()));
+			String str="[{ 'SP_DM': '1', 'SPMC': 'Koi', 'JG': 10.00, 'SP_SL': '1', 'ZJ': 36.50} ]";
+			for(Map<String,Object> map:shopcartList){
+				map.put("SP_SL","<input type='text' class='easyui-numberbox' value='"+DataSwitch.convertObjectToInteger(map.get("SP_SL"))+"' >");
+				map.put("DELETE", "<a href='javascript:;' onclick='deleteBySpdm("+DataSwitch.convertObjectToString(map.get("SP_DM"))+")'>");
+			}
+			 this.getResponse().getWriter().write(str);
+			 System.out.println( JsonUtil.getJsonFromObject(str));
+			WriteJsonToPage.WriteJson(shopcartList);
+		}
+		catch (Exception e)
+		{
+			throw new MyException(e, this.getClass(), "");
+		}
+	}
+	
 	@Action(value = "goShopcart")
 	public String goShopcart() throws MyException
 	{

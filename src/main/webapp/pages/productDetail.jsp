@@ -28,10 +28,13 @@
 			},
 			async : false,
 			error : function() {
+				$.messager.alert('提示信息','添加商品失败！','info');
 			},
 			success : function(data) {
-				if(data){
+				if(data=="true"){
 					$.messager.alert('提示信息','添加商品到购物车成功！','info');
+				}else{
+					$.messager.alert('提示信息','添加商品失败！','info');
 				}
 			}
 		});
@@ -69,22 +72,30 @@
 			<div class="clearfix">
 				<ul class="summary">
 				    <li><strong>品牌：</strong><span><s:property value="productMap.sppp_mc"/></span></li>
-					<li><strong>市场价：</strong><span><s:property value="productMap.scjg"/></span></li>
+					<s:if test="#session.session_khxx==null">
+					<li><strong>市场价：</strong><span color="red"><s:property value="productMap.scjg"/></span></li>
+					</s:if>
+					<s:if test="#session.session_khxx!=null">
 					<li class="red"><strong>平台价：</strong><span><s:property value="productMap['jg'+#session.session_khxx.qdsJb]" /></span></li>
+					</s:if>
 				</ul>
 				<ul class="edit">
 					<li>选择颜色：</li>
 					<li>选择版本：</li>
-					<li>选择数量：
+					<li>库存：<s:property value="productMap.kssl"/></li>
+					<s:if test="#session.session_khxx!=null">
+					<li><strong>选择数量：</strong>
 					<span class="minus"></span>
-						<input type="text" name="spsl" id="spsl" value="1"/>
+						<input type="text" name="spsl" id="spsl" value="1" style="width:40px;text-align: center;"/>
 						<input type="hidden" name="spdm" id="spdm" value="<s:property value='productMap.sp_dm'/>">
 					<span class="plus"></span>
-					库存：<s:property value="productMap.kssl"/>
 					</li>
+					</s:if>
 				</ul>
 			</div>
+			<s:if test="#session.session_khxx!=null">
 			<div class="addin" onclick="addShopCart()"></div>
+			</s:if>
 			<div class="preview">
 				<div class="imgbig">
 					<img data-img="1" width="350" height="350"

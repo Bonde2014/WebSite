@@ -47,6 +47,32 @@ public class ShopcartDaoImpl extends BaseDBDaoImpl implements IShopcartDao
 		sbSql.append("  D.JG2, ");
 		sbSql.append("  D.JG3, ");
 		sbSql.append("  D.JG0, ");
+		sbSql.append("   ");
+		sbSql.append("CASE WHEN ");
+		sbSql.append("  K.QDS_JB=1 ");
+		sbSql.append("THEN ");
+		sbSql.append("  D.JG1*T.SP_SL ");
+		sbSql.append("WHEN ");
+		sbSql.append("  K.QDS_JB=2 ");
+		sbSql.append("THEN ");
+		sbSql.append("  D.JG2*T.SP_SL ");
+		sbSql.append("ELSE ");
+		sbSql.append("  D.JG3*T.SP_SL ");
+		sbSql.append("END ");
+		sbSql.append("  AS ZJ, ");
+		sbSql.append("   ");
+		sbSql.append("CASE WHEN ");
+		sbSql.append("  K.QDS_JB=1 ");
+		sbSql.append("THEN ");
+		sbSql.append("  D.JG1 ");
+		sbSql.append("WHEN ");
+		sbSql.append("  K.QDS_JB=2 ");
+		sbSql.append("THEN ");
+		sbSql.append("  D.JG2 ");
+		sbSql.append("ELSE ");
+		sbSql.append("  D.JG3 ");
+		sbSql.append("END ");
+		sbSql.append("  AS JG, ");
 		sbSql.append("  D.KSSL, ");
 		sbSql.append("  D.BJSJ, ");
 		sbSql.append("  D.BJRY_DM, ");
@@ -54,12 +80,14 @@ public class ShopcartDaoImpl extends BaseDBDaoImpl implements IShopcartDao
 		sbSql.append("  D.BJBZ ");
 		sbSql.append("FROM ");
 		sbSql.append("  XS_GWC T ");
+		sbSql.append("LEFT JOIN QX_KHXX K ");
+		sbSql.append("  ON T.KH_DM=K.KH_DM ");
 		sbSql.append("LEFT JOIN XS_FJBJ D ");
 		sbSql.append("  ON T.SP_DM=D.SP_DM ");
 		sbSql.append("LEFT JOIN SP_SPXX S ");
 		sbSql.append("  ON T.SP_DM=S.SP_DM ");
 		sbSql.append("WHERE ");
-		sbSql.append("  KH_DM=:KHDM ");
+		sbSql.append("  T.KH_DM=:KHDM ");
 		if (ids.length != 0)
 		{
 			sbSql.append(" AND T.SP_DM IN (" + ids[0].toString().trim() + ") ");

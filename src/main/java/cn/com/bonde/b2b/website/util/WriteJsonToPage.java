@@ -25,6 +25,7 @@ public class WriteJsonToPage {
 		try {
 			 writer = response.getWriter();
 			writer.write(jsonString);
+			System.out.println(jsonString);
 		} catch (IOException e) {
 			System.out.println("向页面输出是出现错误！");
 		}

@@ -1249,4 +1249,12 @@ textarea {
 .addcart .completeframe .fred {
   color: #ff0000;
 }
+
+.btn-buy {
+	background: rgb(247, 247, 247); margin: 0px 4px 0px 0px; padding: 0px 9px; border-radius: 2px; border: 1px solid rgb(221, 221, 221); height: 19px; text-align: center; color: rgb(51, 51, 51); line-height: 19px; text-decoration: none; float: left; cursor: pointer;
+}
+
+.btn-buy:hover {
+	border: 1px solid rgb(204, 204, 204); color: rgb(51, 51, 51); cursor: pointer; box-shadow: 0px 1px 1px rgba(0,1,1,0.08);
+}
 /*# sourceMappingURL=style.css.map */

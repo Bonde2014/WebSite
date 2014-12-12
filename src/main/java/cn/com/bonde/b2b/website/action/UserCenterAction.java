@@ -168,8 +168,8 @@ public class UserCenterAction extends ProjectBaseAction
 				spdms = spdms.substring(0, spdms.length() - 1);
 			}
 			List<Map<String, Object>> list = shopcartService.getEntityList(DataSwitch.convertObjectToString(this.getKhxx().getKhDm()), spdms);
-			boolean result = orderService.saveOrder(psfsdm, list, this.getKhxx());
-			WriteJsonToPage.WriteJson(result);
+//			boolean result = orderService.saveOrder(psfsdm, list, this.getKhxx());
+//			WriteJsonToPage.WriteJson(result);
 		}
 		catch (Exception e)
 		{
