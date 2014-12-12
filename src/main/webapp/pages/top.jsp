@@ -4,6 +4,31 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script type="text/javascript">
+$(function () {
+	$("#menutype").click(function () {
+	    if ($("#catalogtree").is(":hidden")) {
+	        $("#catalogtree").show();
+	        $("#catalogtree_dispaly").hide();
+	    } else {
+	        $("#catalogtree").hide();
+	        $("#catalogtree_dispaly").show();
+	    }
+	})
+	
+	$("#catalogtree>li").hover(function () {
+	    $(".othermenu").hide();
+	    $(".lihover").removeClass("lihover");
+	    
+	    $(this).find(".othermenu").show();
+	    $(this).addClass("lihover")
+	})
+	$("#catalogtree").mouseleave(function () {
+	    $(".othermenu").hide();
+	    $(".lihover").removeClass("lihover")
+	})		
+})
+</script>
 </head>
 <body>
 	<form action="" id="searchForm" method="post">
@@ -26,9 +51,9 @@
 	<div class="global_menu">
 		<div class="mainbox">
 			<div class="bigmenu">
-				<h1 style="cursor:pointer" onclick="pageLink('/init.do')">全部商品分类</h1>
-				<ul id="catalogtree">
-				</ul>
+				<h1 style="cursor:pointer" id="menutype">全部商品分类</h1>
+				<ul id="catalogtree_dispaly"></ul>
+				<ul style="display:none" id="catalogtree"></ul>
 			</div>
 			<ul class="topmenu">
 				<li onclick="pageLink('/todayPrice.action')">今日报价</li>

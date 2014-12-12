@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import cn.com.bonde.b2b.website.dao.ICatalogDao;
+import cn.com.bonde.b2b.website.entity.CatalogVO;
 import cn.com.bonde.b2b.website.entity.DmSpfl;
 import cn.com.bonde.b2b.website.service.BaseCodeService;
 import cn.com.bonde.b2b.website.service.ICatalogService;
@@ -43,7 +44,7 @@ public class CatalogSevriceImpl implements ICatalogService
 	public void setCatalogDao(ICatalogDao catalogDao) {
 		this.catalogDao = catalogDao;
 	}
-
+	
 
 	@Override
 	public String queryCatalog(Long spflDm) throws Exception
@@ -92,5 +93,16 @@ public class CatalogSevriceImpl implements ICatalogService
 		}
 		return catlogStr;
 	}
+
+
+    @Override
+    public String queryAllCatalog() throws Exception {
+        String catlogTreeJson = "";
+        List<CatalogVO> list = BaseCodeService.getCatalogTreeList();
+        if(!CollectionUtils.isEmpty(list)){
+            catlogTreeJson = JsonUtil.getJsonFromObject(list);
+        }
+        return catlogTreeJson;
+    }
 
 }
