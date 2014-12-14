@@ -159,7 +159,6 @@ public class JsonUtil {
 		try{
 		Gson gson = new Gson();
 		json=gson.toJson(obj);
-		json = json.replace('"', '\'');
 		}catch (Exception e) {
 			new MyException(e, JsonUtil.class, "objcet转换为json字符串异常！");
 		}

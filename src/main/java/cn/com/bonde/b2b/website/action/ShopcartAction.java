@@ -97,16 +97,10 @@ public class ShopcartAction extends ProjectBaseAction
 	{
 		try
 		{
-			
 			shopcartList = shopcartService.getEntityList(DataSwitch.convertObjectToString(this.getKhxx().getKhDm()));
-			String str="[{ 'SP_DM': '1', 'SPMC': 'Koi', 'JG': 10.00, 'SP_SL': '1', 'ZJ': 36.50} ]";
-			for(Map<String,Object> map:shopcartList){
-				map.put("SP_SL","<input type='text' class='easyui-numberbox' value='"+DataSwitch.convertObjectToInteger(map.get("SP_SL"))+"' >");
-				map.put("DELETE", "<a href='javascript:;' onclick='deleteBySpdm("+DataSwitch.convertObjectToString(map.get("SP_DM"))+")'>");
-			}
-			 this.getResponse().getWriter().write(str);
-			 System.out.println( JsonUtil.getJsonFromObject(str));
-			WriteJsonToPage.WriteJson(shopcartList);
+			String str="[{ \"SP_DM\": \"1\", \"SPMC\": \"Koi\", \"JG\": 10.00, \"SP_SL\": \"1\", \"ZJ\": 36.50} ]";
+			System.out.println(JsonUtil.getJsonFromObject(shopcartList));
+			WriteJsonToPage.WriteJson(JsonUtil.getJsonFromObject(shopcartList));
 		}
 		catch (Exception e)
 		{

@@ -35,17 +35,7 @@
                 $("#lightcartinfo").hide();
             }
         })
-       var data1= $('#datagrid').datagrid("getData");
-		var zje=0;
-		var count=0;
-		for(var i=0;i<data1.total;i++){
-			zje+=data1.rows[i].ZJ;
-			count+=parseInt(data1.rows[i].SP_SL);
-		}
-		$("#zje").text("￥"+zje);
-		$("#zsl").text(count);
-		$("#zje1").text("￥"+zje);
-		$("#zsl1").text(count);
+        countZje();
 	})
 </script>
 </head>
@@ -104,13 +94,13 @@
 							<strong class="J-p-1123632">¥<s:property
 									value="#row['jg'+#session.session_khxx.qdsJb]" /></strong>
 							<br>
-							<span>订购数量：<input type="text" class="easyui-numberbox"
-								name="name" value=" 1" style="text-align: center;width:80px;" />
+							<span>订购数量：<input type="text" class="easyui-numberbox" data-options="min:1,max:10000"
+								name="name" id="<s:property value='#row.sp_dm'/>" value=" 1" style="text-align: center;width:80px;" />
 							</span>
 							<br>
 							<span style="text-align: center;width:100%;"><a
 								class="btn-buy" style="text-align: center;" href="javaScript:;"
-								onclick="addShopCart()">加入购物车</a></span>
+								onclick="addShopCart(<s:property value='#row.sp_dm'/>)">加入购物车</a></span>
 						</s:if>
 					</div>
 				</li>
@@ -137,11 +127,6 @@
 		</s:else>
 	</div>
 	<s:include value="foot.html"></s:include>
-	<script type="text/javascript">
-	//var data=[{ 'SP_DM': '1', 'SPMC': 'Koi', 'JG': 10.00, 'SP_SL': '1', 'ZJ': 36.50} ];
-	var data=[{"SP_SL":"2", "KH_DM":1, "JG1":120.30, "ZJ2":260.00, "JG2":130.00, "ZJ3":280.00, "BJRY_DM":"null", "JG3":140.00, "ZJ0":200.00, "TJSJ":"2014-12-01 18:13:22.0","ZJ1":240.60, "DELETE":"<a href='javascript:;' onclick='deleteBySpdm(1)'>删除</a>", "ZJ":240.60, "SPMC":"铁三角CKR5" , "JG0":100.00,  "SP_DM":1,  "JG":120.30},{"SP_SL":"2", "KH_DM":1, "JG1":120.30, "ZJ2":260.00, "JG2":130.00, "ZJ3":280.00, "BJRY_DM":"null", "JG3":140.00, "ZJ0":200.00, "TJSJ":"2014-12-01 18:13:22.0","ZJ1":240.60, "DELETE":"<a href='javascript:;' onclick='deleteBySpdm(1)'>删除</a>", "ZJ":240.60, "SPMC":"铁三角CKR5" , "JG0":100.00,  "SP_DM":1,  "JG":120.30}];
-</script>
-	</script>
 	<s:if test="#session.session_khxx!=null">
 		<div class="addcart">
 			<div class="strip" id="strip"></div>
@@ -152,20 +137,20 @@
                             singleSelect:true,
                             collapsible:true,
                             rownumbers:true,
-                            data:data,method:'get',
-                onClickCell: onClickCell">
+                            url:'<%=root %>/initShopCart.action?5',
+                            onLoadSuccess:countZje,
+                            method:'post'">
 					<thead>
 						<tr>
 							<th data-options="field:'SPMC',width:450,align:'right'">商品信息</th>
 							<th
 								data-options="field:'JG',align:'right',width:150,resizable:true">单价</th>
 							<th
-								data-options="field:'SP_SL',align:'center',width:150,resizable:true,editor:{type:'numberbox'}">数量&nbsp;<font
-								color="red">(*单击可修改数量)</font></th>
+								data-options="field:'SP_SL',align:'center',width:150,resizable:true,formatter:getSl">数量</th>
 							<th
-								data-options="field:'ZJ',width:150,align:'right',resizable:true">实际应付款</th>
+								data-options="field:'ZJ',width:150,align:'right',resizable:true,formatter:getPrice">实际应付款</th>
 							<th
-								data-options="field:'DELETE',align:'right',width:150,resizable:true">操作</th>
+								data-options="field:'SP_DM',align:'right',width:150,resizable:true,formatter:deleteSpdm">操作</th>
 						</tr>
 					</thead>
 				</table>
@@ -196,46 +181,82 @@
 				<p class=""></p>
 			</div>
 			<script type="text/javascript">
-    $.extend($.fn.datagrid.methods, {
-        editCell: function(jq,param){
-            return jq.each(function(){
-                var opts = $(this).datagrid('options');
-                var fields = $(this).datagrid('getColumnFields',true).concat($(this).datagrid('getColumnFields'));
-                for(var i=0; i<fields.length; i++){
-                    var col = $(this).datagrid('getColumnOption', fields[i]);
-                    col.editor1 = col.editor;
-                    if (fields[i] != param.field){
-                        col.editor = null;
-                    }
-                }
-                $(this).datagrid('beginEdit', param.index);
-                for(var i=0; i<fields.length; i++){
-                    var col = $(this).datagrid('getColumnOption', fields[i]);
-                    col.editor = col.editor1;
-                }
-            });
-        }
-    });
-    
-    var editIndex = undefined;
-    function endEditing(){
-        if (editIndex == undefined){return true}
-        if ($('#datagrid').datagrid('validateRow', editIndex)){
-            $('#datagrid').datagrid('endEdit', editIndex);
-            editIndex = undefined;
-            return true;
-        } else {
-            return false;
-        }
+    function getPrice(value,rowData,rowIndex)
+    {     
+    	return toDecimal2(value); 
     }
-    function onClickCell(index, field){
-        if (endEditing()){
-            $('#datagrid').datagrid('selectRow', index)
-                    .datagrid('editCell', {index:index,field:field});
-            editIndex = index;
-        }
+    function getSl(value,rowData,rowIndex)
+    {     
+    	var div = "<input id='spsl"+rowData.SP_DM+"' value='"+value+"'  type='text'  onkeypress=\"return event.keyCode>=48&&event.keyCode<=57\" onblur=\"changeShopCart(this,'"+rowData.SP_DM+"')\"/>";         
+    	return div; 
     }
     
+    function changeShopCart(obj,spdm){
+    	if(isNaN(obj.value)){obj.value='1'}
+    	var data=$('#datagrid').datagrid("getData");
+    	for(var i=0;i<data.total;i++){
+			if(data.rows[i].SP_DM==spdm){
+				$('#datagrid').datagrid('updateRow',{
+					index: i,
+					row: {
+						SP_SL: obj.value,
+						ZJ: toDecimal2(parseInt(obj.value)*parseFloat(data.rows[i].JG))
+					}
+				});
+			}
+    	}	
+    	countZje();
+    	$.ajax({ type : "POST", async : false, cache : false, url : root + "/doUpdateSl.action?" + Math.random(),// 请求的action路径
+			data : { "spdm" :spdm, "spsl" : obj.value } });
+    }
+    
+    function deleteSpdm(value,rowData,rowIndex){
+    	return "<a href='javascript:;' onclick='deleteBySpdm("+value+")'>删除</a>";
+    }
+    
+	function countZje()
+	{
+		var zj=0.00;
+    	var sl=0;
+    	var data=$('#datagrid').datagrid("getData");
+    	for(var i=0;i<data.total;i++){
+    		zj+=parseFloat(data.rows[i].ZJ);
+    		sl+=parseInt(data.rows[i].SP_SL);
+    	}	
+    	$("#zje").text("￥"+toDecimal2(zj));
+		$("#zsl").text(sl);
+		$("#zje1").text("￥"+toDecimal2(zj));
+		$("#zsl1").text(sl);
+	}
+
+    
+    function deleteBySpdm(spdm)
+	{
+		$.messager.confirm('删除商品', '确定从购物车中删除此商品？', function(value)
+		{
+			if (value)
+			{
+				$.ajax({ type : "POST", async : false, cache : false, url : root + "/doDeleteSp.action?" + Math.random(),// 请求的action路径
+				data : { "spdm" : spdm }, success : function(msg)
+				{
+					if (msg == "true")
+					{
+						for(var i=0;i<$('#datagrid').datagrid("getData").total;i++){
+							if($('#datagrid').datagrid("getData").rows[i].SP_DM==spdm){
+				    	          $('#datagrid').datagrid("deleteRow",i);
+				    	          break;
+							}
+				    	}
+						countZje();
+					}
+					else
+					{
+						$.messager.alert('提示信息', '删除商品失败!', 'info');
+					}
+				} })
+			}
+		}); 
+	}
     
     function saveOrder(obj)
 	{
@@ -281,7 +302,10 @@
 				{
 					if (msg == "true")
 					{
-						  $('#datagrid').datagrid('reload');
+						for(var i=$('#datagrid').datagrid("getData").total-1;i>=0;i--){
+				    	          $('#datagrid').datagrid("deleteRow",i);
+				    	}
+						countZje();
 					}
 					else
 					{
@@ -291,6 +315,33 @@
 			}
 		});
 	}
+    
+    
+    function addShopCart(spdm){
+		var spsl=$("#"+spdm).val();
+		$.ajax({
+			type : "post",
+			url : root+"/addToShopCart.action?"+Math.random(),
+			data : {
+				"spdm" :spdm,
+				"spsl":spsl
+			},
+			async : false,
+			error : function() {
+				$.messager.alert('提示信息','添加商品失败！','info');
+			},
+			success : function(data) {
+				if(data=="true"){
+					$.messager.alert('提示信息','添加商品到购物车成功！','info');
+					 $('#datagrid').datagrid('load',{});
+		             $("#completeframe").show();
+		             $("#lightcartinfo").hide();
+				}else{
+					$.messager.alert('提示信息','添加商品失败！','info');
+				}
+			}
+		});
+    }
 </script>
 		</div>
 	</s:if>
