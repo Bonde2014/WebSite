@@ -56,8 +56,8 @@ public class SearchAction extends ProjectBaseAction
 	@Action(value = "init")
 	public String init() throws Exception
 	{
-		return searchCatalog();
-	}
+		return "index"; //指向真正的首页（带广告图片），而不是又跳转到产品列表页面   //searchCatalog();
+	}	
 
 	@Action(value = "doSearch")
 	public String doSearch() throws Exception

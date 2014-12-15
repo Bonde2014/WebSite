@@ -10,10 +10,14 @@
 <script type="text/javascript">
 
 	$(function() {
-	    //轮换广告图片
+	    //只有首页有轮换广告图片
 		$(".adbox").turnPic();
-		//刷新商品分类导航区域
-		requestCatalogTree();
+	    //首页默认要显示产品分类导航下拉区域
+		$("#catalogtree").show();
+	    //TODO：要去掉分类导航顶部的点击事件，以避免点击隐藏，确保商品分类是固定显示效果
+		//$("#menutype").click()=null;
+	    //TODO:首页要增加热销商品列表
+		
 	})
 	
 	

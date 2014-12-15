@@ -13,9 +13,7 @@
 <title>克莱姆购物平台</title>
 <script type="text/javascript">
 	$(function() {
-		$(".adbox").turnPic();
-		//刷新商品分类导航区域
-		requestCatalogTree($('#catalog').val());
+		//$(".adbox").turnPic();
 		
 		$("#prolist li").hover(
 	            function () {
@@ -41,7 +39,7 @@
 </head>
 <body>
 
-
+    <!--  商品列表页面去掉广告区域，广告区域只有真正的首页index.jsp才需要保留
 	<div class="mainbox">
 		<div class="adbox">
 			<ul class="pic_list">
@@ -59,6 +57,7 @@
 			</div>
 		</div>
 	</div>
+	-->
 
 
 

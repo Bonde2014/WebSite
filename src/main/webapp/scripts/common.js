@@ -70,8 +70,10 @@ function catalogSearch(catalog, page) {
  * @return
  */
 function requestCatalogTree(dldm) {
-	$
-			.ajax({
+	
+	/*
+	 * 以下这段固定分类的组织代码不需要了
+	$.ajax({
 				type : "GET",
 				url : root + "/getCatalog.do?" + Math.random(),// 请求的action路径
 				data : {
@@ -112,9 +114,9 @@ function requestCatalogTree(dldm) {
 					$('#catalogtree_dispaly').html(catlogstr);
 				}
 			});
-	// 获取全部商品分类
-	$
-			.ajax({
+	*/
+	// 获取全部商品分类，用于下拉区域和折叠页显示
+	$.ajax({
 				type : "POST",
 				url : root + "/getAllCatalog.do",
 				async : false,
@@ -152,10 +154,14 @@ function requestCatalogTree(dldm) {
 									}
 									thirdChildStr+="</dd></dl>";
 								}
+								if (j<3) { //为了美观，暂规定每个大类，最多只在下来区域显示“3”个二级分类  
 								str1+= "<span><a href=\"javascript:void(0)\" onclick=\"catalogSearch("
 										+ childArray[j].id + ",1)\" >"
 										+ childArray[j].name + "</a></span>";
+								}
 							}
+						}else{
+							str1 =str1+"<span></span>"; // 如果小类为空，添加空白行
 						}
 						thirdChildStr+="</div>";
 						catalogstr+=thirdChildStr+ str1 + "</li>"

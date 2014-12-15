@@ -6,20 +6,24 @@
 <head>
 <script type="text/javascript">
 $(function () {
+	
+	//先加载数据
+	requestCatalogTree($('#catalog').val());
+	//再为相应元素绑定事件
 	$("#menutype").click(function () {
 	    if ($("#catalogtree").is(":hidden")) {
 	        $("#catalogtree").show();
-	        $("#catalogtree_dispaly").hide();
+	        //$("#catalogtree_dispaly").hide();
 	    } else {
 	        $("#catalogtree").hide();
-	        $("#catalogtree_dispaly").show();
+	        //$("#catalogtree_dispaly").show();
 	    }
 	})
 	
 	$("#catalogtree>li").hover(function () {
 	    $(".othermenu").hide();
 	    $(".lihover").removeClass("lihover");
-	    
+
 	    $(this).find(".othermenu").show();
 	    $(this).addClass("lihover")
 	})
@@ -52,13 +56,13 @@ $(function () {
 		<div class="mainbox">
 			<div class="bigmenu">
 				<h1 style="cursor:pointer" id="menutype">全部商品分类</h1>
-				<ul id="catalogtree_dispaly"></ul>
+				<!-- <ul id="catalogtree_dispaly"></ul>   -->
 				<ul style="display:none" id="catalogtree"></ul>
 			</div>
 			<ul class="topmenu">
-				<li onclick="pageLink('/todayPrice.action')">今日报价</li>
 				<li onclick="pageLink('/init.do')">首页</li>
-				<li>待扩展功能</li>
+				<li onclick="pageLink('/todayPrice.action')">今日报价</li>
+				<li onclick="pageLink('/searchCatalog.action')">订购中心</li>
 				<li>待扩展功能</li>
 			</ul>
 		</div>
