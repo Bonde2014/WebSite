@@ -26,13 +26,49 @@ import cn.com.bonde.b2b.website.service.BaseCodeService;
 import cn.com.bonde.b2b.website.service.ISearchService;
 import cn.com.bonde.b2b.website.service.IShopcartService;
 import cn.com.bonde.b2b.website.util.Pager;
-
+/**
+	 * serialVersionUID
+	 */
+/**
+	 * @return the psfsList
+	 */
+/**
+	 * @param psfsList the psfsList to set
+	 */
+//指向真正的首页（带广告图片），而不是又跳转到产品列表页面   //searchCatalog();
+/**
+	 * @return the searchFindEntity
+	 */
+/**
+	 * @param searchFindEntity
+	 *            the searchFindEntity to set
+	 */
+/**
+	 * @return the pager
+	 */
+/**
+	 * @param pager
+	 *            the pager to set
+	 */
+/**
+	 * @return the productMap
+	 */
+/**
+	 * @param productMap
+	 *            the productMap to set
+	 */
+/**
+	 * @return the spflList
+	 */
+/**
+	 * @param spflList
+	 *            the spflList to set
+	 */
 @Controller
 @Scope("prototype")
 @ParentPackage(value = "base")
 @Namespace(value = "/")
-@Results({ @Result(name = "index", location = "/pages/index.jsp"), @Result(name = "productSearch", location = "/pages/productSearch.jsp"),
-		@Result(name = "productList", location = "/pages/productList.jsp"), @Result(name = "productDetail", location = "/pages/productDetail.jsp") })
+@Results({ @Result(name = "index", location = "/pages/index.jsp"), @Result(name = "productSearch", location = "/pages/productSearch.jsp"),		@Result(name = "productList", location = "/pages/productList.jsp"), @Result(name = "productDetail", location = "/pages/productDetail.jsp") })
 public class SearchAction extends ProjectBaseAction
 {
 
@@ -203,5 +239,5 @@ public class SearchAction extends ProjectBaseAction
 	{
 		this.spflList = spflList;
 	}
-
 }
+
