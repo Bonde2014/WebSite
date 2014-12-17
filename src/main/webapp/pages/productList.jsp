@@ -26,6 +26,10 @@
 
 	            }
 	        )
+	       $("#updateShopCart").click(function () {
+	    	   $("#completeframe").show();
+               $("#lightcartinfo").hide();
+	       });
 	       $("#strip").click(function () {
             if (!$("#completeframe").is(":hidden")) {
                 $("#completeframe").hide();
@@ -94,8 +98,10 @@
 							<strong class="J-p-1123632">¥<s:property
 									value="#row['jg'+#session.session_khxx.qdsJb]" /></strong>
 							<br>
-							<span>订购数量：<input type="text" class="easyui-numberbox" data-options="min:1,max:10000"
-								name="name" id="<s:property value='#row.sp_dm'/>" value=" 1" style="text-align: center;width:80px;" />
+							<span>订购数量：<input type="text" class="easyui-numberbox"
+								data-options="min:1,max:10000" name="name"
+								id="<s:property value='#row.sp_dm'/>" value=" 1"
+								style="text-align: center;width:80px;" />
 							</span>
 							<br>
 							<span style="text-align: center;width:100%;"><a
@@ -126,6 +132,38 @@
 				</script>
 		</s:else>
 	</div>
+	<s:set name="khxx" value="#session.session_khxx"></s:set>
+	<input type="hidden" value="<s:property value='#khxx.fzrXm'/>"
+		id="hid_fzrXm">
+	<input type="hidden" value="<s:property value='#khxx.lxdh'/>"
+		id="hid_lxdh">
+	<input type="hidden" value="<s:property value='#khxx.lxdz'/>"
+		id="hid_lxdz">
+	<div id="userInfo" class="easyui-window " title="修改收货人信息"
+		data-options="modal:true,closed:true,iconCls:'icon-save',minimizable:false,maximizable:false,collapsible:false"
+		style="width:500px;height:200px;padding:10px;">
+		<dir class="useraddr">
+			<span style="width:80px; alaign" />收货人：
+			</span>
+			<input class="easyui-textbox" style="width:150px;" id="fzrXm"
+				name="fzrXm" maxlength="15"
+				value="<s:property value="#khxx.fzrXm" />">
+			<p></p>
+			<span style="width:80px; " /> 联系电话：
+			</span>
+			<input class="easyui-textbox" style="width:150px;" id="lxdh"
+				name="lxdh" maxlength="12" value="<s:property value="#khxx.lxdh" />">
+			<p></p>
+			<span style="width:80px; " /> 详细地址：
+			</span>
+			<input class="easyui-textbox" style="width:300px;" id="lxdz"
+				name="lxdz" maxlength="50" value="<s:property value="#khxx.lxdz" />">
+			<p></p>
+			<input type="button" class="btn4" onclick="updateUserInfo();"
+				value="保存" />
+			<input type="button" class="btn4" onclick="cancel();" value="取消" />
+		</dir>
+	</div>
 	<s:include value="foot.html"></s:include>
 	<s:if test="#session.session_khxx!=null">
 		<div class="addcart">
@@ -137,7 +175,7 @@
                             singleSelect:true,
                             collapsible:true,
                             rownumbers:true,
-                            url:'<%=root %>/initShopCart.action?5',
+                            url:'<%=root%>/initShopCart.action',
                             onLoadSuccess:countZje,
                             method:'post'">
 					<thead>
@@ -159,8 +197,21 @@
 
 				<table style="width:100%;" class="ordertotal">
 					<tr>
-						<td style="text-align:right">共计:<span class="b fred" id="zsl"></span>
-							件 应付款金额：<span class="b fred" id="zje"></span></td>
+						<td style="text-align:center;width:200px;">配送方式： <select
+							class="easyui-combobox" editable="false" style="width:100px;"
+							name="psfsdm" id="psfsdm">
+								<s:iterator value="psfsList" id="item" status="s">
+									<option value="<s:property value='#item.psfsdm'/>"><s:property
+											value='#item.psfsmc' /></option>
+								</s:iterator>
+						</select>
+						</td>
+						<td style="text-align:left;width:600px;">收货人信息： <a href="javascript:;"  onclick="$('#userInfo').window('open')"  title="点击修改收货人信息"
+							class="useraddr" id="userInfo1"> <s:property
+									value="#khxx.lxdz" /> （ <s:property value="#khxx.fzrXm" /> ）
+								<s:property value="#khxx.lxdh" /></a></td>
+						<td style="text-align:right">共计:<span class="b fred"
+							id="zsl"></span> 件 应付款金额：<span class="b fred" id="zje"></span></td>
 						<td style="text-align:right;width:200px;"><input
 							type="button" style="vertical-align:middle; margin-top:-3px;"
 							value="生成订单" onclick="saveOrder(this);"> <input
@@ -171,12 +222,11 @@
 			</div>
 			<div class="lightcartinfo" id="lightcartinfo" style="display:none;">
 				<span class="unitext  "> 共计: <span class="b fred" id="zsl1"></span>
-					件 应付款金额： <span class="b fred" id="zje1"></span>
-					&nbsp;&nbsp;&nbsp;&nbsp; <input type="button"
-					style="vertical-align:middle; margin-top:-3px;" value="生成订单"
-					onclick="saveOrder(this);"> <input type="button"
-					style="vertical-align:middle; margin-top:-3px;" value="清空购物车"
-					onclick="deleteSp(this);">
+					件 应付款金额： <span class="b fred" id="zje1"></span> <input
+					type="button" style="vertical-align:middle; margin-top:-3px;"
+					value="修改" id="updateShopCart"> &nbsp;&nbsp;&nbsp;&nbsp; <input
+					type="button" style="vertical-align:middle; margin-top:-3px;"
+					value="清空购物车" onclick="deleteSp(this);">
 				</span>
 				<p class=""></p>
 			</div>
@@ -258,6 +308,7 @@
 		}); 
 	}
     
+    
     function saveOrder(obj)
 	{
     	 var spdmArr="";
@@ -265,14 +316,18 @@
     	 for(var i=0;i<data1.total;i++){
  			spdmArr += data1.rows[i].SP_DM + ",";
  		}
+    $("<div class=\"datagrid-mask\"></div>").css({display:"block",width:"100%",height:$(window).height()}).appendTo("body:first");//等待效果显示在wnavt控件
+    $("<div class=\"datagrid-mask-msg\"></div>").html("请稍等，正在生成订单...").appendTo("body:first").css({display:"block",left:($(window).width()/2-50),top:$(window).height()/2}); 
     	$.ajax({
 			type : "POST",
 			async : false,
 			cache : false,
-			url : root + "/saveOrder.action?" + Math.random(),// 请求的action路径
-			data : { "spdm" :spdmArr },
+			url : root + "/addOrder.action?" + Math.random(),// 请求的action路径
+			data : { "spdm" :spdmArr,"psfsdm":$("#psfsdm").val() },
 			success : function(msg)
 			{
+				$("body:first").find("div.datagrid-mask-msg").remove();
+                $("body:first").find("div.datagrid-mask").remove();
 				if (msg == "true")
 				{
 					$.messager.alert('提示信息', '订单已生成!', 'info');
@@ -342,6 +397,48 @@
 			}
 		});
     }
+    
+    
+    function cancel()
+	{
+		$.messager.confirm('取消', '确定取消修改?', function(value)
+		{
+			if (value)
+			{
+				$('#fzrXm').val($('#hid_fzrXm').val());
+				$('#lxdh').val($('#hid_lxdh').val());
+				$('#lxdz').val($('#hid_lxdz').val());
+				$('#userInfo').window('close');
+			}
+		});
+	}
+
+	function updateUserInfo()
+	{
+		$.ajax({
+			type : "POST",
+			async : false,
+			cache : false,
+			url : root + "/doUserInfo.action?" + Math.random(),// 请求的action路径
+			data : { "fzrXm" : $.trim($('#fzrXm').val()), "lxdh" : $.trim($('#lxdh').val()), "lxdz" : $.trim($('#lxdz').val()) },
+			success : function(msg)
+			{
+				if (msg == "true")
+				{
+					$('#hid_fzrXm').val($('#fzrXm').val());
+					$('#hid_lxdh').val($('#lxdh').val());
+					$('#hid_lxdz').val($('#lxdz').val());
+					$('#userInfo1').html(
+							$('#lxdz').val() + "（" + $('#fzrXm').val() + "）" + $('#lxdh').val()
+									+ "&nbsp;&nbsp;<input type=\"button\" name=\"name\" class=\"btn4\" onclick=\"$('#userInfo').window('open')\" value=\"修改\" />");
+					$('#userInfo').window('close');
+				}
+				else
+				{
+					$.messager.alert('提示信息', '修改收货人信息失败!', 'info');
+				}
+			} })
+	}
 </script>
 		</div>
 	</s:if>

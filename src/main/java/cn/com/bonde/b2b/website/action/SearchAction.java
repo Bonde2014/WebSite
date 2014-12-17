@@ -19,10 +19,12 @@ import org.apache.struts2.convention.annotation.Results;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import cn.com.bonde.b2b.website.entity.DmPsfs;
 import cn.com.bonde.b2b.website.entity.DmSpfl;
 import cn.com.bonde.b2b.website.entity.findEntity.SearchFindEntity;
 import cn.com.bonde.b2b.website.service.BaseCodeService;
 import cn.com.bonde.b2b.website.service.ISearchService;
+import cn.com.bonde.b2b.website.service.IShopcartService;
 import cn.com.bonde.b2b.website.util.Pager;
 
 @Controller
@@ -47,15 +49,35 @@ public class SearchAction extends ProjectBaseAction
 
 	@Resource(name = "baseCodeService")
 	private BaseCodeService baseCodeService;
-
+	@Resource(name = "shopcartService")
+	private IShopcartService shopcartService;
 	/**
 	 * serialVersionUID
 	 */
 	private static final long serialVersionUID = 4288078529248188610L;
+	private List<DmPsfs> psfsList = null;
+
+
+	/**
+	 * @return the psfsList
+	 */
+	public List<DmPsfs> getPsfsList()
+	{
+		return psfsList;
+	}
+
+	/**
+	 * @param psfsList the psfsList to set
+	 */
+	public void setPsfsList(List<DmPsfs> psfsList)
+	{
+		this.psfsList = psfsList;
+	}
 
 	@Action(value = "init")
 	public String init() throws Exception
 	{
+		psfsList = shopcartService.getPsfsList();
 		return searchCatalog();
 	}
 

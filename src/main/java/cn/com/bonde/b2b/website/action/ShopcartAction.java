@@ -98,8 +98,6 @@ public class ShopcartAction extends ProjectBaseAction
 		try
 		{
 			shopcartList = shopcartService.getEntityList(DataSwitch.convertObjectToString(this.getKhxx().getKhDm()));
-			String str="[{ \"SP_DM\": \"1\", \"SPMC\": \"Koi\", \"JG\": 10.00, \"SP_SL\": \"1\", \"ZJ\": 36.50} ]";
-			System.out.println(JsonUtil.getJsonFromObject(shopcartList));
 			WriteJsonToPage.WriteJson(JsonUtil.getJsonFromObject(shopcartList));
 		}
 		catch (Exception e)
