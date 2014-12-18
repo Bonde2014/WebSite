@@ -138,6 +138,7 @@ public class SearchAction extends ProjectBaseAction
 		}
 		searchFindEntity.setRows(30);
 		pager = searchService.searchByKeyword(searchFindEntity);
+		psfsList = shopcartService.getPsfsList();
 		return "productList";
 	}
 
