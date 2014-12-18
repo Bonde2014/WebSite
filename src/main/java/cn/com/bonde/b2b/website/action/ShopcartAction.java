@@ -31,7 +31,7 @@ import cn.com.bonde.b2b.website.util.WriteJsonToPage;
 @Scope("prototype")
 @ParentPackage(value = "base")
 @Namespace(value = "/")
-@Results({ @Result(name = "success", location = "shopcart.jsp"), @Result(name = "makeOrder", location = "/pages/shipinfo.jsp") })
+@Results({ @Result(name = "success", location = "/shopcart.jsp"), @Result(name = "makeOrder", location = "/pages/shipinfo.jsp") })
 public class ShopcartAction extends ProjectBaseAction
 {
 	private static final long serialVersionUID = 1L;
@@ -98,8 +98,6 @@ public class ShopcartAction extends ProjectBaseAction
 		try
 		{
 			shopcartList = shopcartService.getEntityList(DataSwitch.convertObjectToString(this.getKhxx().getKhDm()));
-			String str="[{ \"SP_DM\": \"1\", \"SPMC\": \"Koi\", \"JG\": 10.00, \"SP_SL\": \"1\", \"ZJ\": 36.50} ]";
-			System.out.println(JsonUtil.getJsonFromObject(shopcartList));
 			WriteJsonToPage.WriteJson(JsonUtil.getJsonFromObject(shopcartList));
 		}
 		catch (Exception e)

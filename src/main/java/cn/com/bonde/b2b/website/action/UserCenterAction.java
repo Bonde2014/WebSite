@@ -155,8 +155,12 @@ public class UserCenterAction extends ProjectBaseAction
 			throw new MyException(e, this.getClass(), "");
 		}
 	}
-
-	@Action(value = "saveOrder")
+	
+	@Action("addOrder")
+	public void addOrder() throws MyException{
+		 this.saveOrder();
+	}
+	@Action("saveOrder")
 	public void saveOrder() throws MyException
 	{
 		try
@@ -168,8 +172,8 @@ public class UserCenterAction extends ProjectBaseAction
 				spdms = spdms.substring(0, spdms.length() - 1);
 			}
 			List<Map<String, Object>> list = shopcartService.getEntityList(DataSwitch.convertObjectToString(this.getKhxx().getKhDm()), spdms);
-//			boolean result = orderService.saveOrder(psfsdm, list, this.getKhxx());
-//			WriteJsonToPage.WriteJson(result);
+			boolean result = orderService.saveOrder(psfsdm, list, this.getKhxx());
+			WriteJsonToPage.WriteJson(result);
 		}
 		catch (Exception e)
 		{

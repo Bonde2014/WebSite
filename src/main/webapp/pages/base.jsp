@@ -11,7 +11,7 @@
  var root = "<%=root%>"; //js中存放当前页面的root路径方便调用
 </script>
 <link rel="stylesheet" type="text/css" href="<%=root%>/css/style.css">
-<link rel="stylesheet" type="text/css" href="<%=root%>/scripts/jquery-easyui-1.3.6/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="<%=root%>/scripts/jquery-easyui-1.3.6/themes/bootstrap/easyui.css">
 <link rel="stylesheet" type="text/css" href="<%=root%>/scripts/jquery-easyui-1.3.6/themes/icon.css">
 <script type="text/javascript" src="<%=root%>/scripts/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" src="<%=root%>/scripts/comm.js"></script>
