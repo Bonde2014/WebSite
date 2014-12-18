@@ -35,6 +35,30 @@ $(function () {
         $("#form2").show();
         $("#form1").hide();
     })
+    $("#name_1").keypress(function (e){ 
+    	var code = event.keyCode; 
+    	if (13 == code) { 
+    		 $("#password_1").focus();
+    	} 
+    	}); 
+    $("#password_1").keypress(function (e){ 
+    	var code = event.keyCode; 
+    	if (13 == code) { 
+    		doLogin();
+    	} 
+    	}); 
+    $("#name_2").keypress(function (e){ 
+    	var code = event.keyCode; 
+    	if (13 == code) { 
+    		 $("#password_2").focus();
+    	} 
+    	}); 
+    $("#password_2").keypress(function (e){ 
+    	var code = event.keyCode; 
+    	if (13 == code) { 
+    		doLogin();
+    	} 
+    	}); 
 })
 </script>
 </head>
@@ -60,7 +84,7 @@ $(function () {
 
                     <h4>密码</h4>
                     <div class="inputs">
-                         <input type="password" name="password_1" id="password_1" class="easyui-validatebox" maxlength="30"/>
+                         <input type="password" name="password_1" id="password_1" class="easyui-validatebox" maxlength="30"  />
                         <div class="password"></div>
                     </div>
 
