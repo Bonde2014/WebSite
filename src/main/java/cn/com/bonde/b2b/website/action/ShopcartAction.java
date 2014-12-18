@@ -31,7 +31,7 @@ import cn.com.bonde.b2b.website.util.WriteJsonToPage;
 @Scope("prototype")
 @ParentPackage(value = "base")
 @Namespace(value = "/")
-@Results({ @Result(name = "success", location = "shopcart.jsp"), @Result(name = "makeOrder", location = "/pages/shipinfo.jsp") })
+@Results({ @Result(name = "success", location = "/shopcart.jsp"), @Result(name = "makeOrder", location = "/pages/shipinfo.jsp") })
 public class ShopcartAction extends ProjectBaseAction
 {
 	private static final long serialVersionUID = 1L;
