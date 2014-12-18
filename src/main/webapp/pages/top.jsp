@@ -35,7 +35,7 @@ $(function () {
 </script>
 </head>
 <body>
-	<form action="" id="searchForm" method="post">
+	<form action="" id="searchForm" method="get">
     <div class="logotop mainbox">
         <div class="search">
             <div class="searchinput">
