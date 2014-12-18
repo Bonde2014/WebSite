@@ -148,7 +148,7 @@
 
 	<build>
 		<defaultGoal>clean package</defaultGoal>
-		<finalName>clmb</finalName>
+		<finalName>WebSite</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -175,7 +175,7 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<configuration>
 					<!-- 将项目的类文件打成jar放到lib目录中。 打成jar的好处是：只修改class时，可以只更新jar。 -->
-					<archiveClasses>true</archiveClasses>
+					<archiveClasses>false</archiveClasses>
 					<webResources>
 						<resource>
 							<!-- this is relative to the pom.xml directory -->
