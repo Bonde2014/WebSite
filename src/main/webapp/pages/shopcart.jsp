@@ -300,16 +300,10 @@
 
 		function cancel()
 		{
-			$.messager.confirm('取消', '确定取消修改?', function(value)
-			{
-				if (value)
-				{
-					$('#fzrXm').val($('#hid_fzrXm').val());
-					$('#lxdh').val($('#hid_lxdh').val());
-					$('#lxdz').val($('#hid_lxdz').val());
-					$('#userInfo').window('close');
-				}
-			});
+			$('#fzrXm').val($('#hid_fzrXm').val());
+			$('#lxdh').val($('#hid_lxdh').val());
+			$('#lxdz').val($('#hid_lxdz').val());
+			$('#userInfo').window('close');
 		}
 
 		function updateUserInfo()

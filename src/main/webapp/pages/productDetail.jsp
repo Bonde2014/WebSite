@@ -31,9 +31,7 @@
 				$.messager.alert('提示信息','添加商品失败！','info');
 			},
 			success : function(data) {
-				if(data=="true"){
-					$.messager.alert('提示信息','添加商品到购物车成功！','info');
-				}else{
+				if(data!="true"){
 					$.messager.alert('提示信息','添加商品失败！','info');
 				}
 			}
