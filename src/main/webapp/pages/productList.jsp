@@ -37,7 +37,6 @@
                 $("#lightcartinfo").hide();
             }
         })
-        countZje();
 	})
 </script>
 </head>
