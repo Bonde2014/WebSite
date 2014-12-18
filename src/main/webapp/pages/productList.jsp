@@ -221,9 +221,9 @@
 			</div>
 			<div class="lightcartinfo" id="lightcartinfo" style="display:none;">
 				<span class="unitext  "> 共计: <span class="b fred" id="zsl1"></span>
-					件 应付款金额： <span class="b fred" id="zje1"></span> <input
+					件 应付款金额： <span class="b fred" id="zje1"></span>&nbsp;&nbsp;&nbsp;&nbsp; <input
 					type="button" style="vertical-align:middle; margin-top:-3px;"
-					value="修改" id="updateShopCart"> &nbsp;&nbsp;&nbsp;&nbsp; <input
+					value="修改" id="updateShopCart">  <input
 					type="button" style="vertical-align:middle; margin-top:-3px;"
 					value="清空购物车" onclick="deleteSp(this);">
 				</span>
@@ -315,8 +315,19 @@
     	 for(var i=0;i<data1.total;i++){
  			spdmArr += data1.rows[i].SP_DM + ",";
  		}
-    $("<div class=\"datagrid-mask\"></div>").css({display:"block",width:"100%",height:$(window).height()}).appendTo("body:first");//等待效果显示在wnavt控件
-    $("<div class=\"datagrid-mask-msg\"></div>").html("请稍等，正在生成订单...").appendTo("body:first").css({display:"block",left:($(window).width()/2-50),top:$(window).height()/2}); 
+     if(spdmArr==""){
+    	 $.messager.show({
+             title:'提示信息',
+             msg:'购物车中商品为空，不能生成订单',
+             timeout:2000,
+             showType:'show'
+         });
+    	 return;
+     }
+     $.messager.confirm('确认订单', '您一共拥有 '+$("#zsl").text()+' 件商品合计总金额：'+$("#zje").text()+'，确定提交订单？', function(value){
+    		if (value){
+         $("<div class=\"datagrid-mask\"></div>").css({display:"block",width:"100%",height:$(window).height()}).appendTo("body:first");//等待效果显示在wnavt控件
+        $("<div class=\"datagrid-mask-msg\"></div>").html("请稍等，正在生成订单...").appendTo("body:first").css({display:"block",left:($(window).width()/2-50),top:$(window).height()/2}); 
     	$.ajax({
 			type : "POST",
 			async : false,
@@ -338,6 +349,8 @@
 					$.messager.alert('提示信息', '订单生成失败!', 'info');
 				}
 			} });
+    		}
+    	});
 		}
     
     function deleteSp(obj)
@@ -347,6 +360,15 @@
     	 for(var i=0;i<data1.total;i++){
  			spdmArr += data1.rows[i].SP_DM + ",";
  		}
+    	 if(spdmArr==""){
+        	 $.messager.show({
+                 title:'提示信息',
+                 msg:'购物车中商品为空',
+                 timeout:2000,
+                 showType:'show'
+             });
+        	 return;
+         }
 		$.messager.confirm('清空商品', '确定从购物车中清空所有商品？', function(value)
 		{
 			if (value)
