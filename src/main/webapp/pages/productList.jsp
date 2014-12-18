@@ -408,7 +408,6 @@
 			},
 			success : function(data) {
 				if(data=="true"){
-					$.messager.alert('提示信息','添加商品到购物车成功！','info');
 					 $('#datagrid').datagrid('load',{});
 		             $("#completeframe").show();
 		             $("#lightcartinfo").hide();
