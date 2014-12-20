@@ -9,8 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 /**
  * XsDdqk entity. @author MyEclipse Persistence Tools
@@ -37,6 +35,7 @@ public class XsDdqk implements java.io.Serializable
 	private Date ddqrsj;
 	private Date ddfhsj;
 	private Date ddzfsj;
+	private String ddsfyx;
 
 	// Constructors
 
@@ -128,6 +127,16 @@ public class XsDdqk implements java.io.Serializable
 	public void setDdzt(String ddzt)
 	{
 		this.ddzt = ddzt;
+	}
+	@Column(name = "ddsfyx", length = 2)
+	public String getDdsfyx()
+	{
+		return this.ddsfyx;
+	}
+	
+	public void setDdsfyx(String ddsfyx)
+	{
+		this.ddsfyx = ddsfyx;
 	}
 
 	@Column(name = "xsry_dm")
